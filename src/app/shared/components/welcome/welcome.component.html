@@ -1,3 +1,12 @@
-<p>
-  welcome works!
-</p>
+<ion-row class="ion-justify-content-center imgAlignment">
+  <ion-col class="ion-justify-content-center" size=8>
+    <ion-img *ngIf="welcomeImgOn" src="../../../../assets/images/dayneeds-11 1.svg"></ion-img>    
+  </ion-col>
+  <ion-col  class="ion-justify-content-center" size=12>
+    <div *ngIf="!welcomeImgOn">
+      <ion-img src="../../../../assets/images/Group 156.svg"></ion-img>
+      <ion-img src="../../../../assets/images/Buy Essentials From Nearby Shops.svg" class="labelWrapper"></ion-img>
+      <ion-img src="../../../../assets/images/Group 157.svg" (click)="startEventHandler()" class="ion-margin-horizontal btnWrapper"></ion-img>
+    </div>
+  </ion-col>
+</ion-row>

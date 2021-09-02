@@ -1,0 +1,22 @@
+.imgAlignment {
+    border-bottom-right-radius: 50%;
+    background: white;
+    border: 1px solid #111;
+    height: 350px;
+    border-bottom-left-radius: 50%;
+}
+
+.imgAlignment ion-col {
+    margin: auto;
+}
+
+
+.contentWrapper , .inputWrap {
+    background: #E7EBF0;
+}
+
+.inputWrap ion-input{
+    --placeholder-color: #333;
+    --placeholder-font-size : 12px;
+}
+
