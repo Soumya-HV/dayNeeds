@@ -1,0 +1,7 @@
+{
+  "name": "Day Needs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
