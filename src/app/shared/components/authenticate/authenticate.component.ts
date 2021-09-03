@@ -19,7 +19,7 @@ export class AuthenticateComponent implements OnInit {
 
   EnterOTPPanel() {
     this.IsOTPBeingEntered = true;
-    this.router.navigate(['tab1'])
+    this.router.navigate(['tab/home'])
   }
 
 }

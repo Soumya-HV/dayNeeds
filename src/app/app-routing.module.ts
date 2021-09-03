@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthenticateComponent } from './shared/components/authenticate/authenticate.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { OTPComponent } from './shared/components/otp/otp.component';
+import { Tab1Page } from './tab1/tab1.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -17,7 +18,11 @@ const routes: Routes = [
   {
     path: 'login/authenticate',
     component: OTPComponent
-  }
+  },
+  {
+    path: 'tab',
+    loadChildren: () => import('../app/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
   // {
   //   path: '',
   //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
