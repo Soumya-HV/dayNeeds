@@ -1,25 +1,21 @@
-<ion-header class="ion-no-border" [translucent]="true">
-  <ion-toolbar>
-    <!-- [style.backgroundImage]="'url('+item.items[0].image+')'" -->
-    <!-- <img src="../../assets/images/profile_icon.svg"> -->
-    <ion-title [style.backgroundImage]="'url(../../assets/images/profile_icon.svg)'">
-      Garuda Park square,KR puram</ion-title>
-    <ion-buttons class="p-rt-10" slot="end">
-      <ion-button id="cart-btn" ion-button icon-only>
-        <ion-icon src="../../assets/images/bell.svg"></ion-icon>
-        <ion-badge id="cart-badge">2</ion-badge>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-  
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-row style="margin: 15px;">
+    <ion-col style="margin:auto" size="2">
+      <img (click)="openSideModal()" src="../../assets/images/profile_icon.svg">
+    </ion-col>
+    <ion-col style="margin:auto" size="8">
+      <p class="addr_txt">Garuda Park square,KR puram</p>
+    </ion-col>
+    <ion-col style="margin:auto" size="2">
+      <ion-toolbar>
+        <ion-buttons slot="secondary">
+          <ion-button id="cart-btn" ion-button icon-only>
+            <ion-icon src="../../assets/images/bell.svg"></ion-icon>
+            <ion-badge id="cart-badge">2</ion-badge>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-col>
+  </ion-row>
 </ion-content>

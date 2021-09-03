@@ -26,6 +26,10 @@ export class AuthenticateComponent implements OnInit {
     }, 500);
   }
 
+  submitForm(){
+    this.router.navigate(['tab/home'])
+  }
+
   // submitForm() {
   //   this.IsOTPBeingEntered = true;
   //   // this.router.navigate(['tab/home'])
