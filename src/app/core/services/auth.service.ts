@@ -6,7 +6,7 @@ import * as env from '../../../environments/environment';
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private http:HttpClient) {}
+    constructor(private http: HttpClient) {}
 
     registerEvent(body) {
        return this.http.post(env.environment.url + 'login', body );

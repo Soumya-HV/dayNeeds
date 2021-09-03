@@ -39,9 +39,25 @@ export class AuthenticateComponent implements OnInit {
       this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
         console.log(res);        
       });
-      // https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/login
     }
   }
+
+  // submitForm() {
+  //   this.IsOTPBeingEntered = true;
+  //   // this.router.navigate(['tab/home'])
+  //   console.log(this.ionicForm.value);
+  //   if (!this.ionicForm.valid) {
+  //     console.log('Please provide all the required values!')
+  //     return false;
+  //   } else {
+  //     console.log(this.ionicForm.value);
+
+  //     this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
+  //       console.log(res);        
+  //     });
+  //     // https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/login
+  //   }
+  // }
 
   get errorControl() {
     return this.ionicForm.controls;

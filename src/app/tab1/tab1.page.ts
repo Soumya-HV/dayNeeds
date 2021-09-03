@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
+import { SideMenuComponent } from '../side-menu/side-menu.component';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -7,6 +8,19 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(public modalController: ModalController) {
+
+  }
+
+
+  async openSideModal() {
+    const modal = await this.modalController.create({
+      component: SideMenuComponent,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
+  }
 
 }

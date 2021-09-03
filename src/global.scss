@@ -37,3 +37,19 @@ ion-content {
 .w-100{
     width: 100%;
 }
+
+#cart-btn {
+    position: relative;
+    // margin-right: 5px;
+  }
+  
+  #cart-badge {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    background: red;
+    font-size: 0.7em;
+    color: #fff;
+    border-radius: 20px;
+    width: 16px;
+  }
