@@ -28,7 +28,7 @@ export class AuthenticateComponent implements OnInit {
 
   submitForm() {
     this.IsOTPBeingEntered = true;
-    // this.router.navigate(['tab/home'])
+    this.router.navigate(['login/authenticate'])
     console.log(this.ionicForm.value);
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!')

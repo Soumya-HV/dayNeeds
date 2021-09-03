@@ -2,3 +2,35 @@ ion-spinner {
     border: 1px solid #ccc;
     box-shadow: 2px 2px #ccc;
 }
+ion-input {
+    border: 1px solid #ccc;
+}
+
+ion-row{
+    margin:2rem 2rem 0 2rem;
+}
+
+.section-bg{
+    position: relative;
+}
+
+.overlay_img{
+    position: absolute;
+    top: 0;
+    margin: 20%;
+    // width: 100%;
+}
+.m-10{
+    margin: 10%;
+}
+.m-bt-10{
+    margin-bottom: 10%;
+}
+.m-lt-15{
+    margin-left: 15px;
+}
+
+
+ion-item{
+    --ion-background-color:#E7EBF0;
+ }
