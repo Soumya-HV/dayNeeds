@@ -1,1 +1,14 @@
 
+ion-tab-button {
+    // Icon and text
+    --color: grey;
+    --color-selected: black;
+    // Background
+    --background: white;
+    --background-focused: white;
+    --ripple-color: white;
+    }
+
+    ion-tab-bar{
+        --border:none;
+    }

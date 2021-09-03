@@ -1,9 +1,17 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border" [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <!-- [style.backgroundImage]="'url('+item.items[0].image+')'" -->
+    <!-- <img src="../../assets/images/profile_icon.svg"> -->
+    <ion-title [style.backgroundImage]="'url(../../assets/images/profile_icon.svg)'">
+      Garuda Park square,KR puram</ion-title>
+    <ion-buttons class="p-rt-10" slot="end">
+      <ion-button id="cart-btn" ion-button icon-only>
+        <ion-icon src="../../assets/images/bell.svg"></ion-icon>
+        <ion-badge id="cart-badge">2</ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
