@@ -15,11 +15,23 @@
     background: #E7EBF0;
 }
 
-// .inputWrap ion-input{
-//     --placeholder-color: #333;
-//     --placeholder-font-size : 12px;
-// }
+ion-input{
+    --placeholder-color: #2A3757;
+    --placeholder-opacity: 1;
+    font: 600 1rem 'poppinsReg'
+}
+ion-label {
+    font: 600 1rem 'poppinsReg';
+    margin-right: 6px;
+}
 
+ion-img {
+    margin: 0px 100px auto;
+}
+
+// ion-content:host {
+//     overflow: unset !important;
+// }
 //pappu css starts here
 .section-bg{
     position: relative;
