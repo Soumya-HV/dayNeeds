@@ -15,8 +15,35 @@
     background: #E7EBF0;
 }
 
-.inputWrap ion-input{
-    --placeholder-color: #333;
-    --placeholder-font-size : 12px;
+// .inputWrap ion-input{
+//     --placeholder-color: #333;
+//     --placeholder-font-size : 12px;
+// }
+
+//pappu css starts here
+.section-bg{
+    position: relative;
 }
 
+.overlay_img{
+    position: absolute;
+    top: 0;
+    margin: 20%;
+    // width: 100%;
+}
+.m-10{
+    margin: 10%;
+}
+.m-bt-10{
+    margin-bottom: 10%;
+}
+.m-lt-15{
+    margin-left: 15px;
+}
+
+
+ion-item{
+    --ion-background-color:#E7EBF0;
+ }
+ 
+ 

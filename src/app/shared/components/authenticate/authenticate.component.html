@@ -1,29 +1,24 @@
-<div class="contentWrapper" >
-  <!-- *ngIf="!IsOTPBeingEntered" -->
-  <ion-row class="ion-align-items-center imgAlignment" style.width=100%>
-    <ion-col class="ion-align-items-center" size=9>
-      <ion-img src="../../../../assets/images/dayneeds-11 1.svg"></ion-img>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-align-items-center">
-    <ion-col class="ion-align-items-center inputWrap" size=9>
-      <ion-item class="">
-        <ion-img src="../../../../assets/images/bi_person-fill.svg"></ion-img>
-        <ion-input placeholder="Your Name"></ion-input>
-        <!-- <input type="text" aria-placeholder="Username"> -->
-      </ion-item>
-    </ion-col>
-    <ion-col class="ion-align-items-center inputWrap" size=9>
-      <ion-item> 
-        <ion-img src="../../../../assets/images/flags/Indianflag.svg"></ion-img>
-        <ion-input placeholder="+91 - Mobile Number"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col class="ion-justify-content-center" size=8>
-      <!-- <div *ngIf="OTPSuccess"></div> -->
-      <ion-img src="../../../../assets/images/sendOTP.svg" (click)="EnterOTPPanel()"></ion-img>    
-    </ion-col>
-  </ion-row>
-</div>
+<ion-content>
+  <div class="section-bg">
+    <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
+    <div class="overlay_img">
+      <img src="../../../../assets/images/dayneed_image.svg">
+    </div>
+  </div>
+  <div class="m-10">
+    <ion-item class="m-bt-10">
+     
+      <ion-icon src="../../../../assets/images/bi_person-fill.svg"></ion-icon>
+      <ion-input class="m-lt-15" placeholder="Your Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon src="../../../../assets/images/flags/Indianflag.svg"></ion-icon>
+      <ion-input class="m-lt-15" placeholder="+91 - Mobile Number"></ion-input>
+    </ion-item>
+  </div>
+  <div>
+    <ion-img style="height: 50px;" src="../../../../assets/images/sendOTP.svg" (click)="EnterOTPPanel()"></ion-img>
+  </div>
+
+</ion-content>
