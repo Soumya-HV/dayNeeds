@@ -1,4 +1,5 @@
 <ion-content>
+  <form [formGroup]="ionicForm" novalidate>
   <div class="section-bg">
     <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
     <div class="overlay_img">
@@ -7,18 +8,20 @@
   </div>
   <div class="m-10">
     <ion-item class="m-bt-10">
-     
       <ion-icon src="../../../../assets/images/bi_person-fill.svg"></ion-icon>
-      <ion-input class="m-lt-15" placeholder="Your Name"></ion-input>
+      <ion-input class="m-lt-15" placeholder="Your Name" formControlName="userName" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-icon src="../../../../assets/images/flags/Indianflag.svg"></ion-icon>
-      <ion-input class="m-lt-15" placeholder="+91 - Mobile Number"></ion-input>
+      <!-- <ion-input formControlName="mobileNumber" class="m-lt-15" type="number" placeholder="Mobile Number" required> -->
+        <ion-input maxlength="10" formControlName="mobileNumber" class="m-lt-15" type="text"  placeholder="Mobile Number" required>
+        <ion-label>+91 - </ion-label>
+      </ion-input>
     </ion-item>
   </div>
-  <div>
-    <ion-img style="height: 50px;" src="../../../../assets/images/sendOTP.svg" (click)="EnterOTPPanel()"></ion-img>
-  </div>
-
+</form>
+<div>
+  <ion-img src="../../../../assets/images/sendOTP.svg" (click)="submitForm()"></ion-img>
+</div>
 </ion-content>
