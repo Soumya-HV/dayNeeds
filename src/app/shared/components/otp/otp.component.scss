@@ -34,3 +34,18 @@ ion-row{
 ion-item{
     --ion-background-color:#E7EBF0;
  }
+ .input-box{
+    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), #E7EBF0;
+    background-blend-mode: soft-light, normal;
+    box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
+    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    font-family: 'poppinsReg';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #2A3757;
+ }
