@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  url: 'https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/'
+  url: 'https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/',
+  firebaseConfig: {
+    apiKey: 'AIzaSyAnMONxA1GU2wcPnSLyU-VacVgZDSgJ5UU',
+    authDomain: 'ironman-app-99a2f.firebaseapp.com',
+    projectId: 'ironman-app-99a2f',
+    storageBucket: 'ironman-app-99a2f.appspot.com',
+    messagingSenderId: '797555515730',
+    appId: '1:797555515730:web:e0486554f60f512df31a8b',
+    measurementId: 'G-88LSV1MS7H',
+    databaseURL: 'ironman-app-99a2f.firebaseio.com',
+  },
 };
 
 /*

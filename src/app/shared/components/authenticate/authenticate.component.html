@@ -1,5 +1,6 @@
 <ion-content>
-  <form [formGroup]="ionicForm" novalidate>
+  <div id="sign-in-button"></div>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate >
   <div class="section-bg">
     <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
     <div class="overlay_img">
@@ -22,6 +23,6 @@
   </div>
 </form>
 <div>
-  <ion-img src="../../../../assets/images/sendOTP.svg" (click)="submitForm()"></ion-img>
+  <ion-img src="../../../../assets/images/sendOTP.svg" (click)="signinWithPhoneNumber($event)"></ion-img>
 </div>
 </ion-content>
