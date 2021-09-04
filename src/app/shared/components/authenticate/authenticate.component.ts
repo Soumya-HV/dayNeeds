@@ -21,9 +21,7 @@ export class AuthenticateComponent implements OnInit {
    }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.OTPSuccess = true;
-    }, 500);
+ 
   }
 
   submitForm() {

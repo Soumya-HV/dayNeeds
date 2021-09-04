@@ -8,13 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent implements OnInit {
-  welcomeImgOn = true;
+ 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.welcomeImgOn = false;
-    }, 500);
+   
   }
 
   startEventHandler() {
