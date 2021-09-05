@@ -4,6 +4,7 @@ import { AuthenticateComponent } from './shared/components/authenticate/authenti
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { OTPComponent } from './shared/components/otp/otp.component';
 import { Tab1Page } from './tab1/tab1.page';
+import { UserTypeSelectionComponent } from './shared/components/user-type-selection/user-type-selection.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -20,8 +21,20 @@ const routes: Routes = [
     component: OTPComponent
   },
   {
+    path: 'usertype-select',
+    component: UserTypeSelectionComponent
+  },
+  {
     path: 'tab',
-    loadChildren: () => import('../app/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('../app/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('../app/modules/register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('../app/modules/home/home.module').then(m => m.HomeModule)
   },
   // {
   //   path: '',
@@ -34,4 +47,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -9,13 +9,13 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import { OTPComponent } from './components/otp/otp.component';
-
+import { UserTypeSelectionComponent } from './components/user-type-selection/user-type-selection.component';
 
 @NgModule({
-  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent],
+  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
-  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent],
+  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever],
 })
 export class SharedModule {}

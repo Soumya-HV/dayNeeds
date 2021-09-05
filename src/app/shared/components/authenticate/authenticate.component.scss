@@ -10,6 +10,9 @@
     margin: auto;
 }
 
+#sign-in-button{
+    display: none;
+}
 
 .contentWrapper , .inputWrap {
     background: #E7EBF0;
@@ -24,7 +27,7 @@ ion-input{
 }
 ion-label {
     font: 600 1rem 'poppinsReg';
-    // margin-right: 6px;
+    margin-right: 6px;
 }
 
 ion-img {

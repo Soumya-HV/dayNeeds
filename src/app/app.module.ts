@@ -11,11 +11,12 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire'
+import { RegisterComponent } from './modules/register/register.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RegisterComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),

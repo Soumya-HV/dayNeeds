@@ -35,43 +35,51 @@ export class AuthenticateComponent implements OnInit {
 
   }
 
-  // async ionViewDidEnter() {
-  //   console.log(this.recaptchaVerifier);
-  //   this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-  //     size: 'invisible',
-  //     callback: (response) => {
-  //     },
-  //     'expired-callback': () => {
-  //     }
-  //   });
-  //   console.log(this.recaptchaVerifier);
+  async ionViewDidEnter() {
+    console.log(this.recaptchaVerifier);
+    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      size: 'invisible',
+      callback: (response) => {
+      },
+      'expired-callback': () => {
+      }
+    });
+    console.log(this.recaptchaVerifier);
 
-  // }
-  // ionViewDidLoad() {
-  //   this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-  //     size: 'invisible',
-  //     callback: (response) => {
-  //     },
-  //     'expired-callback': () => {
-  //     }
-  //   });
-  // }
+  }
+  ionViewDidLoad() {
+    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      size: 'invisible',
+      callback: (response) => {
+      },
+      'expired-callback': () => {
+      }
+    });
+  }
 
-  submitForm(value) {
+  submitForm() {
     this.IsOTPBeingEntered = true;
-    // this.router.navigate(['login/authenticate'])
-    console.log(this.ionicForm, this.mobileNumber);
+    let body = {
+      userName : this.ionicForm.value.userName,
+      mobileNumber : '+91-9741220416'
+    }
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!')
       return false;
     } else {
-      console.log(this.ionicForm.value);
-
-      this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
-        console.log(res);
-      });
-    }
-  }
+      // console.log();
+      
+      // this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
+      //   console.log(res);
+      // });
+        this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
+          .then((success) => {
+            this.router.navigate(['authenticate']);
+            console.log(success);       
+              // this.OtpVerification();
+          }).catch((error: any) => console.log("error"+error));
+      }
+    }  
 
   // signinWithPhoneNumberOld($event) {
   //   console.log(this.user);
@@ -91,7 +99,7 @@ export class AuthenticateComponent implements OnInit {
 
   signinWithPhoneNumber($event) {
     this.router.navigate(['authenticate']);
-    console.log(this.mobileNumber)
+    console.log(this.mobileNumber, this.ionicForm, this.mobileNumber);
     // if (this.mobileNumber) {
     //   this.authService.signInWithPhoneNumber(this.recaptchaVerifier, '+91 -' + this.mobileNumber)
     //     .then((success) => {
@@ -101,8 +109,6 @@ export class AuthenticateComponent implements OnInit {
     //     }).catch((error: any) => alert("error"+error));
     // }
   }
-
-
 
   async OtpVerification() {
     const alert = await this.alertController.create({

@@ -12,7 +12,6 @@ export class AuthService {
     confirmationResult: firebase.auth.ConfirmationResult;
 
     constructor(private http: HttpClient, private fireAuth: AngularFireAuth) {
-      
      }
 
     registerEvent(body) {
@@ -20,11 +19,8 @@ export class AuthService {
     }
 
 
-    public signInWithPhoneNumber(recaptchaVerifier, phoneNumber) {
-        console.log(recaptchaVerifier, phoneNumber);
-        
+    public signInWithPhoneNumber(phoneNumber, recaptchaVerifier,) {       
         return new Promise<any>((resolve, reject) => {
-
             this.fireAuth.signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
                 .then((confirmationResult) => {
                     this.confirmationResult = confirmationResult;

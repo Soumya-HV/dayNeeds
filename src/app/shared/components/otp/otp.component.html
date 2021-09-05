@@ -1,32 +1,35 @@
 <ion-content>
+  <div id="sign-in-button"></div>
   <div class="section-bg">
     <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
     <div class="overlay_img">
       <img src="../../../../assets/images/dayneed_image.svg">
     </div>
   </div>
+  <form [formGroup]=OTPForm>
   <ion-grid>
     <ion-row style="margin: 0;" class="ion-text-center">
       <ion-col size=2>
-        <ion-input class="input-box" type=number value=1></ion-input>
+        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP1 ></ion-input>
       </ion-col>
       <ion-col size=2>
-        <ion-input class="input-box" type=number value=2></ion-input>
+        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP2 ></ion-input>
       </ion-col>
       <ion-col size=2>
-        <ion-input class="input-box" type=number value=3></ion-input>
+        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP3 ></ion-input>
       </ion-col>
       <ion-col size=2>
-        <ion-input class="input-box" type=number value=4></ion-input>
+        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP4 ></ion-input>
       </ion-col>
       <ion-col size=2>
-        <ion-input class="input-box" type=number value=5></ion-input>
+        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP5 ></ion-input>
       </ion-col>
       <ion-col size=2>
-        <ion-input class="input-box" type=number value=6></ion-input>
+        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP6 (change)="submitOTPEventTrigger()"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
+</form>
   <div>
     <ion-img src="../../../../assets/images/sendOTP.svg" (click)="resendOtp($event)"></ion-img>
   </div>
