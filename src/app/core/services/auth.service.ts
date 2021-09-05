@@ -11,7 +11,9 @@ export class AuthService {
 
     confirmationResult: firebase.auth.ConfirmationResult;
 
-    constructor(private http: HttpClient, private fireAuth: AngularFireAuth) { }
+    constructor(private http: HttpClient, private fireAuth: AngularFireAuth) {
+      
+     }
 
     registerEvent(body) {
         return this.http.post(env.environment.url + 'login', body);

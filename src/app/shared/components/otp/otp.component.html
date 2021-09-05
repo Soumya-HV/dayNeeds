@@ -6,20 +6,29 @@
     </div>
   </div>
   <ion-grid>
-    <ion-row class="ion-text-center">
-      <ion-col size=3>
+    <ion-row style="margin: 0;" class="ion-text-center">
+      <ion-col size=2>
         <ion-input class="input-box" type=number value=1></ion-input>
       </ion-col>
-      <ion-col size=3>
+      <ion-col size=2>
         <ion-input class="input-box" type=number value=2></ion-input>
       </ion-col>
-      <ion-col size=3>
+      <ion-col size=2>
         <ion-input class="input-box" type=number value=3></ion-input>
       </ion-col>
-      <ion-col size=3>
+      <ion-col size=2>
         <ion-input class="input-box" type=number value=4></ion-input>
+      </ion-col>
+      <ion-col size=2>
+        <ion-input class="input-box" type=number value=5></ion-input>
+      </ion-col>
+      <ion-col size=2>
+        <ion-input class="input-box" type=number value=6></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <div>
+    <ion-img src="../../../../assets/images/sendOTP.svg" (click)="resendOtp($event)"></ion-img>
+  </div>
   <!-- <ion-spinner primary></ion-spinner> -->
 </ion-content>

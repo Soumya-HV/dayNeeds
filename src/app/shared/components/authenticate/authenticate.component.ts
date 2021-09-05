@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from 'src/app/core/services/auth.service';
-
 import firebase from 'firebase/app';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -21,7 +20,7 @@ export class AuthenticateComponent implements OnInit {
   userName: any;
   mobileNumber: any;
   recaptchaVerifier: firebase.auth.RecaptchaVerifier;
-
+  user;
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService,
     private alertController: AlertController,
     private http: HttpClient,
@@ -29,37 +28,34 @@ export class AuthenticateComponent implements OnInit {
     this.ionicForm = this.fb.group({
       userName: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-   })
-   }
+    })
+  }
 
   ngOnInit() {
- 
+
   }
 
-  async ionViewDidEnter() {
-    console.log(this.recaptchaVerifier);
+  // async ionViewDidEnter() {
+  //   console.log(this.recaptchaVerifier);
+  //   this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+  //     size: 'invisible',
+  //     callback: (response) => {
+  //     },
+  //     'expired-callback': () => {
+  //     }
+  //   });
+  //   console.log(this.recaptchaVerifier);
 
-    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-      size: 'invisible',
-      callback: (response) => {
-
-      },
-      'expired-callback': () => {
-      }
-    });
-    console.log(this.recaptchaVerifier);
-    
-  }
-  ionViewDidLoad() {
-    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-      size: 'invisible',
-      callback: (response) => {
-
-      },
-      'expired-callback': () => {
-      }
-    });
-  }
+  // }
+  // ionViewDidLoad() {
+  //   this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+  //     size: 'invisible',
+  //     callback: (response) => {
+  //     },
+  //     'expired-callback': () => {
+  //     }
+  //   });
+  // }
 
   submitForm(value) {
     this.IsOTPBeingEntered = true;
@@ -72,25 +68,41 @@ export class AuthenticateComponent implements OnInit {
       console.log(this.ionicForm.value);
 
       this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
-        console.log(res);        
+        console.log(res);
       });
     }
   }
 
-  signinWithPhoneNumber($event) {
-    console.log('country',this.recaptchaVerifier);
+  // signinWithPhoneNumberOld($event) {
+  //   console.log(this.user);
+  //   console.log('country',this.recaptchaVerifier);
 
-    if ('+91 - 9741220416') {
-      this.authService
-        .signInWithPhoneNumber(
-          this.recaptchaVerifier,
-          '+91 - 9741220416'
-        )
-        .then((success) => {
-          this.OtpVerification();
-        });
-    }
+  //   if ('+91 - 9741220416') {
+  //     this.authService
+  //       .signInWithPhoneNumber(
+  //         this.recaptchaVerifier,
+  //         '+91 - 9741220416'
+  //       )
+  //       .then((success) => {
+  //         this.OtpVerification();
+  //       });
+  //   }
+  // }
+
+  signinWithPhoneNumber($event) {
+    this.router.navigate(['authenticate']);
+    console.log(this.mobileNumber)
+    // if (this.mobileNumber) {
+    //   this.authService.signInWithPhoneNumber(this.recaptchaVerifier, '+91 -' + this.mobileNumber)
+    //     .then((success) => {
+    //       alert(success.verificationId);
+    //       this.router.navigate(['authenticate']);
+    //       console.log(success.verificationId);          
+    //     }).catch((error: any) => alert("error"+error));
+    // }
   }
+
+
 
   async OtpVerification() {
     const alert = await this.alertController.create({
@@ -127,27 +139,27 @@ export class AuthenticateComponent implements OnInit {
       headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
     };
     this.http.get<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/hello`, header)
-    .subscribe(
-      async (data) => {
-        console.log(data);
-        textMsg = data.message;
-        const alert = await this.alertController.create({
-          header: textMsg,
-          buttons: [
-            {
-              text: 'Ok',
-              handler: (res) => {
-                alert.dismiss();
+      .subscribe(
+        async (data) => {
+          console.log(data);
+          textMsg = data.message;
+          const alert = await this.alertController.create({
+            header: textMsg,
+            buttons: [
+              {
+                text: 'Ok',
+                handler: (res) => {
+                  alert.dismiss();
+                },
               },
-            },
-          ],
-        });
-        alert.present();
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+            ],
+          });
+          alert.present();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
 
   }
 

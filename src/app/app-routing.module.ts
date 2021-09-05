@@ -16,7 +16,7 @@ const routes: Routes = [
     component: AuthenticateComponent
   },
   {
-    path: 'login/authenticate',
+    path: 'authenticate',
     component: OTPComponent
   },
   {
