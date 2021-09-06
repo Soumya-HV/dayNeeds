@@ -14,8 +14,11 @@ ion-title{
     color: rgba(42, 55, 87, 0.8);
     background-position: left center;
     background-repeat: no-repeat;
-    padding-left: 50px;
-  
+    padding-left: 50px;  
+}
+ion-searchbar{
+    --placeholder-font-family : 'poppinsReg';
+    --placeholder-font-size : '12px';
 }
 .p-rt-10{
     padding-right: 10px;
@@ -28,4 +31,38 @@ ion-title{
     line-height: 19px;
     letter-spacing: 0.02em;
     color: rgba(42, 55, 87, 0.8);
+}
+.imgRes{
+    height: 69%;
+    width: 92%;
+    margin: 0px 12px auto;
+    border-radius: 12px;
+    position: relative;
+}
+.catText{
+    position: absolute;
+    top: 30px;
+    left: 10%;
+    color: #fff;
+    font-family: 'poppinsReg';
+    font-size: 1rem;
+    width: 67%;
+    // color: #06AF90;
+}
+.catTime {
+    font-size: 10px;
+    color:#111;
+}
+.rightArrow {
+    position: absolute;
+    top: 30%;
+    right: 43%;
+}
+.textWrap{
+    margin: 0 17px;
+    font: 14px 'poppinsReg';
+}
+.seeAllWrap{
+  color: #2A3757;
+  font: 0.75rem 'poppinsReg';
 }

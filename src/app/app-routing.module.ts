@@ -33,7 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('../app/modules/register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'home',
+    path: 'user/into',
     loadChildren: () => import('../app/modules/home/home.module').then(m => m.HomeModule)
   },
   // {

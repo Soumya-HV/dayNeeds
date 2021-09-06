@@ -27,11 +27,13 @@ export class OTPComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.submitOTPEventTrigger();
+    // this.submitOTPEventTrigger();
   }
 
   async submitOTPEventTrigger() {
-              this.authService.enterVerificationCode(this.OTPForm.value).then((userData) => {
+    let val = this.OTPForm.value.OTP1 + this.OTPForm.value.OTP2 + this.OTPForm.value.OTP3 + this.OTPForm.value.OTP4 + this.OTPForm.value.OTP5 + this.OTPForm.value.OTP6
+    console.log(this.OTPForm.value, val);
+              this.authService.enterVerificationCode(val).then((userData) => {
                 this.showSuccess(userData);
                 console.log(userData);
                 console.log(userData.uid);
@@ -43,20 +45,20 @@ showSuccess(userData) {
   this.router.navigate(['usertype-select']);
 }
 
-  // async ionViewDidEnter() {
-  //   console.log(this.recaptchaVerifier);
-  //   this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-  //     size: 'invisible',
-  //     callback: (response) => {
+  async ionViewDidEnter() {
+    console.log(this.recaptchaVerifier);
+    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      size: 'invisible',
+      callback: (response) => {
        
-  //     },
-  //     'expired-callback': () => {
-  //     }
+      },
+      'expired-callback': () => {
+      }
       
-  //   });
-  //   console.log(this.recaptchaVerifier);
-  //   this.phoneLogin()
-  // }
+    });
+    console.log(this.recaptchaVerifier);
+    // this.phoneLogin()
+  }
 
   // phoneLogin() {
   //   console.log(this.recaptchaVerifier);

@@ -17,6 +17,6 @@ export class UserTypeSelectionComponent implements OnInit {
   }
 
   registerCustomer() {
-    // this.route.navigate(['home']);
+    this.route.navigate(['tab/home']);
   }
 }

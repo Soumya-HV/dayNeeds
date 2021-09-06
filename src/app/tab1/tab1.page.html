@@ -1,21 +1,53 @@
-
 <ion-content [fullscreen]="true">
   <ion-row style="margin: 15px;">
     <ion-col style="margin:auto" size="2">
       <img (click)="openSideModal()" src="../../assets/images/profile_icon.svg">
     </ion-col>
-    <ion-col style="margin:auto" size="8">
-      <p class="addr_txt">Garuda Park square,KR puram</p>
+    <ion-col style="margin:auto" size="9" class="ion-no-padding">
+      <p class="addr_txt">Garuda Park square,KR puram <img (click)="openSideModal()" src="../../assets/images/edit.svg">
+      </p>
     </ion-col>
-    <ion-col style="margin:auto" size="2">
-      <ion-toolbar>
+    <ion-col style="margin:auto" size="1" class="ion-no-padding">
+      <ion-toolbar part="toolbar-container">
         <ion-buttons slot="secondary">
-          <ion-button id="cart-btn" ion-button icon-only>
+          <ion-button id="cart-btn" ion-button icon-only class="ion-no-margin" style=width:80%;right:32%>
             <ion-icon src="../../assets/images/bell.svg"></ion-icon>
             <ion-badge id="cart-badge">2</ion-badge>
           </ion-button>
         </ion-buttons>
       </ion-toolbar>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size=12>
+      <ion-searchbar placeholder="Search by items name"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+  <ion-row style="height:125px">
+    <ion-col size=12>
+      <img src="../../assets/images/category.jfif" class="imgRes">
+      <span class="catText">RK Vegetables visiting Today <span class="catTime">at 04:00pm </span>
+      </span>
+      <img src="../../assets/images/arrow-right-circle.svg" class="rightArrow">
+    </ion-col>
+    <!-- <ion-slides pager="true" [options]="slideOpts"> -->
+    <!-- <ion-slide> -->
+    <!-- <h1>Slide 1</h1> -->
+    <!-- </ion-slide> -->
+    <!-- <ion-slide> -->
+    <!-- <h1>Slide 2</h1> -->
+    <!-- </ion-slide> -->
+    <!-- <ion-slide> -->
+    <!-- <h1>Slide 3</h1> -->
+    <!-- </ion-slide> -->
+    <!-- </ion-slides> -->
+  </ion-row>
+  <ion-row justify-content-end class="textWrap">
+    <ion-col size=6 class="catTextWrap">
+      <span>Categories</span>
+    </ion-col>
+    <ion-col size=6 class="ion-text-end seeAllWrap">
+      <span>See all</span>
     </ion-col>
   </ion-row>
 </ion-content>

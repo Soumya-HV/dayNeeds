@@ -32,7 +32,10 @@ export class AuthService {
         });
     }
     public async enterVerificationCode(code) {
+        console.log(code, );
+
         return new Promise<any>((resolve, reject) => {
+            
             this.confirmationResult.confirm(code).then(async (result) => {
                 console.log(result);
                 const user = result.user;

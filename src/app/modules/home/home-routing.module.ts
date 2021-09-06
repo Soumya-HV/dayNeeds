@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   }
 ];
@@ -14,4 +14,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class RegisterRoutingModule { }
+export class HomeRoutingModule { }

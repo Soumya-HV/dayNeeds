@@ -61,17 +61,13 @@ export class AuthenticateComponent implements OnInit {
     this.IsOTPBeingEntered = true;
     let body = {
       userName : this.ionicForm.value.userName,
-      mobileNumber : '+91-9741220416'
+      mobileNumber : '+91 - 9741220416'
     }
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!')
       return false;
     } else {
-      // console.log();
-      
-      // this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
-      //   console.log(res);
-      // });
+      this.router.navigate(['usertype-select']);
         this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
           .then((success) => {
             this.router.navigate(['authenticate']);
