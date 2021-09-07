@@ -53,3 +53,15 @@ ion-content {
     border-radius: 20px;
     width: 16px;
   }
+  .searchbarinput {
+    input{
+       font-size: 12px !important;  
+    }
+}
+.searchbar-search-icon.sc-ion-searchbar-md{
+  // background-image: url("assets/images/search.svg");
+  color: rgba(42, 55, 87, 0.4) !important;
+}
+.searchbar-search-icon.sc-ion-searchbar-ios{
+  color: rgba(42, 55, 87, 0.4) !important;
+}

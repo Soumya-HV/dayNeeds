@@ -16,14 +16,14 @@ export class OTPComponent implements OnInit {
 
   constructor(private smsRetriever: SmsRetriever, private authService: AuthService,
     private fb: FormBuilder, private router: Router) {
-      this.OTPForm = this.fb.group({
-       OTP1 : ['', Validators.required],
-       OTP2 : ['', Validators.required],
-       OTP3 : ['', Validators.required],
-       OTP4 : ['', Validators.required],
-       OTP5 : ['', Validators.required],
-       OTP6 : ['', Validators.required]
-      })
+    this.OTPForm = this.fb.group({
+      OTP1: ['', Validators.required],
+      OTP2: ['', Validators.required],
+      OTP3: ['', Validators.required],
+      OTP4: ['', Validators.required],
+      OTP5: ['', Validators.required],
+      OTP6: ['', Validators.required]
+    })
   }
 
   ngOnInit() {
@@ -33,28 +33,28 @@ export class OTPComponent implements OnInit {
   async submitOTPEventTrigger() {
     let val = this.OTPForm.value.OTP1 + this.OTPForm.value.OTP2 + this.OTPForm.value.OTP3 + this.OTPForm.value.OTP4 + this.OTPForm.value.OTP5 + this.OTPForm.value.OTP6
     console.log(this.OTPForm.value, val);
-              this.authService.enterVerificationCode(val).then((userData) => {
-                this.showSuccess(userData);
-                console.log(userData);
-                console.log(userData.uid);
-              });
-    }
-  
-showSuccess(userData) {
-  console.log(userData);
-  this.router.navigate(['usertype-select']);
-}
+    this.authService.enterVerificationCode(val).then((userData) => {
+      this.showSuccess(userData);
+      console.log(userData);
+      console.log(userData.uid);
+    });
+  }
+
+  showSuccess(userData) {
+    console.log(userData);
+    this.router.navigate(['usertype-select']);
+  }
 
   async ionViewDidEnter() {
     console.log(this.recaptchaVerifier);
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
       size: 'invisible',
       callback: (response) => {
-       
+
       },
       'expired-callback': () => {
       }
-      
+
     });
     console.log(this.recaptchaVerifier);
     // this.phoneLogin()
@@ -82,7 +82,7 @@ showSuccess(userData) {
 
 
 
-  
+
 
   // startWatch() {
   //   alert('start watching')
