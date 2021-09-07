@@ -34,17 +34,13 @@ export class Tab1Page {
   sliderOpts = {
     autoplay: true,
     speed: 1000,
-    zoom: {
-      maxRatio: 5
-    }
+  
   };
   categorySliderOpts = {
     slidesPerView: 4,
     autoplay: true,
     speed: 1000,
-    zoom: {
-      maxRatio: 5
-    }
+   
   }
   constructor(public modalController: ModalController) {
 
