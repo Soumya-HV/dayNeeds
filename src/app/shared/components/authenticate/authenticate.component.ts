@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -20,6 +20,8 @@ export class AuthenticateComponent implements OnInit {
   userName: any;
   mobileNumber: any;
   recaptchaVerifier: firebase.auth.RecaptchaVerifier;
+  @Output() isNewUser = new EventEmitter();
+
   user;
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService,
     private alertController: AlertController,
@@ -60,22 +62,26 @@ export class AuthenticateComponent implements OnInit {
   submitForm() {
     this.IsOTPBeingEntered = true;
     let body = {
-      userName : this.ionicForm.value.userName,
-      mobileNumber : '+91 - 8122827881'
+      userName: this.ionicForm.value.userName,
+      mobileNumber: '+91 - 8610910187'
     }
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!')
       return false;
     } else {
-      this.router.navigate(['usertype-select']);
-        this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
-          .then((success) => {
-            this.router.navigate(['authenticate']);
-            console.log(success);       
-              // this.OtpVerification();
-          }).catch((error: any) => console.log("error"+error));
-      }
-    }  
+      // this.router.navigate(['usertype-select']);
+      this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
+        .then((success) => {
+          console.log(success);
+          this.router.navigate(['authenticate']);
+          // this.authService.registerEvent(body).subscribe(res => {
+          //   console.log(res);
+          // })   
+          // this.OtpVerification();
+        }).catch((error: any) => console.log("error" + error));
+    }
+  }
+
 
   // signinWithPhoneNumberOld($event) {
   //   console.log(this.user);
@@ -162,7 +168,6 @@ export class AuthenticateComponent implements OnInit {
           console.log(err);
         }
       );
-
   }
 
 

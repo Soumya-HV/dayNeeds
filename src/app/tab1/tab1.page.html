@@ -37,7 +37,23 @@
         </div>
       </ion-slide>
     </ion-slides>
-    <h6 class="cat-head">Categories</h6>
+
+    <!-- <ion-row> -->
+      <!-- <ion-col> -->
+        <!-- <h6 class="cat-head">Categories</h6> -->
+      <!-- </ion-col> -->
+      <!-- <ion-col> -->
+        <!-- <h6 class="">Categories</h6> -->
+      <!-- </ion-col> -->
+    <!-- </ion-row> -->
+    <ion-row justify-content-end class="textWrap">
+      <ion-col size=6 class="catTextWrap">
+        <span>Categories</span>
+      </ion-col>
+      <!-- <ion-col size=6 class="ion-text-end seeAllWrap"> -->
+        <!-- <span>See all</span> -->
+      <!-- </ion-col> -->
+    </ion-row>
 
     <ion-slides #categorySlider pager="false" [options]="categorySliderOpts">
       <ion-slide  *ngFor="let category of categories">

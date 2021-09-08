@@ -12,14 +12,14 @@ export class AuthService {
     confirmationResult: firebase.auth.ConfirmationResult;
 
     constructor(private http: HttpClient, private fireAuth: AngularFireAuth) {
-     }
+    }
 
     registerEvent(body) {
         return this.http.post(env.environment.url + 'login', body);
     }
 
 
-    public signInWithPhoneNumber(phoneNumber, recaptchaVerifier,) {       
+    public signInWithPhoneNumber(phoneNumber, recaptchaVerifier,) {
         return new Promise<any>((resolve, reject) => {
             this.fireAuth.signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
                 .then((confirmationResult) => {
@@ -31,14 +31,13 @@ export class AuthService {
                 });
         });
     }
-    public async enterVerificationCode(code) {
-        console.log(code, );
 
+    public async enterVerificationCode(code) {
+        console.log(code);
         return new Promise<any>((resolve, reject) => {
-            
             this.confirmationResult.confirm(code).then(async (result) => {
                 console.log(result);
-                const user = result.user;
+                const user = result;
                 resolve(user);
             }).catch((error) => {
                 reject(error.message);

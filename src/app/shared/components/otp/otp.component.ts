@@ -1,7 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import firebase from 'firebase/app';
 import { AuthService } from 'src/app/core/services/auth.service';
 // declare var SMSReceive: any;
@@ -14,8 +15,8 @@ export class OTPComponent implements OnInit {
   recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   OTPForm: FormGroup;
 
-  constructor(private smsRetriever: SmsRetriever, private authService: AuthService,
-    private fb: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService,
+    private fb: FormBuilder, private router: Router, private fireAuth: AngularFireAuth, private http: HttpClient) {
     this.OTPForm = this.fb.group({
       OTP1: ['', Validators.required],
       OTP2: ['', Validators.required],
@@ -26,9 +27,7 @@ export class OTPComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    // this.submitOTPEventTrigger();
-  }
+  ngOnInit() { }
 
   async submitOTPEventTrigger() {
     let val = this.OTPForm.value.OTP1 + this.OTPForm.value.OTP2 + this.OTPForm.value.OTP3 + this.OTPForm.value.OTP4 + this.OTPForm.value.OTP5 + this.OTPForm.value.OTP6
@@ -36,14 +35,25 @@ export class OTPComponent implements OnInit {
     this.authService.enterVerificationCode(val).then((userData) => {
       this.showSuccess(userData);
       console.log(userData);
-      console.log(userData.uid);
     });
   }
 
-  showSuccess(userData) {
-    console.log(userData);
-    this.router.navigate(['usertype-select']);
+  async showSuccess(userData) {
+    const token = await (await this.fireAuth.currentUser).getIdToken(true);
+    localStorage.setItem('tokenId', token);
+    const header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
+    };
+    console.log('tokenId', token, userData, localStorage.getItem('tokenId'));
+    if (!userData?.additionalUserInfo?.isNewUser) {
+      this.router.navigate(['tab/home']);
+    } else {
+      this.http.get<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`).subscribe(res => {
+        console.log(res);
+      });
+    }
   }
+
 
   async ionViewDidEnter() {
     console.log(this.recaptchaVerifier);
