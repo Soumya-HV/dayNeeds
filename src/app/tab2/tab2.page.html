@@ -1,17 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div style="margin-left: 15px;margin-right:15px;">
+    <ion-row style="margin-top: 15px;">
+      <ion-col style="margin:auto" size="2">
+        <img (click)="backHome()" src="../../assets/images/sidebar-icons/arrow-left.svg">
+      </ion-col>
+      <ion-col style="margin:auto" size="9" class="ion-no-padding">
+        <p class="addr_txt">Garuda Park square,KR puram
+          <img style="vertical-align: middle;" (click)="openSideModal()" src="../../assets/images/edit.svg">
+        </p>
+      </ion-col>
+      <ion-col style="margin:auto" size="1" class="ion-no-padding">
+        <ion-toolbar part="toolbar-container">
+          <ion-buttons slot="secondary">
+            <ion-button id="cart-btn" ion-button icon-only class="ion-no-margin" style=width:80%;right:32%>
+              <ion-icon src="../../assets/images/bell.svg"></ion-icon>
+              <ion-badge id="cart-badge">2</ion-badge>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <div style="margin-bottom: 15px;">
+      <ion-searchbar class="search-cls searchbarinput" placeholder="Search by items name"></ion-searchbar>
+    </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-slides #mySlider pager="false" [options]="sliderOpts">
+      <ion-slide >
+        <div  style="width: 100%;" >
+          <img src="../../assets/images/home-slide1.svg" class="imgRes">
+        </div>
+      </ion-slide>
+      <ion-slide >
+        <div  style="width: 100%;" >
+          <img src="../../assets/images/category.jfif" class="imgRes">
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <h6 class="cat-head">Vegetable shops near you</h6>
+    <ion-row style="margin-left: 10px;margin-right: 5px;">
+      <ion-col class="card-img-sec" size="4">
+        <img class="card-img" src="../../assets/images/veg1.svg">
+      </ion-col>
+      <ion-col size="8" class="card-content"  >
+        <div  style="padding: 0 15px;">
+          <div class="vendor-name">RK Vegetable Shop <span><img style="margin-top: 3px;float: right;"
+             src="../../assets/images/heart-outline.svg"></span></div>
+          <div>
+            <span style="background: #DDEDEA;" class="vendor-cat">Vegetables</span>
+            <span style="background: #FCF4DD;" class="vendor-cat">Fruits</span>
+            <span style="background: #EAF2D7;" class="vendor-cat">Milk</span>
+          </div>
+          <div style=" padding-top: 15px;">
+            <div  class="vendor-time">Tommorow,4pm</div>
+            <div class="vendor-rating">4.0<span style="vertical-align: -webkit-baseline-middle;"><img src="../../assets/images/rating.svg"></span></div>
+          </div>    
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-left: 10px;margin-right: 5px;">
+      <ion-col class="card-img-sec" size="4">
+        <img class="card-img" src="../../assets/images/veg1.svg">
+      </ion-col>
+      <ion-col size="8" class="card-content"  >
+        <div  style="padding: 0 15px;">
+          <div class="vendor-name">RK Vegetable Shop <span><img style="margin-top: 3px;float: right;"
+             src="../../assets/images/heart-outline.svg"></span></div>
+          <div>
+            <span style="background: #DDEDEA;" class="vendor-cat">Vegetables</span>
+            <span style="background: #FCF4DD;" class="vendor-cat">Fruits</span>
+            <span style="background: #EAF2D7;" class="vendor-cat">Milk</span>
+          </div>
+          <div style=" padding-top: 15px;">
+            <div  class="vendor-time">Tommorow,4pm</div>
+            <div class="vendor-rating">4.0<span style="vertical-align: -webkit-baseline-middle;"><img src="../../assets/images/rating.svg"></span></div>
+          </div>    
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>
