@@ -31,6 +31,15 @@
     src: url('./assets/fonts/Poppins-Regular.ttf');
   }
 
+  @font-face {   
+    font-family: 'poppinsSemiBold';    //This is what we are going to call
+    src: url('./assets/fonts/Poppins-SemiBold.ttf');
+  }
+
+  @font-face {   
+    font-family: 'poppinsMedium';    //This is what we are going to call
+    src: url('./assets/fonts/Poppins-Medium.ttf');
+  }
 ion-content {
     --background: #E7EBF0;
 }

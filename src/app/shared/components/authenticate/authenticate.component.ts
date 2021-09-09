@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from 'src/app/core/services/auth.service';
 import firebase from 'firebase/app';
-import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
@@ -17,8 +16,6 @@ export class AuthenticateComponent implements OnInit {
   ionicForm: FormGroup;
   OTPSuccess = false;
   IsOTPBeingEntered = false;
-  userName: any;
-  mobileNumber: any;
   recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   @Output() isNewUser = new EventEmitter();
 
@@ -28,17 +25,14 @@ export class AuthenticateComponent implements OnInit {
     private http: HttpClient,
     private auth: AngularFireAuth) {
     this.ionicForm = this.fb.group({
-      userName: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
     })
   }
 
   ngOnInit() {
-
   }
 
   async ionViewDidEnter() {
-    console.log(this.recaptchaVerifier);
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
       size: 'invisible',
       callback: (response) => {
@@ -62,54 +56,18 @@ export class AuthenticateComponent implements OnInit {
   submitForm() {
     this.IsOTPBeingEntered = true;
     let body = {
-      userName: this.ionicForm.value.userName,
-      mobileNumber: '+91 - 8660102182'
+      mobileNumber: '+91 - ' + this.ionicForm.value.mobileNumber
     }
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!')
       return false;
     } else {
-      // this.router.navigate(['usertype-select']);
       this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
         .then((success) => {
           console.log(success);
           this.router.navigate(['authenticate']);
-          // this.authService.registerEvent(body).subscribe(res => {
-          //   console.log(res);
-          // })   
-          // this.OtpVerification();
         }).catch((error: any) => console.log("error" + error));
     }
-  }
-
-
-  // signinWithPhoneNumberOld($event) {
-  //   console.log(this.user);
-  //   console.log('country',this.recaptchaVerifier);
-
-  //   if ('+91 - 9741220416') {
-  //     this.authService
-  //       .signInWithPhoneNumber(
-  //         this.recaptchaVerifier,
-  //         '+91 - 9741220416'
-  //       )
-  //       .then((success) => {
-  //         this.OtpVerification();
-  //       });
-  //   }
-  // }
-
-  signinWithPhoneNumber($event) {
-    this.router.navigate(['authenticate']);
-    console.log(this.mobileNumber, this.ionicForm, this.mobileNumber);
-    // if (this.mobileNumber) {
-    //   this.authService.signInWithPhoneNumber(this.recaptchaVerifier, '+91 -' + this.mobileNumber)
-    //     .then((success) => {
-    //       alert(success.verificationId);
-    //       this.router.navigate(['authenticate']);
-    //       console.log(success.verificationId);          
-    //     }).catch((error: any) => alert("error"+error));
-    // }
   }
 
   async OtpVerification() {
@@ -142,7 +100,6 @@ export class AuthenticateComponent implements OnInit {
   async showSuccess() {
     let textMsg: string = 'Success';
     const token = await (await this.auth.currentUser).getIdToken(true);
-    console.log('token', token);
     const header = {
       headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
     };
@@ -169,24 +126,6 @@ export class AuthenticateComponent implements OnInit {
         }
       );
   }
-
-
-  // submitForm() {
-  //   this.IsOTPBeingEntered = true;
-  //   // this.router.navigate(['tab/home'])
-  //   console.log(this.ionicForm.value);
-  //   if (!this.ionicForm.valid) {
-  //     console.log('Please provide all the required values!')
-  //     return false;
-  //   } else {
-  //     console.log(this.ionicForm.value);
-
-  //     this.authService.registerEvent(this.ionicForm.value).subscribe(res => {
-  //       console.log(res);        
-  //     });
-  //     // https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/login
-  //   }
-  // }
 
   get errorControl() {
     return this.ionicForm.controls;
