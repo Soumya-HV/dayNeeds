@@ -33,8 +33,8 @@ const routes: Routes = [
     loadChildren: () => import('../app/modules/register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'user/into',
-    loadChildren: () => import('../app/modules/home/home.module').then(m => m.HomeModule)
+    path: 'user',
+    loadChildren: () => import('./modules/my-cart-list/my-cart-list.module').then(m => m.CartListModule)
   },
   // {
   //   path: '',

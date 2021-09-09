@@ -10,13 +10,13 @@ import { AuthenticateComponent } from './components/authenticate/authenticate.co
 import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import { OTPComponent } from './components/otp/otp.component';
 import { UserTypeSelectionComponent } from './components/user-type-selection/user-type-selection.component';
-import { HomeComponent } from '../modules/home/home.component';
+import { CartListComponent } from '../modules/my-cart-list/my-cart-list.component';
 
 @NgModule({
-  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, HomeComponent],
+  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
-  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, HomeComponent],
+  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever],
 })
 export class SharedModule {}

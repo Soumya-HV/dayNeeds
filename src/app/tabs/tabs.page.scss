@@ -12,3 +12,29 @@ ion-tab-button {
     ion-tab-bar{
         --border:none;
     }
+
+    .checkoutWrap{
+        background: #FF8A65;
+        padding: 15px;
+        font: 20px 'poppinsSemiBold';
+        color: #fff;
+        border-top-left-radius: 23px;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+    }
+
+    .totalamountWrap {
+        background:#2A3757;
+        color: #fff;
+        font: 20px 'poppinsSemiBold';
+        text-align: center;
+        position: relative;
+        left: 0px;
+        bottom: 0px;
+        padding: 12px;
+    }
+
+    .totalamountWrap span {
+        vertical-align: sub;
+    }
