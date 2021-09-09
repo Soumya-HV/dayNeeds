@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <div style="margin-left: 15px;margin-right:15px;">
-    <ion-row style="margin-top: 15px;">
+    <ion-row style="margin-top: 15px;box-shadow: none;">
       <ion-col style="margin:auto" size="2">
         <img (click)="backHome()" src="../../assets/images/sidebar-icons/arrow-left.svg">
       </ion-col>
@@ -10,7 +10,7 @@
         </p>
       </ion-col>
       <ion-col style="margin:auto" size="1" class="ion-no-padding">
-        <ion-toolbar part="toolbar-container">
+        <ion-toolbar part="toolbar-container" style="--background: #F7F9FB !important;">
           <ion-buttons slot="secondary">
             <ion-button id="cart-btn" ion-button icon-only class="ion-no-margin" style=width:80%;right:32%>
               <ion-icon src="../../assets/images/bell.svg"></ion-icon>

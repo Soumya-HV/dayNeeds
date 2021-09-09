@@ -63,7 +63,7 @@ export class AuthenticateComponent implements OnInit {
     this.IsOTPBeingEntered = true;
     let body = {
       userName: this.ionicForm.value.userName,
-      mobileNumber: '+91 - 8610910187'
+      mobileNumber: '+91 - 8660102182'
     }
     if (!this.ionicForm.valid) {
       console.log('Please provide all the required values!')
