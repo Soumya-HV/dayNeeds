@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides, ModalController } from '@ionic/angular';
+import { ShopDetailsComponent } from '../shop-details/shop-details.component';
 
 @Component({
   selector: 'app-tab2',
@@ -35,20 +36,30 @@ export class Tab2Page {
   sliderOpts = {
     autoplay: true,
     speed: 1000,
-  
+
   };
   categorySliderOpts = {
     slidesPerView: 4,
     autoplay: true,
     speed: 1000,
-   
+
   }
-  constructor(public modalController: ModalController,private router: Router) {
+  constructor(public modalController: ModalController, private router: Router) {
 
   }
 
-  backHome(){
+  backHome() {
     this.router.navigate(['tab/home'])
+  }
+
+  async openShopDetail() {
+    const modal = await this.modalController.create({
+      component: ShopDetailsComponent,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
   }
 
 }

@@ -1,0 +1,99 @@
+<ion-content>
+  <div style="margin-left: 15px;margin-right:15px;">
+    <ion-row style="margin-top: 15px;box-shadow: none;margin-bottom: 0;">
+      <ion-col style="margin:auto" size="2">
+        <img (click)="closeModal()" src="../../assets/images/sidebar-icons/arrow-left.svg">
+      </ion-col>
+      <ion-col style="margin:auto" size="10" class="ion-no-padding">
+        <div class="vendor-name">
+          <span class="vendor-txt-trim">RK Vegetable Shop</span>
+          <span class="vendor-rating">
+            <span style="vertical-align: text-bottom;">4.0</span><img src="../../assets/images/rating.svg">
+          </span>
+        </div>
+        <div class="vendor-address">15,KR Puram,Bangalore-560043</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-card class="card-bg">
+      <ion-card-header>
+        <div style="display: flex;justify-content: space-around;">
+          <div style="border-radius: 6px;padding: 5px 10px;" *ngFor="let weekList of weekLists">
+            <div class="week-day">{{weekList.week.substring(0,2)}}</div>
+            <div class="week-date">{{weekList.num}}</div>
+            <div  class="day-visiting"><img src="../../assets/images/available-day.svg"></div>
+          </div>
+        </div>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-row style="margin-left: 10px;margin-right: 5px;;margin-bottom: 1em;">
+      <ion-col  style=" background: #DAEAF6;border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;" size="3.5">
+        <img class="card-img" src="../../assets/images/image1.svg">
+      </ion-col>
+      <ion-col  style="background: white;border-top-right-radius: 10px;padding: 0;" size="8.5">
+        <div class="card-content" style="padding-left: 15px;">
+          <div class="vendor-name">Priya's Home Food</div>
+          <div class="vendor-cat">Meethi paratta + Subji</div>
+          <div >
+            <div style="float: left;" class="vendor-amnt">Rs.80</div>
+            <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg"></div>
+          </div>    
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-left: 10px;margin-right: 5px;margin-bottom: 1em;">
+      <ion-col  style=" background: #DAEAF6;border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;" size="3.5">
+        <img class="card-img" src="../../assets/images/image1.svg">
+      </ion-col>
+      <ion-col  style="background: white;border-top-right-radius: 10px;padding: 0;" size="8.5">
+        <div class="card-content" style="padding-left: 15px;">
+          <div class="vendor-name">Priya's Home Food</div>
+          <div class="vendor-cat">Meethi paratta + Subji</div>
+          <div >
+            <div style="float: left;" class="vendor-amnt">Rs.80</div>
+            <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg"></div>
+          </div>    
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-left: 10px;margin-right: 5px;margin-bottom: 1em">
+      <ion-col  style=" background: #DAEAF6;border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;" size="3.5">
+        <img class="card-img" src="../../assets/images/image1.svg">
+      </ion-col>
+      <ion-col  style="background: white;border-top-right-radius: 10px;padding: 0;" size="8.5">
+        <div class="card-content" style="padding-left: 15px;">
+          <div class="vendor-name">Priya's Home Food</div>
+          <div class="vendor-cat">Meethi paratta + Subji</div>
+          <div >
+            <div style="float: left;" class="vendor-amnt">Rs.80</div>
+            <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg"></div>
+          </div>    
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-left: 10px;margin-right: 5px;margin-bottom: 1em">
+      <ion-col  style=" background: #DAEAF6;border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;" size="3.5">
+        <img class="card-img" src="../../assets/images/image1.svg">
+      </ion-col>
+      <ion-col  style="background: white;border-top-right-radius: 10px;padding: 0;" size="8.5">
+        <div class="card-content" style="padding-left: 15px;">
+          <div class="vendor-name">Priya's Home Food</div>
+          <div class="vendor-cat">Meethi paratta + Subji</div>
+          <div >
+            <div style="float: left;" class="vendor-amnt">Rs.80</div>
+            <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg"></div>
+          </div>    
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </div>
+</ion-content>
