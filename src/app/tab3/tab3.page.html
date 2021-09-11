@@ -1,17 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <ion-row justify-content-end>
+    <ion-col size=4>
+      <img (click)="backHome()" class="arrow-left" src="../../../assets/images/sidebar-icons/arrow-left.svg" />
+    </ion-col>
+    <ion-col size=8 class="titleContainer">
+      <span class="titleWrapper">My List</span>
+    </ion-col>
+  </ion-row>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card text-center>
+    <span class="shopName">RK Vegetables</span>
+    <img class="chatIcon" src="../../assets/images/message-square.svg" />
+  </ion-card>
+<!--  -->
+  <!-- <ion-row style="margin: 15px 30px 0px 30px; background: #fff;"> -->
+    <!-- <ion-col style=" background: #DDEDEA;border-top-left-radius: 10px; 
+    /* border-bottom-left-radius: 10px;" size="3.5"> */
+      <!-- <img class="card-img" src="../../assets/images/chilli.svg"> -->
+    <!-- </ion-col> -->
+    <!-- <ion-col style="background: white;border-top-right-radius: 10px;padding: 0;" size="5.5"> -->
+      <!-- <div class="card-content" style="padding-left: 15px;"> -->
+        <!-- <div class="vendor-name">Green Chilli</div> -->
+        <!-- <div class="vendor-cat">100g</div> -->
+        <!-- <div> -->
+          <!-- <div style="float: left;" class="vendor-amnt">Rs.80/-</div> -->
+          <!-- <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg"> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </ion-col> -->
+    <!-- <ion-col size=3 justify-content-center style="margin: auto;"> -->
+      <!-- <span><img src="../../assets/images/akar-icons_minus.svg" (click)="reduceNumber()" style="background: #FFC8B6; 
+        /* padding: 3px 2px; */
+        /* border-radius: 3px;"> */
+    </span> -->
+      <!-- <span style="vertical-align: text-bottom; 
+      /* padding: 5px;">{{noOfProducts}}</span> */
+      <!-- <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span> -->
+    <!-- </ion-col> -->
+  <!-- </ion-row>      -->
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-list style="margin:15px 24px 0px 8px;">
+    <ion-item-sliding *ngFor="let stock of stockLists">
+      <ion-item-options side="start">
+        <!-- <ion-item-option> -->
+        <!-- <ion-icon (click)="editPresentModal(stock)" slot="icon-only" name="pencil-outline"> -->
+        <!-- </ion-icon> -->
+        <!-- </ion-item-option> -->
+      </ion-item-options>
+      <ion-item class="no-padding">
+        <ion-avatar slot="start" class="listWrapper" size="3.5">
+          <img [src]="stock.image">
+        </ion-avatar>
+        <ion-label>
+          <div class="vendor-name">{{stock.pName}}
+          </div>
+          <div class="vendor-cat">{{stock.qty}}</div>
+          <div>
+            <div style="float: left;" class="vendor-amnt">Rs.{{stock.price}}/-</div>
+            <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg">
+            </div>
+          </div>
+        </ion-label>
+        <span><img src="../../assets/images/akar-icons_minus.svg" (click)="reduceNumber()" style="background: #FFC8B6;
+              padding: 3px 2px;
+              border-radius: 3px;">
+        </span>
+        <span style="vertical-align: text-bottom;
+            padding: 5px;">{{noOfProducts}}</span>
+        <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option style="background-color:#E5E5E5">
+          <ion-icon (click)="presentAlertConfirm(stock.id)" slot="icon-only" name="trash" style="height: 26px; color:#151313d1"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

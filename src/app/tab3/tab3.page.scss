@@ -1,0 +1,75 @@
+ion-content{
+    --background: #F7F9FB !important;
+}
+
+ion-card{
+    padding: 10px;
+    margin: 10px 30px;
+    border-radius: 15px;
+}
+ 
+.arrow-left{
+    margin: 30px 0px 0px 18px ;
+}
+
+.titleWrapper, .shopName{
+    color:rgba(42, 55, 87, 0.8) !important;
+    font: 600 1rem 'poppinsSemiBold' ;
+}
+
+.titleContainer{
+    margin-top: 30px;
+}
+
+.vendor-name{
+    font: 600 14px 'poppinsMedium';
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #2A3757;
+    padding-bottom: 2px;
+    padding-top: 10px;
+}
+.vendor-cat{
+    border-radius: 4px;
+    font: 300 12px 'poppinsMedium';
+    color: #30426E;
+    margin-bottom: 8px;
+}
+
+.vendor-time{
+}
+
+.vendor-amnt {
+    font: 300 14px 'poppinsMedium';
+    color: #2A3757;
+}
+.vendor-amnt img {
+    vertical-align: bottom;
+}
+
+.vendor-amnt span {
+    
+}
+.listWrapper{
+    background: #DDEDEA;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    height: initial;
+    width: auto;
+}
+// 
+// .hide-card {
+    // -webkit-box-shadow: none!important;
+    // background: transparent;
+    // text-align: center;
+    // padding-top: 18px;
+//   }
+
+// .shopName {
+//     font: 600 1rem 'poppinsSemiBold' ;
+// }  
+.chatIcon {
+    float: right;
+}
