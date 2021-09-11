@@ -1,5 +1,5 @@
 <ion-tabs class="no-lines">
-  <ion-tab-bar slot="bottom"  *ngIf="!cartScreen">
+  <ion-tab-bar slot="bottom"  *ngIf="!this.tabservice.cartScreen">
     <ion-tab-button tab="home" (click)="otherTabClicked()">
       <ion-icon style="font-size: 28px;" src="../../assets/images/home.svg"></ion-icon>
     </ion-tab-button>
