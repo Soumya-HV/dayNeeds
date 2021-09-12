@@ -21,7 +21,7 @@ ion-card{
     margin-top: 30px;
 }
 
-.vendor-name{
+.vendor-name, .vendor-name-dairy{
     font: 600 14px 'poppinsMedium';
     line-height: 19px;
     letter-spacing: 0.02em;
@@ -29,11 +29,30 @@ ion-card{
     padding-bottom: 2px;
     padding-top: 10px;
 }
+
+.vendor-name-dairy{
+    font: 600 12px 'poppinsMedium';
+}
 .vendor-cat{
     border-radius: 4px;
     font: 300 12px 'poppinsMedium';
     color: #30426E;
     margin-bottom: 8px;
+}
+.pDetails{
+    font: 500 10px 'poppinsReg';
+    color: #30426E;
+    // background-color: #F8D4EF;
+    // padding: 10px;
+    border-radius: 10px;
+}
+.catCol{
+    background-color: #F8D4EF;
+    margin-right: 7px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    text-align: center;
+
 }
 
 .vendor-time{
@@ -41,6 +60,11 @@ ion-card{
 
 .vendor-amnt {
     font: 300 14px 'poppinsMedium';
+    color: #2A3757;
+    margin: 10px 0px;
+}
+.vendor-amnt-dairy{
+    font: 300 12px 'poppinsMedium';
     color: #2A3757;
 }
 .vendor-amnt img {
@@ -50,14 +74,34 @@ ion-card{
 .vendor-amnt span {
     
 }
+.catColCar, .catColCarWash{
+   background :rgb(242, 244, 248);
+   margin-right: 7px;
+margin-bottom: 5px;
+border-radius: 10px;
+text-align: center;
+}
+.catColCarWash{
+    background: rgba(196, 196, 196, 0.6);
+}
 .listWrapper{
-    background: #DDEDEA;
+    // background: #DDEDEA;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: unset;
     border-bottom-right-radius: unset;
     height: initial;
     width: auto;
+}
+
+.listDairyWrapper {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    height: 123px;
+    width: 70px;
+    margin-right: 10px;
 }
 // 
 // .hide-card {

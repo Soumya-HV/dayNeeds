@@ -48,7 +48,11 @@ export class OTPComponent implements OnInit {
     if (!userData?.additionalUserInfo?.isNewUser) {
       this.router.navigate(['tab/home']);
     } else {
-      this.http.get<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`).subscribe(res => {
+      this.http.post<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`,{
+        "userName": "CA-Abhilash-home",    
+        "phoneNumber": 9632050871,    
+        "typeOfUser": "Customer"    
+    }).subscribe(res => {
         console.log(res);
       });
     }

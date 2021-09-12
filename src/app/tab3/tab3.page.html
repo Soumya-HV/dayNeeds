@@ -9,47 +9,20 @@
   </ion-row>
 
   <ion-card text-center>
-    <span class="shopName">RK Vegetables</span>
+    <span class="shopName">{{stockLists[0]?.catName}}</span>
     <img class="chatIcon" src="../../assets/images/message-square.svg" />
   </ion-card>
-<!--  -->
-  <!-- <ion-row style="margin: 15px 30px 0px 30px; background: #fff;"> -->
-    <!-- <ion-col style=" background: #DDEDEA;border-top-left-radius: 10px; 
-    /* border-bottom-left-radius: 10px;" size="3.5"> */
-      <!-- <img class="card-img" src="../../assets/images/chilli.svg"> -->
-    <!-- </ion-col> -->
-    <!-- <ion-col style="background: white;border-top-right-radius: 10px;padding: 0;" size="5.5"> -->
-      <!-- <div class="card-content" style="padding-left: 15px;"> -->
-        <!-- <div class="vendor-name">Green Chilli</div> -->
-        <!-- <div class="vendor-cat">100g</div> -->
-        <!-- <div> -->
-          <!-- <div style="float: left;" class="vendor-amnt">Rs.80/-</div> -->
-          <!-- <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg"> -->
-          <!-- </div> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </ion-col> -->
-    <!-- <ion-col size=3 justify-content-center style="margin: auto;"> -->
-      <!-- <span><img src="../../assets/images/akar-icons_minus.svg" (click)="reduceNumber()" style="background: #FFC8B6; 
-        /* padding: 3px 2px; */
-        /* border-radius: 3px;"> */
-    </span> -->
-      <!-- <span style="vertical-align: text-bottom; 
-      /* padding: 5px;">{{noOfProducts}}</span> */
-      <!-- <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span> -->
-    <!-- </ion-col> -->
-  <!-- </ion-row>      -->
 
   <ion-list style="margin:15px 24px 0px 8px;">
-    <ion-item-sliding *ngFor="let stock of stockLists">
+    <ion-item-sliding *ngFor="let stock of stockLists[0]?.catDetails">
       <ion-item-options side="start">
         <!-- <ion-item-option> -->
         <!-- <ion-icon (click)="editPresentModal(stock)" slot="icon-only" name="pencil-outline"> -->
         <!-- </ion-icon> -->
         <!-- </ion-item-option> -->
       </ion-item-options>
-      <ion-item class="no-padding">
-        <ion-avatar slot="start" class="listWrapper" size="3.5">
+      <ion-item class="no-padding" *ngIf="stockLists[0]?.catName == 'RK Vegetables'">
+        <ion-avatar slot="start" class="listWrapper" size="3.5" [style.background]=stockLists[0]?.bgColor>
           <img [src]="stock.image">
         </ion-avatar>
         <ion-label>
@@ -57,7 +30,7 @@
           </div>
           <div class="vendor-cat">{{stock.qty}}</div>
           <div>
-            <div style="float: left;" class="vendor-amnt">Rs.{{stock.price}}/-</div>
+            <div style="float: left;" class="vendor-amnt">&#x20B9;.{{stock.price}}/-</div>
             <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg">
             </div>
           </div>
@@ -70,9 +43,69 @@
             padding: 5px;">{{noOfProducts}}</span>
         <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span>
       </ion-item>
+
+      <ion-item class="no-padding" *ngIf="stockLists[0]?.catName == 'Dairy Products'">
+        <ion-avatar slot="start" class="listDairyWrapper" size="3.5" [style.background]=stockLists[0]?.bgColor>
+          <img [src]="stock.image">
+        </ion-avatar>
+        <ion-label style="margin-right: 0px;">
+          <div class="vendor-name-dairy">{{stock.pName}}
+          </div>
+          <ion-row size=12>
+            <ion-col size=5 class="catCol">
+              <span class="pDetails">{{stock.DOA}}</span>
+            </ion-col>
+            <ion-col size=6 class="catCol">
+              <span class="pDetails">{{stock.required}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row size=12>
+            <ion-col size=5 class="catCol">
+              <span class="pDetails">{{stock.qty}}</span>
+            </ion-col>
+            <ion-col size=6 class="catCol">
+              <span class="pDetails">{{stock.coupons}}</span>
+            </ion-col>
+          </ion-row>
+          <div style="text-align: center;">
+            <div class="vendor-amnt">&#x20B9;.{{stock.price}}/-</div>
+          </div>
+        </ion-label>
+      </ion-item>
+
+      <ion-item class="no-padding" *ngIf="stockLists[0]?.catName == 'JJ Carwash'">
+        <ion-avatar slot="start" class="listDairyWrapper" size="3.5" [style.background]=stockLists[0]?.bgColor>
+          <img [src]="stock.image">
+        </ion-avatar>
+        <ion-label style="margin-right: 0px;">
+          <div class="vendor-name-dairy">{{stock.pName}}
+          </div>
+          <ion-row size=12>
+            <ion-col size=5 class="catColCar">
+              <span class="pDetails">{{stock.DOA}}</span>
+            </ion-col>
+            <ion-col size=6 class="catColCar">
+              <span class="pDetails">{{stock.required}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row size=12>
+            <ion-col size=5 class="catColCar">
+              <span class="pDetails">{{stock.on}}</span>
+            </ion-col>
+            <ion-col size=6 class="catColCarWash">
+              <span class="pDetails">{{stock.noOfWashes}} washes</span>
+            </ion-col>
+          </ion-row>
+          <div style="text-align: center;">
+            <div class="vendor-amnt">&#x20B9;.{{stock.price}}/-</div>
+          </div>
+        </ion-label>
+      </ion-item>
+
       <ion-item-options side="end">
         <ion-item-option style="background-color:#E5E5E5">
-          <ion-icon (click)="presentAlertConfirm(stock.id)" slot="icon-only" name="trash" style="height: 26px; color:#151313d1"></ion-icon>
+          <ion-icon (click)="presentAlertConfirm(stock.id)" slot="icon-only" name="trash"
+            style="height: 26px; color:#151313d1"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
