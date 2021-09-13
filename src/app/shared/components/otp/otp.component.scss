@@ -39,7 +39,7 @@ ion-item{
     background-blend-mode: soft-light, normal;
     box-shadow: inset -5px -5px 10px #fafbff, inset 5px 5px 10px #a6abbd;
     border-radius: 8px;
-    width: 60px;
+    // width: 60px;
     height: 60px;
     font-family: 'poppinsReg';
     font-style: normal;
@@ -48,4 +48,17 @@ ion-item{
     line-height: 19px;
     letter-spacing: 0.02em;
     color: #2A3757;
+ }
+ .text-center{
+    text-align: center;
+ }
+ .btnVerify {
+
+ }
+ .text-center ion-button::part(native) {
+    text-transform: initial;
+    font: 600 20px poppinsReg;
+    background: #ff6a03;
+    height: 45px;
+    border-radius: 20px 0px !important;
  }

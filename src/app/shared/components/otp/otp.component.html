@@ -7,31 +7,43 @@
     </div>
   </div>
   <form [formGroup]=OTPForm>
-  <ion-grid>
-    <ion-row style="margin: 0;" class="ion-text-center">
-      <ion-col size=2>
-        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP1 ></ion-input>
-      </ion-col>
-      <ion-col size=2>
-        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP2 ></ion-input>
-      </ion-col>
-      <ion-col size=2>
-        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP3 ></ion-input>
-      </ion-col>
-      <ion-col size=2>
-        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP4 ></ion-input>
-      </ion-col>
-      <ion-col size=2>
-        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP5 ></ion-input>
-      </ion-col>
-      <ion-col size=2>
-        <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP6 (ionChange)="submitOTPEventTrigger()"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</form>
-  <div>
-    <ion-img src="../../../../assets/images/sendOTP.svg" (click)="resendOtp($event)"></ion-img>
+    <ion-grid>
+      <ion-row class="ion-text-center">
+        <ion-col size=12>
+          <ion-input class="input-box" maxlength="6" type=tel formControlName=OTP></ion-input>
+        </ion-col>
+        <!-- <ion-col size=2> -->
+        <!-- <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP2 ></ion-input> -->
+        <!-- </ion-col> -->
+        <!-- <ion-col size=2> -->
+        <!-- <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP3 ></ion-input> -->
+        <!-- </ion-col> -->
+        <!-- <ion-col size=2> -->
+        <!-- <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP4 ></ion-input> -->
+        <!-- </ion-col> -->
+        <!-- <ion-col size=2> -->
+        <!-- <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP5 ></ion-input> -->
+        <!-- </ion-col> -->
+        <!-- <ion-col size=2> -->
+        <!-- <ion-input class="input-box" maxlength="1" type=tel formControlName=OTP6 
+          (ionChange)="submitOTPEventTrigger()"></ion-input> -->
+        <!-- </ion-col> -->
+      </ion-row>
+    </ion-grid>
+  </form>
+  <div class="text-center">
+    <ion-button (click)="submitOTPEventTrigger()" class="btnVerify" part=native>Verify OTP</ion-button>
+
+    <!-- <ion-row justify-content-end> -->
+      <!-- <ion-col size=6> -->
+        <!-- <ion-buttons slot="secondary" part="toolbar-container" style="background: #FF7043;color: white;" -->
+          <!-- justify-content-center> -->
+          <!-- <ion-button>submit</ion-button> -->
+        <!-- </ion-buttons> -->
+      <!-- </ion-col> -->
+    <!-- </ion-row> -->
+    <!-- <ion-img src="../../../../assets/images/sendOTP.svg" (click)="resendOtp($event)"></ion-img> -->
   </div>
+
   <!-- <ion-spinner primary></ion-spinner> -->
 </ion-content>

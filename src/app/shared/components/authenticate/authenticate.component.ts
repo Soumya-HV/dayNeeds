@@ -65,6 +65,7 @@ export class AuthenticateComponent implements OnInit {
       this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
         .then((success) => {
           console.log(success);
+          localStorage.setItem('phoneNum', this.ionicForm.value.mobileNumber);
           this.router.navigate(['authenticate']);
         }).catch((error: any) => console.log("error" + error));
     }

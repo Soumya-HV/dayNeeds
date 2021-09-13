@@ -1,5 +1,6 @@
 <ion-content>
   <div id="sign-in-button"></div>
+
   <form [formGroup]="ionicForm" novalidate>
     <div class="section-bg">
       <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
@@ -8,14 +9,9 @@
       </div>
     </div>
     <div class="m-10">
-      <!-- <ion-item class="m-bt-10"> -->
-        <!-- <ion-icon src="../../../../assets/images/bi_person-fill.svg"></ion-icon> -->
-        <!-- <ion-input style="margin-left: 28px;" placeholder="Your Name" formControlName="userName" required></ion-input> -->
-      <!-- </ion-item> -->
-
       <ion-item>
         <ion-icon src="../../../../assets/images/flags/Indianflag.svg"></ion-icon>
-        <ion-input  type="tel" maxlength="10" formControlName="mobileNumber" class="m-lt-15" placeholder="Mobile Number"
+        <ion-input type="tel" maxlength="10" formControlName="mobileNumber" class="m-lt-15" placeholder="Mobile Number"
           required>
           <ion-label>+91 - </ion-label>
         </ion-input>

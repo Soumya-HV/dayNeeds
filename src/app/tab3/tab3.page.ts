@@ -9,11 +9,11 @@ import { commonService } from '../core/services/common-service';
 })
 export class Tab3Page {
   noOfProducts: number = 1;
-  // stockLists = [{
-    // catName: 'RK Vegetables',
-    // // catDetails: [{ id: 1, image: '../../assets/images/chilli.svg', pName: 'Green Chilli', qty: '100g', price: 80, qtyno: 1 },
-    // // { id: 2, image: '../../assets/images/tomato.svg', pName: 'Tomato', qty: '1kg', price: 100, qtyno: 1 }]
-  // }];
+  stockLists = [{
+    catName: 'RK Vegetables',
+    catDetails: [{ id: 1, image: '../../assets/images/chilli.svg', pName: 'Green Chilli', qty: '100g', price: 80, qtyno: 1 },
+    { id: 2, image: '../../assets/images/tomato.svg', pName: 'Tomato', qty: '1kg', price: 100, qtyno: 1 }]
+  }];
 
   // stockLists = [{
     // catName: 'Dairy Products',
@@ -28,14 +28,14 @@ export class Tab3Page {
     // }]
   // }];
 
-  stockLists = [{
-    catName: 'JJ Carwash',
-    bgColor: '#F2F4F8',
-    catDetails: [{
-      id: 1, image: '../../assets/images/carwash.svg', pName: 'Car Wash',
-      on: '4:00 pm', price: 2000, noOfWashes: 4 , required: 'Sunday', DOA: 'March 2021'
-    }]
-  }];
+  // stockLists = [{
+    // catName: 'JJ Carwash',
+    // bgColor: '#F2F4F8',
+    // catDetails: [{
+      // id: 1, image: '../../assets/images/carwash.svg', pName: 'Car Wash',
+      // on: '4:00 pm', price: 2000, noOfWashes: 4 , required: 'Sunday', DOA: 'March 2021'
+    // }]
+  // }];
 
 
   constructor(private router: Router, private tabService: commonService) { }

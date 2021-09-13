@@ -18,19 +18,16 @@ export class OTPComponent implements OnInit {
   constructor(private authService: AuthService,
     private fb: FormBuilder, private router: Router, private fireAuth: AngularFireAuth, private http: HttpClient) {
     this.OTPForm = this.fb.group({
-      OTP1: ['', Validators.required],
-      OTP2: ['', Validators.required],
-      OTP3: ['', Validators.required],
-      OTP4: ['', Validators.required],
-      OTP5: ['', Validators.required],
-      OTP6: ['', Validators.required]
+      OTP: ['', Validators.required]
     })
   }
 
   ngOnInit() { }
 
   async submitOTPEventTrigger() {
-    let val = this.OTPForm.value.OTP1 + this.OTPForm.value.OTP2 + this.OTPForm.value.OTP3 + this.OTPForm.value.OTP4 + this.OTPForm.value.OTP5 + this.OTPForm.value.OTP6
+    console.log('otp verify click');
+    
+    let val = this.OTPForm.value.OTP; 
     console.log(this.OTPForm.value, val);
     this.authService.enterVerificationCode(val).then((userData) => {
       this.showSuccess(userData);
@@ -41,20 +38,18 @@ export class OTPComponent implements OnInit {
   async showSuccess(userData) {
     const token = await (await this.fireAuth.currentUser).getIdToken(true);
     localStorage.setItem('tokenId', token);
-    const header = {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
-    };
     console.log('tokenId', token, userData, localStorage.getItem('tokenId'));
     if (!userData?.additionalUserInfo?.isNewUser) {
       this.router.navigate(['tab/home']);
     } else {
-      this.http.post<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`,{
-        "userName": "CA-Abhilash-home",    
-        "phoneNumber": 9632050871,    
-        "typeOfUser": "Customer"    
-    }).subscribe(res => {
-        console.log(res);
-      });
+      console.log(localStorage.getItem('phoneNum'));
+      this.router.navigate(['usertype-select']);
+      // this.http.post<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`, {
+        // "phoneNumber": Number(localStorage.getItem('phoneNum')),
+        // "typeOfUser": "Customer"
+      // }).subscribe(res => {
+        // console.log(res);
+      // });
     }
   }
 
