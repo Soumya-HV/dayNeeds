@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   userType: any;
+  categories = [];
+  items = [];
+  selectedCat = false;
   customerRegisterForm: FormGroup;
   vendorRegisterForm: FormGroup;
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
@@ -23,12 +26,23 @@ export class RegisterComponent implements OnInit {
       'userName': ['', Validators.required],
       'userMail': ['', [Validators.required, Validators.email]],
       'phoneNumber': ['', [Validators.required]],
-      'productsSold': ['', Validators.required]
+      'productsSold': [[], Validators.required]
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.http.get('https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/categories').subscribe(
+      res => {
+        console.log('res',res['response']);
+        this.categories = res['response'];
+      }
+    )
+  }
 
+  onChange() {   
+    this.selectedCat = true;
+    console.log('itemsss',this.items);
+  }
 
   submitRegForm() {
     console.log(this.customerRegisterForm.value);
@@ -47,9 +61,10 @@ export class RegisterComponent implements OnInit {
 
     }
     this.http.post<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`, body).subscribe(res => {
-      //temporarily redirecting it to home screen, it should redirect to google map screen if he is customer
       console.log(res);
       this.router.navigate(['user/location']);
     });
   }
+
+
 }

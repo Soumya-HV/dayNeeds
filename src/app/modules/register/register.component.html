@@ -24,6 +24,19 @@
         <ion-icon src="../../../../assets/images/shopname.svg" size=4></ion-icon>
         <ion-input class="m-lt-15" placeholder="Shop Name" formControlName="shopName" size=6 required></ion-input>
       </ion-row>
+      <ion-row class="customerRegWrap" size=12>
+        <ion-icon src="../../../../assets/images/Vector.svg" size=4></ion-icon>
+        <ion-label size=12 class="catSelect" *ngIf=!selectedCat>
+          What do you sell?
+        </ion-label>
+        <ion-select multiple="true" part="text" [(ngModel)]="items" formControlName="productsSold" cancelText="No" okText="Okay" size=6
+          (ionChange)="onChange($event)" [ngModelOptions]="{standalone: true}"
+          [style.width]="selectedCat == true ? '217px' : '55px' ">
+          <ion-select-option *ngFor="let val of categories" [value]="val._id"><img
+              [src]="val.categoryImage" />{{val.categoryName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-row>
       <ion-row class="customerRegWrap" size=12 justify-content-center>
         <ion-icon src="../../../../assets/images/bi_person-fill.svg" size=4></ion-icon>
         <ion-input class="m-lt-15" placeholder="Your Name" formControlName="userName" size=6 required></ion-input>
@@ -40,11 +53,15 @@
         <ion-input class="m-lt-15" placeholder="E MAIL ID" formControlName="userMail" size=6 required type="email">
         </ion-input>
       </ion-row>
-      </form>
+    </form>
   </div>
-  <div class="text-center">
-    <ion-button class="registerBtn" part="native" (click)="submitRegForm()"
-      [disabled]="customerRegisterForm.invalid" justify-content-center>Register</ion-button>
+  <div class="text-center" *ngIf="userType == 'customer'">
+    <ion-button class="registerBtn" part="native" (click)="submitRegForm()" [disabled]="customerRegisterForm.invalid"
+      justify-content-center>Register</ion-button>
     <!-- <ion-img src="../../../../assets/images/Register btn.svg" ></ion-img> -->
+  </div>
+  <div class="text-center" *ngIf="userType == 'vendor'">
+    <ion-button class="registerBtn" part="native" (click)="submitRegForm()"
+      [disabled]="vendorRegisterForm.invalid" justify-content-center>Register</ion-button>
   </div>
 </ion-content>
