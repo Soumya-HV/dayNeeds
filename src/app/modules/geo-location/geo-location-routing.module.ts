@@ -4,7 +4,7 @@ import { GeoLocationComponent } from './geo-location.component';
 
 const routes: Routes = [
   {
-    path: 'user',
+    path: 'location',
     component: GeoLocationComponent
   }
 ];

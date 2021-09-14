@@ -12,6 +12,7 @@ import { OTPComponent } from './components/otp/otp.component';
 import { UserTypeSelectionComponent } from './components/user-type-selection/user-type-selection.component';
 import { CartListComponent } from '../modules/my-cart-list/my-cart-list.component';
 import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 @NgModule({
@@ -19,6 +20,6 @@ import { GeoLocationComponent } from '../modules/geo-location/geo-location.compo
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],
 })
 export class SharedModule {}

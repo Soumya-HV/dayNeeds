@@ -32,14 +32,14 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('../app/modules/register/register.module').then(m => m.RegisterModule)
   },
+  // {
+    // path: 'user',
+    // loadChildren: () => import('./modules/my-cart-list/my-cart-list.module').then(m => m.CartListModule)
+  // },
   {
     path: 'user',
-    loadChildren: () => import('./modules/my-cart-list/my-cart-list.module').then(m => m.CartListModule)
-  },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // }
+    loadChildren: () => import('./modules/geo-location/geo-location.module').then(m => m.GeoLocationModule)
+  }
 ];
 @NgModule({
   imports: [

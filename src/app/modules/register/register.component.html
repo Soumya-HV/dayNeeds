@@ -1,3 +1,50 @@
-<p>
-  register works!
-</p>
+<ion-content>
+  <div *ngIf="this.userType == 'customer'">
+    <div class="section-bg">
+      <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
+      <div class="overlay_img">
+        <img src="../../../../assets/images/dayneed_image.svg">
+      </div>
+    </div>
+    <form [formGroup]="customerRegisterForm" novalidate>
+      <ion-row class="customerRegWrap" size=12 justify-content-center>
+        <ion-icon src="../../../../assets/images/bi_person-fill.svg" size=4></ion-icon>
+        <ion-input class="m-lt-15" placeholder="Your Name" formControlName="userName" size=6 required></ion-input>
+      </ion-row>
+      <ion-row class="customerRegWrap" size=12 justify-content-center>
+        <ion-icon src="../../../../assets/images/fluent_mail-48-filled.svg" size=4></ion-icon>
+        <ion-input class="m-lt-15" placeholder="E MAIL ID" formControlName="userMail" size=6 required type="email">
+        </ion-input>
+      </ion-row>
+    </form>
+  </div>
+  <div *ngIf="this.userType == 'vendor'">
+    <form [formGroup]="vendorRegisterForm" novalidate>
+      <ion-row class="customerRegWrap" size=12 justify-content-center>
+        <ion-icon src="../../../../assets/images/shopname.svg" size=4></ion-icon>
+        <ion-input class="m-lt-15" placeholder="Shop Name" formControlName="shopName" size=6 required></ion-input>
+      </ion-row>
+      <ion-row class="customerRegWrap" size=12 justify-content-center>
+        <ion-icon src="../../../../assets/images/bi_person-fill.svg" size=4></ion-icon>
+        <ion-input class="m-lt-15" placeholder="Your Name" formControlName="userName" size=6 required></ion-input>
+      </ion-row>
+      <ion-row class="customerRegWrap" size=12 justify-content-center>
+        <ion-icon src="../../../../assets/images/flags/Indianflag.svg" size=4></ion-icon>
+        <ion-input type="tel" maxlength="10" formControlName="phoneNumber" class="m-lt-15" placeholder="99999 9999"
+          required>
+          <ion-label>+91 - </ion-label>
+        </ion-input>
+      </ion-row>
+      <ion-row class="customerRegWrap" size=12 justify-content-center>
+        <ion-icon src="../../../../assets/images/fluent_mail-48-filled.svg" size=4></ion-icon>
+        <ion-input class="m-lt-15" placeholder="E MAIL ID" formControlName="userMail" size=6 required type="email">
+        </ion-input>
+      </ion-row>
+      </form>
+  </div>
+  <div class="text-center">
+    <ion-button class="registerBtn" part="native" (click)="submitRegForm()"
+      [disabled]="customerRegisterForm.invalid" justify-content-center>Register</ion-button>
+    <!-- <ion-img src="../../../../assets/images/Register btn.svg" ></ion-img> -->
+  </div>
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
-// import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation'; 
+import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx'; 
 declare var google;
 
 
@@ -10,30 +10,30 @@ declare var google;
   styleUrls: ['./geo-location.component.scss'],
 })
 export class GeoLocationComponent implements OnInit {
-  // options : GeolocationOptions;
-  // currentPos : Geoposition;
+  options : GeolocationOptions;
+  currentPos : Geoposition;
   @ViewChild('map') mapElement: ElementRef;
 map: any;
   constructor(public navCtrl: NavController,private geolocation : Geolocation) { }
 
   ngOnInit() {}
 
-  // getUserPosition(){
-    // this.options = {
-    // enableHighAccuracy : false
-    // };
-    // this.geolocation.getCurrentPosition(this.options).then((pos : Geoposition) => {
+  getUserPosition(){
+    this.options = {
+    enableHighAccuracy : false
+    };
+    this.geolocation.getCurrentPosition(this.options).then((pos : Geoposition) => {
 
-        // this.currentPos = pos;     
+        this.currentPos = pos;     
 
-        // console.log(pos);
-        // this.addMap(pos.coords.latitude,pos.coords.longitude);
+        console.log(pos);
+        this.addMap(pos.coords.latitude,pos.coords.longitude);
 
-    // },(err : PositionError)=>{
-        // console.log("error : " + err.message);
-    // ;
-    // })
-// }
+    },(err : PositionError)=>{
+        console.log("error : " + err.message);
+    ;
+    })
+}
 
 addMap(lat,long){
 
@@ -70,7 +70,7 @@ addMarker(){
 }
 
 ionViewDidEnter(){
-  // this.getUserPosition();
+  this.getUserPosition();
 }  
 
 }

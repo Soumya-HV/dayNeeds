@@ -14,6 +14,8 @@ import { AngularFireModule } from '@angular/fire'
 import { RegisterComponent } from './modules/register/register.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/interceptor/http-config.interceptor';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @NgModule({
   declarations: [AppComponent, RegisterComponent],
@@ -23,7 +25,7 @@ import { HttpConfigInterceptor } from './core/interceptor/http-config.intercepto
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule, ReactiveFormsModule],
-    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: HTTP_INTERCEPTORS,
+    providers: [Geolocation,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: HTTP_INTERCEPTORS,
     useClass: HttpConfigInterceptor,
     multi: true
   }],

@@ -1,37 +1,18 @@
 <ion-content>
-  <div id="sign-in-button"></div>
-
   <div class="section-bg">
     <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
     <div class="overlay_img">
       <img src="../../../../assets/images/dayneed_image.svg">
     </div>
   </div>
-  <div *ngIf="this.userType !== 'Customer'">
+  <div>
     <div class="user-select-wrap">
-      <img class="" src="../../../../assets/images/buyer.svg">
-      <span (click)="selectEvent('Customer')">Buyer</span>
+      <img class="" src="../../../../assets/images/Buyer.gif">
+      <span (click)="selectEvent('customer')">Buyer</span>
     </div>
     <div class="user-select-wrap">
-      <img class="" src="../../../../assets/images/buyer.svg">
-      <span (click)="selectEvent('Vendor')">Seller</span>
+      <img class="" src="../../../../assets/images/Seller.gif">
+      <span (click)="selectEvent('vendor')">Seller</span>
     </div>
-  </div>
-
-  <div *ngIf="this.userType == 'Customer'">
-    <form [formGroup]="customerRegisterForm" novalidate>
-      <ion-row class="customerRegWrap" size=12 justify-content-center>
-        <ion-icon src="../../../../assets/images/bi_person-fill.svg" size=4></ion-icon>
-        <ion-input placeholder="Your Name" formControlName="userName" size=6 required></ion-input>
-      </ion-row>
-      <ion-row class="customerRegWrap" size=12 justify-content-center>
-        <ion-icon src="../../../../assets/images/fluent_mail-48-filled.svg" size=4></ion-icon>
-        <ion-input placeholder="E MAIL ID" formControlName="userMail" size=6 required type="email"></ion-input>
-      </ion-row>
-    </form>
-  </div>
-  <div class="text-center" *ngIf="this.userType == 'Customer'">
-    <ion-button class="registerBtn" part="native" (click)="submitRegForm()" [disabled]="customerRegisterForm.invalid" justify-content-center>Register</ion-button>
-    <!-- <ion-img src="../../../../assets/images/Register btn.svg" ></ion-img> -->
   </div>
 </ion-content>

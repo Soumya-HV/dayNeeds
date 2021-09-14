@@ -41,17 +41,18 @@ ion-button::part(native) {
    font-size: 16px;   
 }
 .user-select-wrap img {
-   margin: 0.75rem 0 0 0.75rem;
+   width: 70px;
 }
+
 .text-center{
    text-align: center;
 }
 
 .user-select-wrap span {
-    font: 100 1.56rem poppinsMedium;
-    position: absolute;
-    bottom: 1.9rem;
-    right: 4rem;
+   font: 100 1.56rem poppinsMedium;
+   position: absolute;
+   bottom: 1.2rem;
+   right: 6rem;
 }
 
 .imgAlignment {
