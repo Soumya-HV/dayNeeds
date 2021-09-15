@@ -1,0 +1,24 @@
+.notificationcard{
+    background: linear-gradient(180deg, #FFB39A 0%, #FF7043 100%);
+    border-radius: 20px 0px;
+    margin: 20px;
+    font: 16px 'poppinsMedium';
+    color: #fff;
+    padding: 10px 0px 1px 20px;
+    text-align: left;
+}
+
+ion-content{
+    --background: #F7F9FB;
+}
+
+.helpmsg {
+    font: 14px 'poppinsMedium';
+}
+.ratemsg{
+    font: 12px 'poppinsReg';
+    color: #2A3757;
+}
+.greetingmsg{
+    // background: ;
+}
