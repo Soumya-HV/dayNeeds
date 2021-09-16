@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  ModalController } from '@ionic/angular';
 import { AddressComponent } from '../shared/components/address/address.component';
+import { ManageAddressComponent } from '../shared/components/manage-address/manage-address.component';
 import { NotificationComponent } from '../shared/components/notification/notification.component';
 import { RewardsComponent } from '../shared/components/rewards/rewards.component';
 @Component({
@@ -59,7 +60,8 @@ export class SideMenuComponent implements OnInit {
   }
 
   async opensideModal(name) {
-  let cname = (name == 'Rewards') ? RewardsComponent : (name == 'Notifications') ? NotificationComponent : AddressComponent
+    this.modalController.dismiss();
+    let cname = (name == 'Rewards') ? RewardsComponent : (name == 'Notifications') ? NotificationComponent : (name == 'My Address') ? ManageAddressComponent : ''
       const modal = await this.modalController.create({
       component: cname,
       cssClass: 'sideMenuModal'

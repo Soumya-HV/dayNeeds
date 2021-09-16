@@ -5,7 +5,7 @@
     <h2 class="profile-name">Dharani Durairaj</h2>
     <p class="profile-email">nomail@gmail.com</p>
   </ion-card>
-  <div  *ngFor="let menu of menus">
+  <div *ngFor="let menu of menus">
     <ion-item  lines="none" (click)="opensideModal(menu.name)">
       <ion-icon [ngStyle]="{'background': menu.color}" class="icon-bg" slot="start" src="../../assets/images/sidebar-icons/{{menu.icon}}" ></ion-icon>
       <ion-label class="menu-label">{{menu.name}}</ion-label>
