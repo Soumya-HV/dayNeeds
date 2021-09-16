@@ -1,0 +1,26 @@
+ion-content{
+    --background: #F7F9FB;
+}
+
+.vendor-txt-trim{
+    font:  16px 'poppinsSemiBold';
+    color:rgba(42, 55, 87, 0.8)
+}
+
+.rewardCard {
+    background: #FFFFFF;
+box-shadow: 2px 2px 2px rgba(255, 112, 67, 0.2);
+border-radius: 10px;
+text-align: center;
+}
+
+.rewardamt {
+    font: 20px 'poppinsMedium';
+    padding : 10px 0px 0px 0px; margin-bottom: 10px;
+}
+.rewardtype {
+   color: rgba(42, 55, 87, 0.6);
+   font: 8px 'poppinsReg';
+   padding : 0px 0px 10px 0px;
+
+}

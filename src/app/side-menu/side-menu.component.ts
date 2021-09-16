@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  ModalController } from '@ionic/angular';
+import { AddressComponent } from '../shared/components/address/address.component';
+import { NotificationComponent } from '../shared/components/notification/notification.component';
+import { RewardsComponent } from '../shared/components/rewards/rewards.component';
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
@@ -29,6 +32,11 @@ export class SideMenuComponent implements OnInit {
       'color':"#EBDEE0"
     },
     {
+      'name': 'Rewards',
+      'icon': 'rewards.svg',
+      'color':'#E7EBF0'
+    },
+    {
       'name':"Contact Us",
       'icon':"contact.svg",
       'color':"#FCE1E4"
@@ -50,4 +58,14 @@ export class SideMenuComponent implements OnInit {
     this.modalController.dismiss();
   }
 
+  async opensideModal(name) {
+  let cname = (name == 'Rewards') ? RewardsComponent : (name == 'Notifications') ? NotificationComponent : AddressComponent
+      const modal = await this.modalController.create({
+      component: cname,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
+  }
 }
