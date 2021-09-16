@@ -6,7 +6,7 @@
       </ion-col>
       <ion-col style="margin:auto" size="10" class="ion-no-padding">
         <div class="vendor-name">
-          <span class="vendor-txt-trim">Address</span>
+          <span class="vendor-txt-trim">{{mode}} Address</span>
         </div>
       </ion-col>
     </ion-row>
@@ -39,11 +39,11 @@
       </ion-row>
     </form>
     <div class="text-center">
-      <ion-button class="registerBtn" part="native" (click)="submitRegForm()" [disabled]="vendorRegisterForm.invalid"
+      <ion-button class="registerBtn" [hidden]="mode == 'edit'" part="native" (click)="submitRegForm()" [disabled]="addressForm.invalid"
         justify-content-center>Add Address</ion-button>
-        <!-- <ion-button class="registerBtnSave" part="native" (click)="submitRegForm()" [disabled] -->
-        <!-- ="vendorRegisterForm.invalid" -->
-             <!-- justify-content-center>Save</ion-button> -->
+        <ion-button class="registerBtnSave" [hidden]= "mode == 'add'" part="native" (click)="submitRegForm()" [disabled]
+        ="addressForm.invalid"
+             justify-content-center>Save</ion-button>
     </div>
   </div>
 </ion-content>

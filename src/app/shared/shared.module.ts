@@ -17,13 +17,14 @@ import { CartListComponent } from '../modules/my-cart-list/my-cart-list.componen
 import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ManageAddressComponent } from './components/manage-address/manage-address.component';
 
 
 @NgModule({
-  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent],
+  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
-  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent],
+  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],
 })
 export class SharedModule {}
