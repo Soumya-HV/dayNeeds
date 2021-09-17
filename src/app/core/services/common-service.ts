@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class commonService {
     cartScreen: boolean;
+    userDetails: any;
     constructor(private http: HttpClient) {
     }
 }

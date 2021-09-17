@@ -44,10 +44,13 @@
         <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span>
       </ion-item>
 
-      <ion-item class="no-padding" *ngIf="stockLists[0]?.catName == 'Dairy Products'">
-        <ion-avatar slot="start" class="listDairyWrapper" size="3.5" [style.background]=stockLists[0]?.bgColor>
-          <img [src]="stock.image">
-        </ion-avatar>
+      <ion-item class="no-padding" part='native' *ngIf="stockLists[0]?.catName == 'Dairy Products'">
+        <!-- <ion-avatar slot="start" class="listDairyWrapper" size="3.5" [style.background]=stockLists[0]?.bgColor> -->
+        <!-- <img [src]="stock.image"> -->
+        <!-- </ion-avatar> -->
+        <div class="listDairyWrapper" [style.background]=stockLists[0]?.bgColor size="3.5">
+          <img class="card-img" [src]=stock.image>
+        </div>
         <ion-label style="margin-right: 0px;">
           <div class="vendor-name-dairy">{{stock.pName}}
           </div>

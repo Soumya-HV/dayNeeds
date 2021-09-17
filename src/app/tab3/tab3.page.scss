@@ -99,9 +99,21 @@ text-align: center;
     border-bottom-left-radius: 10px;
     border-top-right-radius: unset;
     border-bottom-right-radius: unset;
-    height: 123px;
-    width: 70px;
+    height: 152px;
+    width: 105px;
     margin-right: 10px;
+}
+
+.listDairyWrapper img {
+    position: absolute;
+    top: 35px;
+    left: 12px;
+    width: 86px;
+    height: 97px;
+}
+
+ion-item::part(native) {
+border: unset !important;
 }
 // 
 // .hide-card {
