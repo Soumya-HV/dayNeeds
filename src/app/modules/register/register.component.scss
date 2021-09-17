@@ -28,6 +28,14 @@ ion-item{
  }
 
  
+.vendor-txt-trim{
+   font:  16px 'poppinsSemiBold';
+   color:rgba(42, 55, 87, 0.8);
+   text-transform: capitalize;
+}
+
+
+ 
 .customerRegWrap{
     margin: 20px;
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), 
@@ -69,8 +77,9 @@ ion-item{
     width: 6.4rem;
     font-size: 16px;   
     text-transform: initial;
- }
- 
+    border-radius: 20px 0px !important;
+}
+
  .text-center{
     text-align: center;
  }

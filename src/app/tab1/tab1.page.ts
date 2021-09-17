@@ -1,6 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { ModalController, IonSlides } from '@ionic/angular';
+import { commonService } from '../core/services/common-service';
 import { SideMenuComponent } from '../side-menu/side-menu.component';
+import * as env from '../../environments/environment';
+import { NotificationComponent } from '../shared/components/notification/notification.component';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -42,14 +47,18 @@ export class Tab1Page {
     speed: 1000,
    
   }
-  constructor(public modalController: ModalController) {
-
+  constructor(public modalController: ModalController, private http: HttpClient, private commonService:commonService) {
+    this.http.get(env.environment.url + '/user/' + Number(localStorage.getItem('phoneNum'))).subscribe
+    (res => {
+        this.commonService.userDetails = res['response'];
+        console.log(res, this.commonService.userDetails);
+      });
   }
 
-
-  async openSideModal() {
+  async openSideModal(name) {
+    let cname = (name == 'notification') ? NotificationComponent : SideMenuComponent
     const modal = await this.modalController.create({
-      component: SideMenuComponent,
+      component: cname,
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {

@@ -2,17 +2,17 @@
   <div style="margin-left: 15px;margin-right:15px;">
     <ion-row style="margin-top: 15px;">
       <ion-col style="margin:auto" size="2">
-        <img (click)="openSideModal()" src="../../assets/images/profile_icon.svg">
+        <img (click)="openSideModal('profile')" src="../../assets/images/profile_icon.svg">
       </ion-col>
       <ion-col style="margin:auto" size="9" class="ion-no-padding">
         <p class="addr_txt">Garuda Park square,KR puram
-          <img style="vertical-align: middle;" (click)="openSideModal()" src="../../assets/images/edit.svg">
+          <img style="vertical-align: middle;" (click)="openSideModal('profile')" src="../../assets/images/edit.svg">
         </p>
       </ion-col>
       <ion-col style="margin:auto" size="1" class="ion-no-padding">
         <ion-toolbar style="--background: #F7F9FB !important;" part="toolbar-container">
           <ion-buttons slot="secondary">
-            <ion-button id="cart-btn" ion-button icon-only class="ion-no-margin" style=width:80%;right:32%>
+            <ion-button id="cart-btn" (click)="openSideModal('notification')" ion-button icon-only class="ion-no-margin" style=width:80%;right:32%>
               <ion-icon src="../../assets/images/bell.svg"></ion-icon>
               <ion-badge id="cart-badge">2</ion-badge>
             </ion-button>
