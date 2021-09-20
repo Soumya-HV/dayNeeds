@@ -1,72 +1,46 @@
 <ion-content>
-  <ion-row justify-content-end>
-    <ion-col size=4>
-      <img (click)="closeModal()" class="arrow-left" src="../../../assets/images/sidebar-icons/arrow-left.svg" />
+  <div class="ordersWrap">Today's Delivery</div>
+
+  <ion-row class="apartmentWrap">
+    <ion-col size=6 class=text-center>
+      <span class="aptname">Krishvi Statura</span>
     </ion-col>
-    <ion-col size=8 class="titleContainer">
-      <span class="titleWrapper">My List</span>
+    <ion-col size=6 class=text-center>
+      <span class="aptdeliver">Today 4:00 pm</span>
     </ion-col>
   </ion-row>
 
-  <ion-card text-center>
-    <span class="shopName">RK Vegetables</span>
-    <img class="chatIcon" src="../../assets/images/message-square.svg" />
-  </ion-card>
+  <!-- <ion-row> -->
+  <!-- <ion-col> -->
+  <ion-segment (ionChange)="segmentChanged($event)" class="primary">
+    <ion-segment-button value="ordersplaced">
+      <ion-label>Orders Placed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="ontheway">
+      <ion-label class="onWay">On the way</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="delivered">
+      <ion-label>Delivered</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-  <ion-row style="margin: 15px 30px 0px 30px; background: #fff;">
-    <ion-col style=" background: #DDEDEA;border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;" size="3.5">
-    <img class="card-img" src="../../assets/images/chilli.svg">
-    </ion-col>
-    <ion-col style="background: white;border-top-right-radius: 10px;padding: 0;" size="5.5">
-      <div class="card-content" style="padding-left: 15px;">
-        <div class="vendor-name">Green Chilli</div>
-        <div class="vendor-cat">100g</div>
-        <div>
-          <div style="float: left;" class="vendor-amnt">Rs.80/-</div>
-          <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg">
-          </div>
-        </div>
-      </div>
-    </ion-col>
-    <ion-col size=3 justify-content-center style="margin: auto;">
-      <span><img src="../../assets/images/akar-icons_minus.svg" (click)="reduceNumber()" style="background: #FFC8B6;
-        padding: 3px 2px;
-        border-radius: 3px;">
-       </span>
-      <span style="vertical-align: text-bottom;
-      padding: 5px;">{{noOfProducts}}</span>
-      <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span>
-    </ion-col>
-  </ion-row>
-  
-  <ion-row style="margin: 15px 30px 0px 30px">
-    <ion-col style=" background: #DDEDEA;border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;" size="3.5">
-    <img class="card-img" src="../../assets/images/chilli.svg">
-    </ion-col>
-    <ion-col style="background: white;border-top-right-radius: 10px;padding: 0;" size="5.5">
-      <div class="card-content" style="padding-left: 15px;">
-        <div class="vendor-name">Green Chilli</div>
-        <div class="vendor-cat">100g</div>
-        <div>
-          <div style="float: left;" class="vendor-amnt">Rs.80/-</div>
-          <div class="add-btn"><img style="vertical-align: super;" src="../../assets/images/plus.svg">
-          </div>
-        </div>
-      </div>
-    </ion-col>
-    <ion-col size=3 justify-content-center style="margin: auto;">
-      <span><img src="../../assets/images/akar-icons_minus.svg" (click)="reduceNumber()" 
-  style="background: #FFC8B6;
-        padding: 3px 2px;
-        border-radius: 3px;">
-       </span>
-      <span style="vertical-align: text-bottom;
-      padding: 5px;">{{noOfProducts}}</span>
-      <span><img src="../../assets/images/plus-square.svg" (click)="increaseNumber()"></span>
-    </ion-col>
-  </ion-row>
-    
-  
+  <ion-toolbar color="primary">
+    <ion-segment value="all" color="tertiary" scrollable="true" mode="ios" [(ngModel)]="segmentModel"
+      (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="all">
+        <ion-label>Orders Placed</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="favorites">
+        <ion-label class="onWay">On the way</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="settings">
+        <ion-label>Delivered</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <!-- </ion-col> -->
+  <!-- </ion-row> -->
 </ion-content>

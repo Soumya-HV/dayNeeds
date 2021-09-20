@@ -7,13 +7,13 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./tab4.component.scss'],
 })
 export class Tab4Component implements OnInit {
-  noOfProducts : number = 1;
+  noOfProducts: number = 1;
   constructor(public modalController: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   reduceNumber() {
-    if(this.noOfProducts > 0) {
+    if (this.noOfProducts > 0) {
       this.noOfProducts -= 1;
     }
   }
@@ -22,8 +22,12 @@ export class Tab4Component implements OnInit {
     this.noOfProducts += 1;
   }
 
-    
-  closeModal(){
+
+  closeModal() {
     this.modalController.dismiss();
+  }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
   }
 }

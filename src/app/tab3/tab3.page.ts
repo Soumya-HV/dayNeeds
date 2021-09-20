@@ -15,19 +15,19 @@ export class Tab3Page {
     // { id: 2, image: '../../assets/images/tomato.svg', pName: 'Tomato', qty: '1kg', price: 100, qtyno: 1 }]
   // }];
 
-  stockLists = [{
-    catName: 'Dairy Products',
-    bgColor: '#F8D4EF',
-    catDetails: [{
-      id: 1, image: '../../assets/images/nsm.svg', pName: 'Nandini Special Toned Milk',
-      qty: '500ml', price: 80, qtyno: 1, coupons: 30, required: 'Alternate Days', DOA: 'March 2021'
-    },
-    {
-         id: 1, image: '../../assets/images/nsm.svg', pName: 'Nandini Doubled Toned Milk',
-         qty: '500ml', price: 100, qtyno: 1, coupons: 8, required: 'Weekends', DOA: 'March 2021'
-    }]
-  }];
-
+  // stockLists = [{
+    // catName: 'Dairy Products',
+    // bgColor: '#F8D4EF',
+    // catDetails: [{
+      // id: 1, image: '../../assets/images/nsm.svg', pName: 'Nandini Special Toned Milk',
+      // qty: '500ml', price: 80, qtyno: 1, coupons: 30, required: 'Alternate Days', DOA: 'March 2021'
+    // },
+    // {
+        //  id: 1, image: '../../assets/images/nsm.svg', pName: 'Nandini Doubled Toned Milk',
+        //  qty: '500ml', price: 100, qtyno: 1, coupons: 8, required: 'Weekends', DOA: 'March 2021'
+    // }]
+  // }];
+// 
   // stockLists = [{
     // catName: 'JJ Carwash',
     // bgColor: '#F2F4F8',
@@ -37,6 +37,14 @@ export class Tab3Page {
     // }]
   // }];
 
+  stockLists = [{
+    catName: 'Upload Prescription',
+    bgColor: '#EBDEE0',
+    catDetails: [{
+      id: 1, image: '../../assets/images/pharmacy.svg', pName: 'BP Tablet',
+      qty: '15', price: 120.00, qtyno: 1
+    }]
+  }];
 
   constructor(private router: Router, private tabService: commonService) { }
 
