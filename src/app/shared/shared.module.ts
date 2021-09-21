@@ -18,13 +18,15 @@ import { GeoLocationComponent } from '../modules/geo-location/geo-location.compo
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ManageAddressComponent } from './components/manage-address/manage-address.component';
+import { VendorPaymentComponent } from './components/vendor-payment/vendor-payment.component';
+import { AddSubUserComponent } from './components/add-sub-user/add-sub-user.component';
 
 
 @NgModule({
-  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent],
+  declarations: [WelcomeComponent,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent, VendorPaymentComponent, AddSubUserComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
-  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent],
+  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,AuthenticateComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent, VendorPaymentComponent, AddSubUserComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],
 })
 export class SharedModule {}

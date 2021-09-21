@@ -54,16 +54,57 @@ ion-content {
 
 ion-label{
     text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .onWay{
     text-transform: inherit;
+    font: 500 0.75rem 'poppinsMedium';
+    color: #FF7043;
 }
 
 ion-segment {
-    position: absolute;
-    width: 309.88px;
+    width: 100%;
+    // position: absolute;
+    // width: 309.88px;
     height: 41.88px;
-    left: 32px;
-    top: 130px;
+    // left: 32px;
+    // top: 130px;
 }
+
+.tabcontent {
+    margin: 0 1.29rem;   
+    color: #2A3757;
+}
+
+span{
+    font: 0.75rem 'poppinsMedium';
+}
+
+.pname{
+    font: 0.625rem 'poppinsMedium';
+}
+
+.tabHeader {
+    margin: 1.1rem;
+    font: 400 0.75rem 'poppinsReg';
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 4px;
+    // background: rgba(251, 231, 201, 1);
+    box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+    border-radius: 14px;
+}
+
+ion-segment{
+    // margin: 4px;
+    background: rgba(251, 229, 201, 0.5);
+    border-radius: 0.75rem;
+}
+
+ion-segment-button{
+    margin: 2px;
+}
+
