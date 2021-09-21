@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as env from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-register',
@@ -31,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/categories').subscribe(
+    this.http.get(env.environment.url + 'categories').subscribe(
       res => {
         console.log('res',res['response']);
         this.categories = res['response'];
@@ -50,19 +52,23 @@ export class RegisterComponent implements OnInit {
     }
     if(this.userType == 'customer') {
       body['phoneNumber'] = Number(localStorage.getItem('phoneNum')),
-      body['typeOfUser'] = "Customer"
+      body['typeOfUser'] = "Customer",
+      body['email'] = this.customerRegisterForm.value.userMail,
+      body['userName'] = this.customerRegisterForm.value.userName,
+      body['firebaseUId'] = localStorage.getItem('user_id')
     } else {
       body['phoneNumber'] = this.vendorRegisterForm.value.phoneNumber,
       body['typeOfUser'] = "Vendor",
       body['shopName'] = this.vendorRegisterForm.value.shopName,
       body['vendorName'] = this.vendorRegisterForm.value.userName,
-      body['email'] = this.vendorRegisterForm.value.email,
-      body['categoryId'] = []
-
+      body['email'] = this.vendorRegisterForm.value.userMail,
+      body['categoryId'] = [],
+      body['firebaseUId'] = localStorage.getItem('user_id')
     }
-    this.http.post<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/createNewUser`, body).subscribe(res => {
+    this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {
       console.log(res);
       this.router.navigate(['user/location']);
+          // this.router.navigate(['tab/home']);/
     });
   }
 

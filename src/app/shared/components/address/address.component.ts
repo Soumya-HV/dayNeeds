@@ -15,6 +15,7 @@ export class AddressComponent implements OnInit {
   addressForm: FormGroup;
   @Input() mode;
   @Input() id;
+  editId: any;
 
   constructor(public modalController: ModalController, private fb: FormBuilder, private http: HttpClient, private commonService: commonService) {
     this.addressForm = this.fb.group({
@@ -31,17 +32,18 @@ export class AddressComponent implements OnInit {
   ngOnInit() {
     if (this.mode == 'edit') {
       console.log(this.commonService.userDetails);
-      
       this.http.get(env.environment.url + 'user/' + this.commonService.userDetails._id + '/address/' + this.id).
         subscribe(res => {
+          console.log(res);
+          this.editId = res['response'].customerDetails?.address[0]?._id;
           this.addressForm.patchValue({
-            'userName': this.commonService.userDetails.customerDetails.userName,
-            'apartmentName': this.commonService.userDetails.customerDetails?.address?.appartmentName,
-            'houseNo': this.commonService.userDetails.customerDetails?.address?.houseNo,
-            'blockNo': this.commonService.userDetails.customerDetails?.address?.block,
-            'address': this.commonService.userDetails.customerDetails?.address?.address,
-            'landmark': this.commonService.userDetails.customerDetails?.address?.landmark,
-            'mblNo': this.commonService.userDetails.customerDetails?.address?.contactNumber
+            'userName': res['response'].customerDetails?.address[0]?.userName,
+            'apartmentName': res['response'].customerDetails?.address[0]?.appartmentName,
+            'houseNo': res['response'].customerDetails?.address[0]?.houseNo,
+            'blockNo': res['response'].customerDetails?.address[0]?.block,
+            'address': res['response'].customerDetails?.address[0]?.address,
+            'landmark': res['response'].customerDetails?.address[0]?.landMark,
+            'mblNo': res['response'].customerDetails?.address[0]?.contactNumber,
           });
           console.log(res);
         })
@@ -56,24 +58,28 @@ export class AddressComponent implements OnInit {
 
   submitRegForm() {
     let body = {
-      "customerDetails": {
-        "userName": this.addressForm.value.userName,
-        "phoneNumber": this.addressForm.value.mblNo,
-        "address": [{
-          "_id": "61448b9b4edc594768ea16c0",
+        "address": {
+          "userName": this.addressForm.value.userName,
           "appartmentName": this.addressForm.value.apartmentName,
           "houseNo": this.addressForm.value.houseNo,
           "block": this.addressForm.value.blockNo,
           "address": this.addressForm.value.address,
           "landMark": this.addressForm.value.landmark,
           "contactNumber": this.addressForm.value.mblNo,
+          "typeOfAddress": 'Home',
           "isDefault": true
-        }]
-      }
+        }
+    };
+
+    if(this.mode == 'edit') {
+      body.address['_id'] = this.editId;
     }
-    console.log(this.addressForm.value);
-    this.http.put(env.environment.url + 'updateUser/' + this.commonService.userDetails._id, body).subscribe(res => {
-      console.log(res);
-    })
+      console.log(this.addressForm.value);
+      this.http.put(env.environment.url + 'user/' + this.commonService.userDetails._id + '/address', body.address).subscribe(res => {
+        console.log(res);
+        if (!res['error']) {
+          this.modalController.dismiss();
+        }
+      })
+    }
   }
-}

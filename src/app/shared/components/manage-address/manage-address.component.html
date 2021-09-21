@@ -12,9 +12,9 @@
     </ion-row>
     <ion-row>
       <div class="addGroup" *ngFor="let addr of address">
-        <p class="delLocation"> Deliver to: {{addr.deliverTo}} <span class="default" *ngIf='addr.default'>(Default)</span></p>
-        <p class="delAdd">{{addr.deliverAddress}}</p>
-        <p class="delNum">Mob: +91 - {{addr.deliverNum}} <ion-icon src='../../assets/images/ci_edit.svg' (click)="opensideModal('edit', addr._id)"></ion-icon></p>
+        <p class="delLocation"> Deliver to: {{addr.typeOfAddress}} <span class="default" *ngIf='addr.default'>(Default)</span></p>
+        <p class="delAdd">No.{{addr.houseNo}} , {{addr.block}} , {{addr.appartmentName}} , {{addr.landMark}} , {{addr.address}}</p>
+        <p class="delNum">Mob: +91 - {{addr.contactNumber}} <ion-icon src='../../assets/images/ci_edit.svg' (click)="opensideModal('edit', addr._id)"></ion-icon></p>
       </div>
     </ion-row>
     <ion-row  class="ion-justify-content-center">

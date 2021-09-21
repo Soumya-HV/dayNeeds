@@ -20,47 +20,91 @@ ion-card{
 .titleContainer{
     margin-top: 30px;
 }
+ion-content {
 
-.vendor-name{
-    font: 600 14px 'poppinsMedium';
-    line-height: 19px;
-    letter-spacing: 0.02em;
+}
+
+.ordersWrap{
+    font: 100 1rem 'poppinsSemiBold';
+    color: rgba(42, 55, 87, 0.8);
+    margin: 1.8rem auto;
+    text-align: center;
+}
+
+.apartmentWrap {
+    background-color: #2A3757;
+    margin: 1.5rem;
+    // position: absolute;
+    // width: 296px;
+    height: 32px;
+    // left: 32px;
+    // top: 90px;
+    border-radius: 10px;
+}
+
+.aptname {
+    font: 100 0.875rem 'poppinsMedium';
+    color: #fff;
+}
+
+.aptdeliver {
+    font: 100 0.75rem 'poppinsMedium';
+    color: #C4C4C4;
+}
+
+ion-label{
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.onWay{
+    text-transform: inherit;
+    font: 500 0.75rem 'poppinsMedium';
+    color: #FF7043;
+}
+
+ion-segment {
+    width: 100%;
+    // position: absolute;
+    // width: 309.88px;
+    height: 41.88px;
+    // left: 32px;
+    // top: 130px;
+}
+
+.tabcontent {
+    margin: 0 1.29rem;   
     color: #2A3757;
-    padding-bottom: 2px;
-    padding-top: 10px;
-}
-.vendor-cat{
-    border-radius: 4px;
-    font: 300 12px 'poppinsMedium';
-    color: #30426E;
-    margin-bottom: 8px;
 }
 
-.vendor-time{
+span{
+    font: 0.75rem 'poppinsMedium';
 }
 
-.vendor-amnt {
-    font: 300 14px 'poppinsMedium';
-    color: #2A3757;
-}
-.vendor-amnt img {
-    vertical-align: bottom;
+.pname{
+    font: 0.625rem 'poppinsMedium';
 }
 
-.vendor-amnt span {
-    
+.tabHeader {
+    margin: 1.1rem;
+    font: 400 0.75rem 'poppinsReg';
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 4px;
+    // background: rgba(251, 231, 201, 1);
+    box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+    border-radius: 14px;
 }
-// 
-// .hide-card {
-    // -webkit-box-shadow: none!important;
-    // background: transparent;
-    // text-align: center;
-    // padding-top: 18px;
-//   }
 
-// .shopName {
-//     font: 600 1rem 'poppinsSemiBold' ;
-// }  
-.chatIcon {
-    float: right;
+ion-segment{
+    // margin: 4px;
+    background: rgba(251, 229, 201, 0.5);
+    border-radius: 0.75rem;
 }
+
+ion-segment-button{
+    margin: 2px;
+}
+

@@ -48,7 +48,7 @@ export class Tab1Page {
    
   }
   constructor(public modalController: ModalController, private http: HttpClient, private commonService:commonService) {
-    this.http.get(env.environment.url + '/user/' + Number(localStorage.getItem('phoneNum'))).subscribe
+    this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
     (res => {
         this.commonService.userDetails = res['response'];
         console.log(res, this.commonService.userDetails);

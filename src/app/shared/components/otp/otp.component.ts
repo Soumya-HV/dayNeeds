@@ -38,7 +38,8 @@ export class OTPComponent implements OnInit {
   async showSuccess(userData) {
     const token = await (await this.fireAuth.currentUser).getIdToken(true);
     localStorage.setItem('tokenId', token);
-    console.log('tokenId', token, userData, localStorage.getItem('tokenId'));
+    localStorage.setItem('user_id', userData.user.uid);
+    // console.log('tokenId', token, this.fireAuth.currentUser, userData.user.uid, localStorage.getItem('tokenId'));
     if (!userData?.additionalUserInfo?.isNewUser) {
       this.router.navigate(['tab/home']);
     } else {

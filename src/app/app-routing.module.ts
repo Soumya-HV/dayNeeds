@@ -5,6 +5,8 @@ import { WelcomeComponent } from './shared/components/welcome/welcome.component'
 import { OTPComponent } from './shared/components/otp/otp.component';
 import { Tab1Page } from './tab1/tab1.page';
 import { UserTypeSelectionComponent } from './shared/components/user-type-selection/user-type-selection.component';
+import { VendorPaymentComponent } from './shared/components/vendor-payment/vendor-payment.component';
+import { AddSubUserComponent } from './shared/components/add-sub-user/add-sub-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -23,6 +25,14 @@ const routes: Routes = [
   {
     path: 'usertype-select',
     component: UserTypeSelectionComponent
+  },
+  {
+    path: 'vendor/payment',
+    component:VendorPaymentComponent
+  },
+  {
+    path: 'vendor/addUser',
+    component:AddSubUserComponent
   },
   {
     path: 'tab',

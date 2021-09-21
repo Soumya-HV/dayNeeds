@@ -1,0 +1,59 @@
+<ion-content>
+  <div style="margin:0 15px;">
+    <ion-row style="margin: 30px 0 0 0;box-shadow: none;">
+      <ion-col style="margin:auto" size="2">
+        <img (click)="closeModal()" src="../../../../assets/images/sidebar-icons/arrow-left.svg">
+      </ion-col>
+      <ion-col style="margin:auto" size="10" class="ion-no-padding">
+        <div class="vendor-name">
+          <span class="vendor-txt-trim">Payment Details</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row size=12 class="ion-justify-content-center">
+      <ion-col *ngFor="let rewards of userRewards" size=4>
+        <div class="rewardCard">
+          <p class="rewardamt" [style.color]="rewards.color">&#x20B9;{{rewards.amount}}</p>
+          <p class="rewardtype">{{rewards.type}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div class="vendor-txt-trim ion-text-start ion-margin-start ion-margin-vertical">Add Bank Details</div>
+    <form [formGroup]="vendorPaymentForm" novalidate>
+      <ion-row justify-content-center>
+        <ion-col size=11 class="customerRegWrap">
+          <ion-input class="ion-margin-start" placeholder="Account Holder Name" formControlName="userName" required>
+          </ion-input>
+        </ion-col>
+        <ion-col size=11 class="customerRegWrap">
+          <ion-input class="ion-margin-start" placeholder="Account Number" formControlName="acNo" required></ion-input>
+        </ion-col>
+        <ion-col size=11 class="customerRegWrap">
+          <ion-input class="ion-margin-start" placeholder="IFSC Code" formControlName="IFSCNo" required></ion-input>
+        </ion-col>
+        <ion-col size=11 class="customerRegWrap">
+          <ion-input class="ion-margin-start" placeholder="GST Number" formControlName="GSTNo" required></ion-input>
+        </ion-col>
+        <ion-col size=11 class="customerRegWrap">
+          <ion-input class="ion-margin-start" placeholder="TAN Number" formControlName="TANNo" required></ion-input>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row>
+      <ion-col class="cregCertificate ion-text-center ion-margin-start ion-margin-top ion-margin-end">
+        <img src="../../../../assets/images/bi_image.svg">
+        <p>Company Registration
+          Certificate</p>
+      </ion-col>
+      <ion-col class="cregCertificate ion-text-center ion-margin-end ion-margin-top">
+        <img src="../../../../assets/images/bi_image.svg">
+        <p>Shop Establishment
+          act</p>
+      </ion-col>
+    </ion-row>
+    <div class="text-center">
+      <ion-button class="registerBtn" part="native" (click)="submitForm()" [disabled]="vendorPaymentForm.invalid"
+        justify-content-center>Add</ion-button>
+    </div>
+  </div>
+</ion-content>

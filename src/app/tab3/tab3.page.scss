@@ -84,7 +84,7 @@ text-align: center;
 .catColCarWash{
     background: rgba(196, 196, 196, 0.6);
 }
-.listWrapper{
+.listWrapper, .listpharmacyWrapper{
     // background: #DDEDEA;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -92,9 +92,26 @@ text-align: center;
     border-bottom-right-radius: unset;
     height: initial;
     width: auto;
+    margin-right: 10px;
 }
 
-.listDairyWrapper {
+.listpharmacyWrapper img {
+    margin-top: 23px;
+}
+
+.listpharmacyWrapper {
+    height: 100px;
+}
+
+.listCarWrapper img{
+    width: 100%;
+    height: 116px;
+    right: 92px;
+    top: 26px;
+    position: absolute;
+}
+
+.listDairyWrapper, .listCarWrapper {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: unset;
