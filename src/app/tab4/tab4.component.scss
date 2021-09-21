@@ -1,110 +1,148 @@
 ion-content{
     --background: #F7F9FB !important;
 }
-
-ion-card{
-    padding: 10px;
-    margin: 10px 30px;
-    border-radius: 15px;
-}
- 
 .arrow-left{
     margin: 30px 0px 0px 18px ;
 }
-
-.titleWrapper, .shopName{
-    color:rgba(42, 55, 87, 0.8) !important;
-    font: 600 1rem 'poppinsSemiBold' ;
-}
-
 .titleContainer{
     margin-top: 30px;
 }
-ion-content {
-
+.titleWrapper{
+    color:rgba(42, 55, 87, 0.8) !important;
+    font: 600 1rem 'poppinsSemiBold' ;
 }
-
-.ordersWrap{
-    font: 100 1rem 'poppinsSemiBold';
+.section-wrapper{
+    min-height: 116px;
+    background: #E7EBF0;
+    border-radius: 0px 0px 10px 10px;
+    margin: 0 32px;
+    margin-bottom: 23px;
+    filter: drop-shadow(0px 7px 0px rgba(255, 112, 67, 0.2));
+}
+ion-card{
+    margin: 0;
+    box-shadow: none;
+}
+ion-card-header{
+    padding: 10px 20px;
+}
+.ordered-date{
+    font-family: 'poppinsReg';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #818183;
+    margin-bottom: 8px;
+    
+}
+.waiting-accept{
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    text-align: end;
+    color: #2A3757;
+    margin-top: 4px;
+}
+.cancel-order{
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
     color: rgba(42, 55, 87, 0.8);
-    margin: 1.8rem auto;
-    text-align: center;
+    background: rgba(255, 138, 101, 0.2);
+    border-radius: 6px;
+    padding: 4px 7px;
+}
+.order-accepted{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(191, 113, 15, 0.2), 0px 2px 4px rgba(191, 113, 15, 0.2);
+    border-radius: 12px;
+    font-family: IBM Plex Sans;
+    font-size: 12px;
+    align-items: center;
+    letter-spacing: 0.0168em;
+    color: #CB0354;
+    padding: 8px 15px;
+}
+.order-delivered{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(191, 113, 15, 0.2), 0px 2px 4px rgba(191, 113, 15, 0.2);
+    border-radius: 12px;
+    font-family: IBM Plex Sans;
+    font-size: 12px;
+    align-items: center;
+    letter-spacing: 0.0168em;
+    color: #2AB930;
+    padding: 8px 15px;
 }
 
-.apartmentWrap {
-    background-color: #2A3757;
-    margin: 1.5rem;
-    // position: absolute;
-    // width: 296px;
-    height: 32px;
-    // left: 32px;
-    // top: 90px;
-    border-radius: 10px;
+.vendor-name{
+    font-family: 'poppinsReg';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #2A3757;   
+    margin-bottom: 8px;
 }
-
-.aptname {
-    font: 100 0.875rem 'poppinsMedium';
-    color: #fff;
-}
-
-.aptdeliver {
-    font: 100 0.75rem 'poppinsMedium';
-    color: #C4C4C4;
-}
-
-ion-label{
-    text-transform: capitalize;
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.onWay{
-    text-transform: inherit;
-    font: 500 0.75rem 'poppinsMedium';
+.ordered-amount{
+    font-family: 'poppinsSemiBold';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
     color: #FF7043;
 }
-
-ion-segment {
-    width: 100%;
-    // position: absolute;
-    // width: 309.88px;
-    height: 41.88px;
-    // left: 32px;
-    // top: 130px;
-}
-
-.tabcontent {
-    margin: 0 1.29rem;   
+.ordered-time{
+    background: #FEE99A;
+    border: 0.5px solid #FEE99A;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family:  'poppinsReg';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 19px;
+    text-align: center;
     color: #2A3757;
+    padding: 0 13px;
 }
+.ordered-type{
+    img{
+        vertical-align: middle;
+    }
+    .cod-txt{
+        font-family: 'poppinsSemiBold';
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 19px;
+        letter-spacing: 0.01em;
+        color: #FF7043;
+        margin-left: 10px;
+        padding-top: 1px;
+    }
+    .paid-txt{
+        font-family: 'poppinsSemiBold';
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 19px;
+        letter-spacing: 0.01em;
+        color: #2AB930;
+        margin-left: 10px;
+        padding-top: 1px;
+    }
 
-span{
-    font: 0.75rem 'poppinsMedium';
 }
-
-.pname{
-    font: 0.625rem 'poppinsMedium';
+.order-detail-section{
+    text-align: center;
+    color: #2A3757;
+    padding: 3px;
+    font-family: 'poppinsMedium';
 }
-
-.tabHeader {
-    margin: 1.1rem;
-    font: 400 0.75rem 'poppinsReg';
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    // padding: 4px;
-    // background: rgba(251, 231, 201, 1);
-    box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
-    border-radius: 14px;
-}
-
-ion-segment{
-    // margin: 4px;
-    background: rgba(251, 229, 201, 0.5);
-    border-radius: 0.75rem;
-}
-
-ion-segment-button{
-    margin: 2px;
-}
-
