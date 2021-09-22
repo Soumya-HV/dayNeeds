@@ -53,3 +53,11 @@ font: 500 16px 'poppinsMedium';
  .text-center{
     text-align: center;
  }
+
+ ion-radio-group{
+     display: flex;
+ }
+
+ ion-radio {
+     margin-right: 3px;
+ }

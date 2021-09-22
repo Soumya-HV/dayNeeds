@@ -26,6 +26,7 @@ export class AddressComponent implements OnInit {
       'address': ['', Validators.required],
       'landmark': ['', Validators.required],
       'mblNo': ['', Validators.required]
+      // 'radio': ['', Validators.required]
     })
   }
 
@@ -58,28 +59,32 @@ export class AddressComponent implements OnInit {
 
   submitRegForm() {
     let body = {
-        "address": {
-          "userName": this.addressForm.value.userName,
-          "appartmentName": this.addressForm.value.apartmentName,
-          "houseNo": this.addressForm.value.houseNo,
-          "block": this.addressForm.value.blockNo,
-          "address": this.addressForm.value.address,
-          "landMark": this.addressForm.value.landmark,
-          "contactNumber": this.addressForm.value.mblNo,
-          "typeOfAddress": 'Home',
-          "isDefault": true
-        }
+      "address": {
+        "userName": this.addressForm.value.userName,
+        "appartmentName": this.addressForm.value.apartmentName,
+        "houseNo": this.addressForm.value.houseNo,
+        "block": this.addressForm.value.blockNo,
+        "address": this.addressForm.value.address,
+        "landMark": this.addressForm.value.landmark,
+        "contactNumber": this.addressForm.value.mblNo,
+        "typeOfAddress": 'Home',
+        "isDefault": true
+      }
     };
 
-    if(this.mode == 'edit') {
+    if (this.mode == 'edit') {
       body.address['_id'] = this.editId;
     }
-      console.log(this.addressForm.value);
-      this.http.put(env.environment.url + 'user/' + this.commonService.userDetails._id + '/address', body.address).subscribe(res => {
-        console.log(res);
-        if (!res['error']) {
-          this.modalController.dismiss();
-        }
-      })
-    }
+    console.log(this.addressForm.value);
+    this.http.put(env.environment.url + 'user/' + this.commonService.userDetails._id + '/address', body.address).subscribe(res => {
+      console.log(res);
+      if (!res['error']) {
+        this.modalController.dismiss();
+      }
+    })
   }
+
+  SelectedAddress(event) {
+    console.log('event', event);    
+  }
+}
