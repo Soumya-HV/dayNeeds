@@ -40,7 +40,7 @@ export class OTPComponent implements OnInit {
     localStorage.setItem('user_id', userData.user.uid);
     // console.log('tokenId', token, this.fireAuth.currentUser, userData.user.uid, localStorage.getItem('tokenId'));
     if (!userData?.additionalUserInfo?.isNewUser) {
-      this.router.navigate(['tab/home']);
+      this.router.navigate(['customer/home']);
     } else {
       console.log(localStorage.getItem('phoneNum'));
       this.router.navigate(['usertype-select']);

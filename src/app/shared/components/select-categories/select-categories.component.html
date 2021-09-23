@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-row style="margin: 30px 0 0 10px;box-shadow: none;">
+    <ion-col style="margin:auto" size="2">
+      <img (click)="closeCategory()" src="../../assets/images/sidebar-icons/arrow-left.svg">
+    </ion-col>
+    <ion-col style="margin:auto" size="10" class="ion-no-padding">
+      <div >
+        <span>Register As Vendor</span>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="customerRegWrap">
+    <ion-col size="2">
+      <ion-icon src="../../../../assets/images/Vector.svg"></ion-icon>
+    </ion-col>
+    <ion-col size="8" style="margin: auto;">
+      <ion-label class="catSelect" *ngIf=!selectedCat>
+        What do you sell?
+      </ion-label>
+    </ion-col>
+    <ion-col size="2">
+      <ion-icon src="../../../../assets/images/chevron-down.svg"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

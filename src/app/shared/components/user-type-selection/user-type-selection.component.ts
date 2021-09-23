@@ -20,7 +20,7 @@ export class UserTypeSelectionComponent implements OnInit {
   }
 
   registerCustomer() {
-    this.route.navigate(['tab/home']);
+    this.route.navigate(['customer/home']);
   }
 
   selectEvent(userType) {

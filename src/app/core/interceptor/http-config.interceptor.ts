@@ -15,7 +15,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const token = (this.fireAuth.currentUser);
-    console.log('tokennnnnnnnnnnn', token);
+    // console.log('tokennnnnnnnnnnn', token);
 
     //Authentication by setting header with token value
     if (token) {
@@ -30,7 +30,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log('event--->>>', event);
+          // console.log('event--->>>', event);
         }
         return event;
       }),

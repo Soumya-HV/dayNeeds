@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { commonService } from 'src/app/core/services/common-service';
+import { SelectCategory } from 'src/app/shared/components/select-categories/select-categories.component';
 import * as env from '../../../environments/environment';
 
 
@@ -17,7 +20,8 @@ export class RegisterComponent implements OnInit {
   selectedCat = false;
   customerRegisterForm: FormGroup;
   vendorRegisterForm: FormGroup;
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,
+    public modalController: ModalController,private cmnService: commonService) {
     this.userType = localStorage.getItem('userType');
     this.customerRegisterForm = this.fb.group({
       'userName': ['', Validators.required],
@@ -68,8 +72,19 @@ export class RegisterComponent implements OnInit {
     this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {
       console.log(res);
       // this.router.navigate(['user/location']);
-          this.router.navigate(['tab/home']);
+          this.router.navigate(['customer/home']);
     });
+  }
+
+  async openCategoryList(){
+    const modal = await this.modalController.create({
+      component: SelectCategory,
+      cssClass: 'categoryMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+    });
+    return await modal.present();
   }
 
 

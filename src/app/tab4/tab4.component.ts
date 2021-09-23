@@ -15,7 +15,7 @@ export class Tab4Component implements OnInit {
   ngOnInit() { }
 
   backHome() {
-    this.router.navigate(['tab/tab2']);
+    this.router.navigate(['customer/tab2']);
     
   }
 }

@@ -19,13 +19,51 @@ import { NotificationComponent } from './components/notification/notification.co
 import { ManageAddressComponent } from './components/manage-address/manage-address.component';
 import { VendorPaymentComponent } from './components/vendor-payment/vendor-payment.component';
 import { AddSubUserComponent } from './components/add-sub-user/add-sub-user.component';
+import { SelectCategory } from './components/select-categories/select-categories.component';
 
 
 @NgModule({
-  declarations: [WelcomeComponent,LoginComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent, VendorPaymentComponent, AddSubUserComponent],
+  declarations: [
+    WelcomeComponent,
+    LoginComponent,
+    OTPComponent, 
+    UserTypeSelectionComponent,
+    CartListComponent, 
+    GeoLocationComponent,
+    RewardsComponent,
+    AddressComponent,
+    NotificationComponent, 
+    ManageAddressComponent,
+    VendorPaymentComponent,
+    AddSubUserComponent,
+    SelectCategory],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
-  exports: [WelcomeComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule,LoginComponent,OTPComponent, UserTypeSelectionComponent, CartListComponent, GeoLocationComponent, RewardsComponent, AddressComponent, NotificationComponent, ManageAddressComponent, VendorPaymentComponent, AddSubUserComponent],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  exports: [
+    WelcomeComponent,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    LoginComponent,
+    OTPComponent,
+    UserTypeSelectionComponent,
+    CartListComponent,
+    GeoLocationComponent,
+    RewardsComponent,
+    AddressComponent,
+    NotificationComponent,
+    ManageAddressComponent,
+    VendorPaymentComponent,
+    AddSubUserComponent,
+    SelectCategory],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],
 })
 export class SharedModule {}

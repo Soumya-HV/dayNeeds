@@ -61,7 +61,7 @@ export class Tab3Page {
   }
 
   backHome() {
-    this.router.navigate(['tab/tab2']);
+    this.router.navigate(['customer/tab2']);
     this.tabService.cartScreen = false;
   }
 

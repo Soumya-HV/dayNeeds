@@ -37,7 +37,7 @@ const routes: Routes = [
     component:AddSubUserComponent
   },
   {
-    path: 'tab',
+    path: 'customer',
     loadChildren: () => import('../app/tabs/tabs.module').then(m => m.TabsPageModule),
     canActivate: [AuthGuard]
   },

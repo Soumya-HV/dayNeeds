@@ -1,5 +1,5 @@
 <ion-content>
-  <div *ngIf="this.userType == 'customer'">
+  <div *ngIf="this.userType != 'customer'">
     <div class="section-bg">
       <img class="w-100" src="../../../../assets/images/dayneed_image_BG.svg">
       <div class="overlay_img">
@@ -18,7 +18,7 @@
       </ion-row>
     </form>
   </div>
-  <div *ngIf="this.userType == 'vendor'">
+  <div *ngIf="this.userType != 'vendor'">
     <ion-row style="margin: 30px 0 0 10px;box-shadow: none;">
       <ion-col style="margin:auto" size="2">
         <img (click)="closeModal()" src="../../assets/images/sidebar-icons/arrow-left.svg">
@@ -32,20 +32,21 @@
     <form [formGroup]="vendorRegisterForm" novalidate>
       <ion-row class="customerRegWrap" size=12 justify-content-center>
         <ion-icon src="../../../../assets/images/shopname.svg" size=4></ion-icon>
-        <ion-input class="m-lt-15" placeholder="Shop Name" formControlName="shopName" size=6 required></ion-input>
+        <ion-input class="m-lt-15" placeholder="Shop Name" formControlName="shopName" required></ion-input>
       </ion-row>
-      <ion-row class="customerRegWrap" size=12>
-        <ion-icon src="../../../../assets/images/Vector.svg" size=4></ion-icon>
-        <ion-label size=12 class="catSelect" *ngIf=!selectedCat>
-          What do you sell?
-        </ion-label>
-        <ion-select multiple="true" part="text" [(ngModel)]="items" formControlName="productsSold" cancelText="No" okText="Okay" size=6
-          (ionChange)="onChange($event)" [ngModelOptions]="{standalone: true}"
-          [style.width]="selectedCat == true ? '217px' : '55px' ">
-          <ion-select-option *ngFor="let val of categories" [value]="val._id"><img
-              [src]="val.categoryImage" />{{val.categoryName}}
-          </ion-select-option>
-        </ion-select>
+  
+      <ion-row (click)="openCategoryList()" class="customerRegWrap">
+        <ion-col size="2">
+          <ion-icon src="../../../../assets/images/Vector.svg"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="margin: auto;">
+          <ion-label class="catSelect" *ngIf=!selectedCat>
+            What do you sell?
+          </ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon src="../../../../assets/images/chevron-down.svg"></ion-icon>
+        </ion-col>
       </ion-row>
       <ion-row class="customerRegWrap" size=12 justify-content-center>
         <ion-icon src="../../../../assets/images/bi_person-fill.svg" size=4></ion-icon>
@@ -71,7 +72,7 @@
     <!-- <ion-img src="../../../../assets/images/Register btn.svg" ></ion-img> -->
   </div>
   <div class="text-center" *ngIf="userType == 'vendor'">
-    <ion-button class="registerBtn" part="native" (click)="submitRegForm()"
-      [disabled]="vendorRegisterForm.invalid" justify-content-center>Register</ion-button>
+    <ion-button class="registerBtn" part="native" (click)="submitRegForm()" [disabled]="vendorRegisterForm.invalid"
+      justify-content-center>Register</ion-button>
   </div>
 </ion-content>

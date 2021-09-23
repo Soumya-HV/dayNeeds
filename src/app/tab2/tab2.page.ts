@@ -49,7 +49,7 @@ export class Tab2Page {
   }
 
   backHome() {
-    this.router.navigate(['tab/home'])
+    this.router.navigate(['customer/home'])
   }
 
   async openShopDetail() {

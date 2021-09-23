@@ -21,6 +21,10 @@ export class AuthenticationService {
         return !!localStorage.getItem('tokenId')
     }
 
+    getUserType(){
+        
+    }
+
     registerEvent(body) {
         return this.http.post(env.environment.url + 'login', body);
     }
