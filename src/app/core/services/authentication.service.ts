@@ -3,15 +3,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import * as env from '../../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
-
+    
     confirmationResult: firebase.auth.ConfirmationResult;
 
-    constructor(private http: HttpClient, private fireAuth: AngularFireAuth) {
+    constructor(private http: HttpClient,
+        private fireAuth: AngularFireAuth) {
+    }
+
+    getToken() {
+        return !!localStorage.getItem('tokenId')
     }
 
     registerEvent(body) {

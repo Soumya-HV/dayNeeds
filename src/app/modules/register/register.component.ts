@@ -67,8 +67,8 @@ export class RegisterComponent implements OnInit {
     }
     this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {
       console.log(res);
-      this.router.navigate(['user/location']);
-          // this.router.navigate(['tab/home']);/
+      // this.router.navigate(['user/location']);
+          this.router.navigate(['tab/home']);
     });
   }
 

@@ -13,6 +13,29 @@ import * as env from '../../../../environments/environment';
 })
 export class AddressComponent implements OnInit {
   addressForm: FormGroup;
+  defaultSelected = "radio_2";
+  //Get value on ionChange on IonRadioGroup
+  selectedGroup: any;
+  //Get value on ionSelect on IonRadio item
+  selectedItem: any;
+
+  radio_list = [
+    {
+      name: 'Home',
+      value: 'home',
+      checked: false,
+    }, {
+      name: 'Office',
+      value: 'office',
+      checked: true,
+
+    }, {
+      name: 'Other',
+      value: 'other',
+      checked: false,
+    },
+  ];
+
   @Input() mode;
   @Input() id;
   editId: any;
@@ -85,6 +108,22 @@ export class AddressComponent implements OnInit {
   }
 
   SelectedAddress(event) {
-    console.log('event', event);    
+    console.log('event', event);
+  }
+
+  radioGroupChange(event) {
+    console.log("radioGroupChange", event.detail);
+    this.selectedGroup = event.detail;
+  }
+
+  radioFocus() {
+    console.log("radioFocus");
+  }
+  radioSelect(event) {
+    console.log("radioSelect", event.detail);
+    this.selectedItem = event.detail;
+  }
+  radioBlur() {
+    console.log("radioBlur");
   }
 }

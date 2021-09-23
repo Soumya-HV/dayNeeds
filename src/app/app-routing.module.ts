@@ -7,6 +7,8 @@ import { Tab1Page } from './tab1/tab1.page';
 import { UserTypeSelectionComponent } from './shared/components/user-type-selection/user-type-selection.component';
 import { VendorPaymentComponent } from './shared/components/vendor-payment/vendor-payment.component';
 import { AddSubUserComponent } from './shared/components/add-sub-user/add-sub-user.component';
+import { AuthGuard } from './core/services/auth-guard.service';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -36,7 +38,8 @@ const routes: Routes = [
   },
   {
     path: 'tab',
-    loadChildren: () => import('../app/tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('../app/tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
