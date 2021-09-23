@@ -39,20 +39,21 @@ export class Tab1Page {
   sliderOpts = {
     autoplay: true,
     speed: 1000,
-  
+
   };
   categorySliderOpts = {
     slidesPerView: 4,
     autoplay: true,
     speed: 1000,
-   
+
   }
-  constructor(public modalController: ModalController, private http: HttpClient, private commonService:commonService) {
-    this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
-    (res => {
-        this.commonService.userDetails = res['response'];
-        console.log(res, this.commonService.userDetails);
-      });
+  constructor(public modalController: ModalController, private http: HttpClient, private commonService: commonService) {
+    // this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
+    // (res => {
+    //     this.commonService.userDetails = res['response'];
+    //     console.log(res, this.commonService.userDetails);
+    //   });
+    this.getCategories();
   }
 
   async openSideModal(name) {
@@ -64,6 +65,13 @@ export class Tab1Page {
     modal.onDidDismiss().then((data) => {
     });
     return await modal.present();
+  }
+
+  getCategories() {
+    this.http.get(env.environment.url + 'categories').subscribe
+      (res => {
+      console.log("category lists"+res);
+      });
   }
 
 }

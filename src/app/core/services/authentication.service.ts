@@ -7,7 +7,7 @@ import * as env from '../../../environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService {
+export class AuthenticationService {
 
     confirmationResult: firebase.auth.ConfirmationResult;
 

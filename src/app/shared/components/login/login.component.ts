@@ -1,26 +1,25 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import firebase from 'firebase/app';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-authenticate',
-  templateUrl: './authenticate.component.html',
-  styleUrls: ['./authenticate.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class AuthenticateComponent implements OnInit {
+export class LoginComponent implements OnInit {
   ionicForm: FormGroup;
   OTPSuccess = false;
   IsOTPBeingEntered = false;
   recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   @Output() isNewUser = new EventEmitter();
-
   user;
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService,
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthenticationService,
     private alertController: AlertController,
     private http: HttpClient,
     private auth: AngularFireAuth) {
@@ -66,67 +65,11 @@ export class AuthenticateComponent implements OnInit {
         .then((success) => {
           console.log(success);
           localStorage.setItem('phoneNum', this.ionicForm.value.mobileNumber);
-          this.router.navigate(['authenticate']);
+          this.router.navigate(['otp']);
         }).catch((error: any) => console.log("error" + error));
     }
   }
 
-  async OtpVerification() {
-    const alert = await this.alertController.create({
-      header: 'Enter OTP',
-      backdropDismiss: false,
-      inputs: [
-        {
-          name: 'otp',
-          type: 'text',
-          placeholder: 'Enter your otp',
-        },
-      ],
-      buttons: [
-        {
-          text: 'Enter',
-          handler: (res) => {
-            this.authService.enterVerificationCode(res.otp).then((userData) => {
-              this.showSuccess();
-              console.log(userData);
-              console.log(userData.uid);
-            });
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
-
-  async showSuccess() {
-    let textMsg: string = 'Success';
-    const token = await (await this.auth.currentUser).getIdToken(true);
-    const header = {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
-    };
-    this.http.get<any>(`https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/hello`, header)
-      .subscribe(
-        async (data) => {
-          console.log(data);
-          textMsg = data.message;
-          const alert = await this.alertController.create({
-            header: textMsg,
-            buttons: [
-              {
-                text: 'Ok',
-                handler: (res) => {
-                  alert.dismiss();
-                },
-              },
-            ],
-          });
-          alert.present();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-  }
 
   get errorControl() {
     return this.ionicForm.controls;
