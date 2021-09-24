@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { commonService } from '../core/services/common-service';
+import { commonService } from '../../core/services/common-service';
 
 @Component({
-  selector: 'app-tab4',
-  templateUrl: './tab4.component.html',
-  styleUrls: ['./tab4.component.scss'],
+  selector: 'app-customer-myorder',
+  templateUrl: './customer-myorder.component.html',
+  styleUrls: ['./customer-myorder.component.scss'],
 })
-export class Tab4Component implements OnInit {
+export class CustomerMyOrderComponent implements OnInit {
   showDetails =false;
   constructor(public modalController: ModalController,private router: Router, private tabService: commonService) { }
 
   ngOnInit() { }
 
   backHome() {
-    this.router.navigate(['customer/tab2']);
+    this.router.navigate(['customer/vendor-list']);
     
   }
 }

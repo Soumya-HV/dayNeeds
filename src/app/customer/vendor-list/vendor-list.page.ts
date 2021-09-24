@@ -1,14 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides, ModalController } from '@ionic/angular';
-import { ShopDetailsComponent } from '../shop-details/shop-details.component';
+import { ShopDetailsComponent } from '../../shop-details/shop-details.component';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-vendor-list',
+  templateUrl: 'vendor-list.page.html',
+  styleUrls: ['vendor-list.page.scss']
 })
-export class Tab2Page {
+export class VendorListPage {
   categories = [
     {
       'img': '../../assets/images/cat-1.svg',

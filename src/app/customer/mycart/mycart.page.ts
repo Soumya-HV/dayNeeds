@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { commonService } from '../core/services/common-service';
+import { commonService } from '../../core/services/common-service';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-mycart',
+  templateUrl: 'mycart.page.html',
+  styleUrls: ['mycart.page.scss']
 })
-export class Tab3Page {
+export class MyCartPage {
   noOfProducts: number = 1;
   // stockLists = [{
     // catName: 'RK Vegetables',
@@ -61,7 +61,7 @@ export class Tab3Page {
   }
 
   backHome() {
-    this.router.navigate(['customer/tab2']);
+    this.router.navigate(['customer/vendor-list']);
     this.tabService.cartScreen = false;
   }
 

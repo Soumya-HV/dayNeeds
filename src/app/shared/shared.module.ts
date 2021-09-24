@@ -12,7 +12,6 @@ import { OTPComponent } from './components/otp/otp.component';
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { AddressComponent } from './components/address/address.component';
 import { UserTypeSelectionComponent } from './components/user-type-selection/user-type-selection.component';
-import { CartListComponent } from '../modules/my-cart-list/my-cart-list.component';
 import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NotificationComponent } from './components/notification/notification.component';
@@ -28,7 +27,6 @@ import { SelectCategory } from './components/select-categories/select-categories
     LoginComponent,
     OTPComponent, 
     UserTypeSelectionComponent,
-    CartListComponent, 
     GeoLocationComponent,
     RewardsComponent,
     AddressComponent,
@@ -55,7 +53,6 @@ import { SelectCategory } from './components/select-categories/select-categories
     LoginComponent,
     OTPComponent,
     UserTypeSelectionComponent,
-    CartListComponent,
     GeoLocationComponent,
     RewardsComponent,
     AddressComponent,

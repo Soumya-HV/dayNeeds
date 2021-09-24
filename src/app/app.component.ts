@@ -16,7 +16,7 @@ export class AppComponent {
     private platform: Platform,
     private authService: AuthenticationService,
     private http: HttpClient,
-    private commonService: commonService) {
+    private cmnService: commonService) {
     this.initializeApp();
   }
 
@@ -32,28 +32,29 @@ export class AppComponent {
       if (!this.authService.getToken()) {
         this.router.navigate(["welcome"]);
       } else {
-        this.getUseridDetails();
+        // this.getUseridDetails();
+        this.cmnService.getUseridDetails();
         this.router.navigate(["customer/home"]);
       }
     });
   }
 
-  getUseridDetails() {
-    this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
-      (res => {
-        this.commonService.userDetails = res['response'];
-        console.log(res, this.commonService.userDetails);
-        if(this.commonService.userDetails?.customerDetails){
-          this.commonService.customerAccount = true;
-        } else{
-          this.commonService.customerAccount = false;
-        }
-        if(this.commonService.userDetails.response?.vendorDetails){
-          this.commonService.vendorAccount = true;
-        } else{
-          this.commonService.vendorAccount = false;
-        }
-      });
-  }
+  // getUseridDetails() {
+  //   this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
+  //     (res => {
+  //       this.cmnService.userDetails = res['response'];
+  //       console.log(res, this.cmnService.userDetails);
+  //       if(this.cmnService.userDetails?.customerDetails){
+  //         this.cmnService.customerAccount = true;
+  //       } else{
+  //         this.cmnService.customerAccount = false;
+  //       }
+  //       if(this.cmnService.userDetails.response?.vendorDetails){
+  //         this.cmnService.vendorAccount = true;
+  //       } else{
+  //         this.cmnService.vendorAccount = false;
+  //       }
+  //     });
+  // }
 
 }

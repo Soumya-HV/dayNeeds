@@ -67,6 +67,7 @@ vendorAcc: any;
   }
 
   async openRegisterVendor(){
+    // localStorage.setItem('userType', 'vendor');
     this.modalController.dismiss();
     const modal = await this.modalController.create({
       component: RegisterComponent,
@@ -78,7 +79,16 @@ vendorAcc: any;
   }
 
   openRegisterCustomer(){
+    // localStorage.setItem('userType', 'customer');
     console.log('register customer')
+  }
+
+  switchVendor(){
+    // localStorage.setItem('userType', 'vendor');
+  }
+
+  switchCustomer(){
+    // localStorage.setItem('userType', 'customer');
   }
 
 

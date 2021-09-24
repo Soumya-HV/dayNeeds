@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { ModalController, IonSlides } from '@ionic/angular';
-import { commonService } from '../core/services/common-service';
-import { SideMenuComponent } from '../side-menu/side-menu.component';
-import * as env from '../../environments/environment';
-import { NotificationComponent } from '../shared/components/notification/notification.component';
+import { commonService } from '../../core/services/common-service';
+import { SideMenuComponent } from '../../side-menu/side-menu.component';
+import * as env from '../../../environments/environment';
+import { NotificationComponent } from '../../shared/components/notification/notification.component';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-customer-homepage',
+  templateUrl: 'customer-homepage.html',
+  styleUrls: ['customer-homepage.scss']
 })
-export class Tab1Page {
+export class CustomerHomePage {
   categories = [
     {
       'img': '../../assets/images/cat-1.svg',
@@ -47,12 +47,7 @@ export class Tab1Page {
     speed: 1000,
 
   }
-  constructor(public modalController: ModalController, private http: HttpClient, private commonService: commonService) {
-    // this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
-    // (res => {
-    //     this.commonService.userDetails = res['response'];
-    //     console.log(res, this.commonService.userDetails);
-    //   });
+  constructor(public modalController: ModalController, private http: HttpClient, private cmnService: commonService) {
     this.getCategories();
   }
 
@@ -70,7 +65,7 @@ export class Tab1Page {
   getCategories() {
     this.http.get(env.environment.url + 'categories').subscribe
       (res => {
-      console.log("category lists"+res);
+      // console.log("category lists"+res);
       });
   }
 
