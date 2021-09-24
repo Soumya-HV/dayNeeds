@@ -1,0 +1,21 @@
+<ion-tabs class="no-lines">
+  <ion-tab-bar slot="bottom" >
+    <ion-tab-button tab="home" (click)="changeHomeIcon()">
+      <ion-icon [src]="ishomeSelected ? homeIcon : clickedHomeIcon"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="product-list" (click)="changeProductIcon()" >
+      <ion-icon [src]="isproductSelected ? productIcon : clickedProductIcon" ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="schedule" (click)="changeScheduleIcon()">
+      <ion-icon  [src]="isscheduleSelected ? scheduleIcon : clickedScheduleIcon" ></ion-icon>
+    </ion-tab-button>
+   
+
+    <ion-tab-button tab="orders" (click)="changeOrderIcon()">
+      <ion-icon  [src]="isorderSelected ? ordertabIcon : clickedOrdertabIcon"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+

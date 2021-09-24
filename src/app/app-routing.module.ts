@@ -41,13 +41,14 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'vendor',
+    loadChildren: () => import('../app/vendor/vendor-tabs/vendor-tabs.module').then(m => m.VendorTabsPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'register',
     loadChildren: () => import('../app/modules/register/register.module').then(m => m.RegisterModule)
   },
-  // {
-    // path: 'user',
-    // loadChildren: () => import('./modules/my-cart-list/my-cart-list.module').then(m => m.CartListModule)
-  // },
   {
     path: 'user',
     loadChildren: () => import('./modules/geo-location/geo-location.module').then(m => m.GeoLocationModule)

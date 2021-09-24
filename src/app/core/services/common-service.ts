@@ -22,7 +22,7 @@ export class commonService {
             } else{
               this.customerAccount = false;
             }
-            if(this.userDetails.response?.vendorDetails){
+            if(this.userDetails?.vendorDetails){
               this.vendorAccount = true;
             } else{
               this.vendorAccount = false;
