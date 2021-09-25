@@ -13,7 +13,6 @@ export class AddSubUserComponent implements OnInit {
     this.addSubUserForm = this.fb.group({
       'userName': ['', Validators.required],
       'mblNo': ['', [Validators.required, Validators.email]],
-      'delivery': ['', [Validators.required]]
     })
   }
 

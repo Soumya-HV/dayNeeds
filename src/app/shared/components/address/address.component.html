@@ -39,32 +39,9 @@
         <ion-col size=11 class="customerRegWrap">
           <!-- <ion-label>Mark as default</ion-label> -->
           <!-- <ion-checkbox slot="end" [value]="default" [checked]="true" -->
-            <!-- (ionChange)="onSelectionChange($event)"> -->
+          <!-- (ionChange)="onSelectionChange($event)"> -->
           <!-- </ion-checkbox> -->
         </ion-col>
-        <!-- <ion-col size=11 class=""> -->
-        <!-- <ion-list> -->
-        <!-- <ion-radio-group value="office" (ionSelect)="SelectedAddress($event)"> -->
-        <!-- <ion-item> -->
-        <!-- <ion-label>Office</ion-label> -->
-        <!-- <ion-radio slot="start" class="ion-no-margin" value="office" formContolName="radio" -->
-        <!-- [checked]="radio.value==='office'"></ion-radio> -->
-        <!-- </ion-item> -->
-
-        <!-- <ion-item> -->
-        <!-- <ion-label>Home</ion-label> -->
-        <!-- <ion-radio slot="start" class="ion-no-margin" value="home" formContolName="radio" -->
-        <!-- [checked]="radio.value==='home'"></ion-radio> -->
-        <!-- </ion-item> -->
-
-        <!-- <ion-item> -->
-        <!-- <ion-label>Other</ion-label> -->
-        <!-- <ion-radio slot="start" class="ion-no-margin" value="other" formContolName="radio" -->
-        <!-- [checked]="radio.value==='other'"></ion-radio> -->
-        <!-- </ion-item> -->
-        <!-- </ion-radio-group> -->
-        <!-- </ion-list> -->
-        <!-- </ion-col> -->
         <ion-list>
           <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)"
             #radioGroup>
@@ -75,7 +52,6 @@
               <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}">
               </ion-radio>
             </ion-item>
-
           </ion-radio-group>
         </ion-list>
       </ion-row>

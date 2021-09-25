@@ -19,6 +19,7 @@ import { ManageAddressComponent } from './components/manage-address/manage-addre
 import { VendorPaymentComponent } from './components/vendor-payment/vendor-payment.component';
 import { AddSubUserComponent } from './components/add-sub-user/add-sub-user.component';
 import { SelectCategory } from './components/select-categories/select-categories.component';
+import { VendorShopdetailsComponent } from './components/vendor-shopdetails/vendor-shopdetails.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SelectCategory } from './components/select-categories/select-categories
     ManageAddressComponent,
     VendorPaymentComponent,
     AddSubUserComponent,
+    VendorShopdetailsComponent,
     SelectCategory],
   entryComponents: [],
   imports: [
@@ -59,6 +61,7 @@ import { SelectCategory } from './components/select-categories/select-categories
     NotificationComponent,
     ManageAddressComponent,
     VendorPaymentComponent,
+    VendorShopdetailsComponent,
     AddSubUserComponent,
     SelectCategory],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],

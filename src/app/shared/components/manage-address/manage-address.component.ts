@@ -25,6 +25,7 @@ export class ManageAddressComponent implements OnInit {
     this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
       (res => {
         this.commonService.userDetails = res['response'];
+        this.address = res['response']?.customerDetails?.address
       });
   }
 

@@ -69,7 +69,12 @@ export class AddressComponent implements OnInit {
             'landmark': res['response'].customerDetails?.address[0]?.landMark,
             'mblNo': res['response'].customerDetails?.address[0]?.contactNumber,
           });
-          console.log(res);
+          for (let i = 0; i < this.radio_list.length; i++) {
+            this.radio_list[i].checked = false;
+            if (res['response'].customerDetails?.address[0]?.typeOfAddress == this.radio_list[i].value) {
+              this.radio_list[i].checked = true;
+            }
+          }
         })
     } else {
       this.addressForm.reset();
@@ -77,7 +82,7 @@ export class AddressComponent implements OnInit {
   }
 
   onSelectionChange(val) {
-    console.log(val);    
+    console.log(val);
   }
 
   closeModal() {
@@ -94,7 +99,7 @@ export class AddressComponent implements OnInit {
         "address": this.addressForm.value.address,
         "landMark": this.addressForm.value.landmark,
         "contactNumber": this.addressForm.value.mblNo,
-        "typeOfAddress": 'Home',
+        "typeOfAddress": this.selectedGroup.value,
         "isDefault": true
       }
     };
