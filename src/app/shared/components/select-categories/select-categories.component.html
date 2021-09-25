@@ -23,5 +23,11 @@
       <ion-icon src="../../../../assets/images/chevron-down.svg"></ion-icon>
     </ion-col>
   </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let category of categoryLists;let i=index" >
+      <ion-label>{{category.categoryName}}</ion-label>
+      <ion-checkbox  (ionChange)="selectCategory($event,category,i)" [(ngModel)]="category.checked"></ion-checkbox>
+  </ion-item>
+  </ion-list>
 
 </ion-content>

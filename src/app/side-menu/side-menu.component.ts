@@ -6,6 +6,7 @@ import { NotificationComponent } from '../shared/components/notification/notific
 import { RewardsComponent } from '../shared/components/rewards/rewards.component';
 import { commonService } from '../core/services/common-service';
 import { RegisterComponent } from '../modules/register/register.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
@@ -16,7 +17,8 @@ userType : any;
 customerAcc: any;
 vendorAcc: any;
 
-  constructor(public modalController: ModalController,private cmnService: commonService) { }
+  constructor(public modalController: ModalController,private cmnService: commonService,
+    private router: Router) { }
 
   ngOnInit() {
     this.userType = localStorage.getItem('userType');
@@ -77,8 +79,29 @@ vendorAcc: any;
     return await modal.present();
   }
 
-  openRegisterCustomer(){
-    console.log('register customer')
+  async openRegisterCustomer(){
+    console.log('register customer');
+    this.modalController.dismiss();
+    const modal = await this.modalController.create({
+      component: RegisterComponent,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
+  }
+
+  switchVendor(){
+    this.modalController.dismiss();
+    localStorage.setItem('userType', 'vendor');
+    this.router.navigate(['vendor/home']);
+  }
+
+  switchCustomer(){
+    this.modalController.dismiss();
+    localStorage.setItem('userType', 'customer');
+    this.router.navigate(['customer/home']);
+   
   }
 
 

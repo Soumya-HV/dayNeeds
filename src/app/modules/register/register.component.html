@@ -66,13 +66,13 @@
       </ion-row>
     </form>
   </div>
-  <div class="text-center" *ngIf="userType == 'customer'">
+  <div class="text-center" *ngIf="userType != 'customer'">
     <ion-button class="registerBtn" part="native" (click)="submitRegForm()" [disabled]="customerRegisterForm.invalid"
-      justify-content-center>Register</ion-button>
+      justify-content-center>Register1</ion-button>
     <!-- <ion-img src="../../../../assets/images/Register btn.svg" ></ion-img> -->
   </div>
-  <div class="text-center" *ngIf="userType == 'vendor'">
+  <div class="text-center" *ngIf="userType != 'vendor'">
     <ion-button class="registerBtn" part="native" (click)="submitRegForm()" [disabled]="vendorRegisterForm.invalid"
-      justify-content-center>Register</ion-button>
+      justify-content-center>Register2</ion-button>
   </div>
 </ion-content>
