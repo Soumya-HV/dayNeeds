@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './vendor-tabs-routing.module';
 import { VendorTabs } from './vendor-tabs.page';
+import { SideMenuVendorComponent } from 'src/app/sidemenu-vendor/sidemenu-vendor.component';
+
 
 @NgModule({
   imports: [
@@ -12,6 +14,6 @@ import { VendorTabs } from './vendor-tabs.page';
     FormsModule,
     TabsPageRoutingModule
   ],
-  declarations: [VendorTabs]
+  declarations: [VendorTabs,SideMenuVendorComponent]
 })
 export class VendorTabsPageModule {}

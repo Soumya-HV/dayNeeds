@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomerTabsPageRoutingModule } from './customer-tabs-routing.module';
 import { CustomerTabsPage } from './customer-tabs.page';
-import { SideMenuComponent } from '../../side-menu/side-menu.component';
+import { SideMenuCustomerComponent } from '../../sidemenu-customer/sidemenu-customer.component';
 import { ShopDetailsComponent } from '../../shop-details/shop-details.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ShopDetailsComponent } from '../../shop-details/shop-details.component'
     FormsModule,
     CustomerTabsPageRoutingModule
   ],
-  declarations: [CustomerTabsPage,SideMenuComponent,ShopDetailsComponent]
+  declarations: [CustomerTabsPage,SideMenuCustomerComponent,ShopDetailsComponent]
 })
 export class CustomerTabsPageModule {}
 

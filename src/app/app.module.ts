@@ -11,15 +11,16 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire'
-import { RegisterComponent } from './modules/register/register.component';
+import { RegisterUserComponent } from '../app/modules/register-user/register-user.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/interceptor/http-config.interceptor';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AuthenticationService } from './core/services/authentication.service';
+import { RegisterVendorComponent } from './modules/register-vendor/register-vendor.component';
 
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent],
+  declarations: [AppComponent, RegisterUserComponent,RegisterVendorComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

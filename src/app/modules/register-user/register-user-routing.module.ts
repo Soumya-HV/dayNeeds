@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from './register.component';
+import { RegisterUserComponent } from './register-user.component';
 
 const routes: Routes = [
   {
     path: 'user',
-    component: RegisterComponent
+    component: RegisterUserComponent
   }
 ];
 @NgModule({
@@ -14,4 +14,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class RegisterRoutingModule { }
+export class RegisterUserRoutingModule { }

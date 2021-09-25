@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddressComponent } from '../shared/components/address/address.component';
 import { ManageAddressComponent } from '../shared/components/manage-address/manage-address.component';
 import { NotificationComponent } from '../shared/components/notification/notification.component';
 import { RewardsComponent } from '../shared/components/rewards/rewards.component';
 import { commonService } from '../core/services/common-service';
-import { RegisterComponent } from '../modules/register/register.component';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-side-menu',
-  templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.scss'],
+  selector: 'app-sidemenu-vendor',
+  templateUrl: './sidemenu-vendor.component.html',
+  styleUrls: ['./sidemenu-vendor.component.scss'],
 })
-export class SideMenuComponent implements OnInit {
+export class SideMenuVendorComponent implements OnInit {
 userType : any;
 customerAcc: any;
 vendorAcc: any;
+
 
   constructor(public modalController: ModalController,private cmnService: commonService,
     private router: Router) { }
@@ -68,34 +69,30 @@ vendorAcc: any;
     return await modal.present();
   }
 
-  async openRegisterVendor(){
-    this.modalController.dismiss();
-    const modal = await this.modalController.create({
-      component: RegisterComponent,
-      cssClass: 'sideMenuModal'
-    });
-    modal.onDidDismiss().then((data) => {
-    });
-    return await modal.present();
-  }
+  // async openRegisterVendor(){
+  //   console.log('register to vendor');
+  //   this.modalController.dismiss();
+  //   this.router.navigate(['register/vendor']);
+  // }
 
   async openRegisterCustomer(){
-    console.log('register customer');
+    console.log('register to customer');
     this.modalController.dismiss();
-    const modal = await this.modalController.create({
-      component: RegisterComponent,
-      cssClass: 'sideMenuModal'
-    });
-    modal.onDidDismiss().then((data) => {
-    });
-    return await modal.present();
+    this.router.navigate(['register/user']);
+    // const modal = await this.modalController.create({
+    //   component: RegisterUserComponent,
+    //   cssClass: 'sideMenuModal'
+    // });
+    // modal.onDidDismiss().then((data) => {
+    // });
+    // return await modal.present();
   }
 
-  switchVendor(){
-    this.modalController.dismiss();
-    localStorage.setItem('userType', 'vendor');
-    this.router.navigate(['vendor/home']);
-  }
+  // switchVendor(){
+  //   this.modalController.dismiss();
+  //   localStorage.setItem('userType', 'vendor');
+  //   this.router.navigate(['vendor/home']);
+  // }
 
   switchCustomer(){
     this.modalController.dismiss();

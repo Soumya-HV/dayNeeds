@@ -47,7 +47,11 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('../app/modules/register/register.module').then(m => m.RegisterModule)
+    loadChildren: () => import('../app/modules/register-user/register-user.module').then(m => m.RegisterUserModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('../app/modules/register-vendor/register-vendor.module').then(m => m.RegisterVendorModule)
   },
   {
     path: 'user',

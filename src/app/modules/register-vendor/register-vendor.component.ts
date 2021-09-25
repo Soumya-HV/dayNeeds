@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
@@ -9,27 +9,27 @@ import * as env from '../../../environments/environment';
 
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-register-vendor',
+  templateUrl: './register-vendor.component.html',
+  styleUrls: ['./register-vendor.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterVendorComponent implements OnInit {
   userType: any;
   categories = [];
   items = [];
   selectedCat = false;
-  customerRegisterForm: FormGroup;
+  // customerRegisterForm: FormGroup;
   vendorRegisterForm: FormGroup;
   selectedDropdown = [];
+ 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,
     public modalController: ModalController, private cmnService: commonService) {
-
     this.userType = localStorage.getItem('userType');
     console.log("userType", this.userType)
-    this.customerRegisterForm = this.fb.group({
-      'userName': ['', Validators.required],
-      'userMail': ['', [Validators.required, Validators.email]]
-    });
+    // this.customerRegisterForm = this.fb.group({
+    //   'userName': ['', Validators.required],
+    //   'userMail': ['', [Validators.required, Validators.email]]
+    // });
     this.vendorRegisterForm = this.fb.group({
       'shopName': ['', Validators.required],
       'userName': ['', Validators.required],
@@ -53,24 +53,24 @@ export class RegisterComponent implements OnInit {
   }
 
   submitRegForm() {
-    console.log(this.vendorRegisterForm.value);
-    let body = {
-    }
-    if (this.userType != 'customer') {
-      body['phoneNumber'] = Number(localStorage.getItem('phoneNum')),
-        body['typeOfUser'] = "Customer",
-        body['email'] = this.customerRegisterForm.value.userMail,
-        body['userName'] = this.customerRegisterForm.value.userName,
-        body['firebaseUId'] = localStorage.getItem('user_id')
 
-      this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {
-        console.log(res);
-        this.router.navigate(['customer/home']);
-        this.cmnService.getUseridDetails();
-        // this.router.navigate(['user/location']);
+    let body = {};
+    // if (this.userType == 'customer') {
+    //   body['phoneNumber'] = Number(localStorage.getItem('phoneNum')),
+    //     body['typeOfUser'] = "Customer",
+    //     body['email'] = this.customerRegisterForm.value.userMail,
+    //     body['userName'] = this.customerRegisterForm.value.userName,
+    //     body['firebaseUId'] = localStorage.getItem('user_id')
+
+    //   this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {
+    //     console.log(res);
+    //     this.router.navigate(['customer/home']);
+    //     this.cmnService.getUseridDetails();
+    //     // this.router.navigate(['user/location']);
       
-      });
-    } else {
+    //   });
+    // } else {
+
       var categoryId = [];
       console.log(this.selectedDropdown);
       for (var i = 0; i < this.selectedDropdown.length; i++) {
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
           console.log(categoryId);
         }
       }
-      body['phoneNumber'] = this.vendorRegisterForm.value.phoneNumber,
+       body['phoneNumber'] = this.vendorRegisterForm.value.phoneNumber,
         body['typeOfUser'] = "Vendor",
         body['shopName'] = this.vendorRegisterForm.value.shopName,
         body['vendorName'] = this.vendorRegisterForm.value.userName,
@@ -89,17 +89,13 @@ export class RegisterComponent implements OnInit {
       console.log(body)
       this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {
         console.log(res);
-        this.router.navigate(['customer/home']);
-        this.cmnService.getUseridDetails();
         localStorage.setItem('userType','vendor');
+        this.cmnService.getUseridDetails();
         // this.router.navigate(['user/location']);
       
       });
     }
-
-
-
-  }
+  
 
   async openCategoryList() {
     const modal = await this.modalController.create({
@@ -114,21 +110,16 @@ export class RegisterComponent implements OnInit {
     return await modal.present();
   }
 
-  createVendor() {
 
-    let params = {
-      "vendorName": "V-Raju",
-      "phoneNumber": 9827192719,
-      "categoryId": "6130c633a1b1830b881b2d38",
-      "email": "raju@gmail.com",
-      "shopName": "Raju Vegitable Shop",
-      "typeOfUser": "Vendor"
-    }
-  }
 
   closeModal() {
-    localStorage.setItem('userType', 'customer');
-    this.modalController.dismiss();
+    localStorage.setItem('userType','vendor');
+    this.cmnService.getUseridDetails();
+    // if(this.userType=='customer'){
+    //   this.router.navigate(['customer/home']);
+    // } else{
+    //   this.router.navigate(['vendor/home']);
+    // }
   }
 
 

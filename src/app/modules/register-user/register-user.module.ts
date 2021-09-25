@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterRoutingModule } from './register-routing.module';
+import { RegisterUserRoutingModule } from './register-user-routing.module';
 
 
 
@@ -8,7 +8,7 @@ import { RegisterRoutingModule } from './register-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    RegisterRoutingModule
+    RegisterUserRoutingModule
   ]
 })
-export class RegisterModule { }
+export class RegisterUserModule { }

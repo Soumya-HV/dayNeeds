@@ -1,0 +1,65 @@
+ion-content{
+    --background:#F7F9FB;
+}
+
+ion-item{
+    --ion-background-color:#F7F9FB;
+}
+
+.arrow-left{
+    position: absolute;
+    left: 11px;
+    height: 19px;
+}
+.icon-bg{
+    padding: 13px;
+    border-radius: 10px;
+    margin-right: 25px;
+}
+
+.profile-name{
+    font-family: 'poppinsReg';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height, or 122% */
+    letter-spacing: 0.02em;
+    color: rgba(42, 55, 87, 0.8);
+}
+.profile-email{
+    font-family: 'poppinsReg';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: rgba(42, 55, 87, 0.8);
+}
+
+.hide-card {
+    -webkit-box-shadow: none!important;
+    background: transparent;
+    text-align: center;
+    padding-top: 18px;
+  }
+  
+  .custom-avatar {
+    height: 30vw;
+    width: 30vw;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .menu-label{
+    font-family:  'poppinsReg';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height, or 139% */
+    letter-spacing: 0.02em;
+    color: #2A3757;
+  }

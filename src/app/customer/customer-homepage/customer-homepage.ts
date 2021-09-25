@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { ModalController, IonSlides } from '@ionic/angular';
 import { commonService } from '../../core/services/common-service';
-import { SideMenuComponent } from '../../side-menu/side-menu.component';
+import { SideMenuCustomerComponent } from '../../sidemenu-customer/sidemenu-customer.component';
 import * as env from '../../../environments/environment';
 import { NotificationComponent } from '../../shared/components/notification/notification.component';
 
@@ -52,7 +52,7 @@ export class CustomerHomePage {
   }
 
   async openSideModal(name) {
-    let cname = (name == 'notification') ? NotificationComponent : SideMenuComponent
+    let cname = (name == 'notification') ? NotificationComponent : SideMenuCustomerComponent
     const modal = await this.modalController.create({
       component: cname,
       cssClass: 'sideMenuModal'
