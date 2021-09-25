@@ -48,11 +48,7 @@ export class Tab1Page {
 
   }
   constructor(public modalController: ModalController, private http: HttpClient, private commonService: commonService) {
-    // this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
-    // (res => {
-    //     this.commonService.userDetails = res['response'];
-    //     console.log(res, this.commonService.userDetails);
-    //   });
+    this.getUserDetails();
     this.getCategories();
   }
 
@@ -67,10 +63,18 @@ export class Tab1Page {
     return await modal.present();
   }
 
+  getUserDetails() {
+    this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
+      (res => {
+        this.commonService.userDetails = res['response'];
+        console.log(res, this.commonService.userDetails);
+      });
+  }
+
   getCategories() {
     this.http.get(env.environment.url + 'categories').subscribe
       (res => {
-      console.log("category lists"+res);
+        console.log("category lists" + res);
       });
   }
 

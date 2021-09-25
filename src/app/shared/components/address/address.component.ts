@@ -76,6 +76,10 @@ export class AddressComponent implements OnInit {
     }
   }
 
+  onSelectionChange(val) {
+    console.log(val);    
+  }
+
   closeModal() {
     this.modalController.dismiss();
   }
