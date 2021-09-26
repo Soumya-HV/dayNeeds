@@ -10,7 +10,7 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row  class="ion-margin-bottom">
       <div class="addGroup" *ngFor="let addr of address">
         <p class="delLocation"> {{addr.shopName}}</p>
         <p class="delAdd">No.{{addr.houseNo}} , {{addr.block}} , {{addr.appartmentName}} , {{addr.
@@ -19,5 +19,17 @@
     svg' (click)="opensideModal('edit', addr._id)"></ion-icon></p>
       </div>
     </ion-row>
+    <ion-row class="ion-margin-start ion-margin-vertical">
+      <ion-checkbox checked="true"></ion-checkbox><ion-label class="ion-margin-start">Cash on Delivery</ion-label>
+    </ion-row>
+    <ion-row class="ion-margin-vertical" size="12">
+      <ion-label class="ion-margin-start" size="10">Delivery Charges</ion-label>
+      <ion-icon src='../../../../assets/images/edit-vendor.svg' class="" size="3"></ion-icon>
+    </ion-row>
+    <ion-row size="12" class="ion-margin-start">
+        <ion-col size="8" class="ion-no-padding price">Below 100</ion-col>
+        <ion-col size="4" class="price">Rs.10.00</ion-col>
+    </ion-row>
   </div>
+  
 </ion-content>

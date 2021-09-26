@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['product-list.page.scss']
 })
 export class ProductListPage {
-
-  constructor() {}
+  products = [
+    { id: 1, catName: 'Vegetables', list: [{ productName: 'Tomatoes', price: '70/kg' }, { productName: 'Beetroot', price: '30/kg' }] },
+    { id: 12, catName: 'Dairy Products', list: [{ productName: 'Milk', price: '30/lt' }, { productName: 
+      'Curd', price: '20/cup' }] },
+  ];
+  constructor() { }
 
 }

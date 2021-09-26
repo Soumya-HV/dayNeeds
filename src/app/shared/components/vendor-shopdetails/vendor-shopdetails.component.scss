@@ -1,0 +1,43 @@
+ion-content{
+    --background: #F7F9FB;
+}
+
+.vendor-txt-trim{
+    font:  16px 'poppinsSemiBold';
+    color:rgba(42, 55, 87, 0.8)
+}
+
+.delLocation{
+    font: 100 14px 'PoppinsMedium';  
+    color: #535E78;  
+    margin-bottom: 0px;
+}
+
+.delAdd {
+  font: 100 12px 'PoppinsReg';    
+  color: #2A3757;
+  margin: 4px 0px;
+}
+
+.delNum{
+    font: 100 12px 'PoppinsMedium';  
+    color: #535E78;   
+    margin-bottom: 0px;
+}
+
+.addGroup{
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 312px;
+    height: 104px;
+    margin: 0px 0px 16px 16px;
+}
+
+ion-label{
+    font: 100 1rem 'poppinsMedium';
+}
+
+.price{
+    font: 100 0.75rem 'poppinsReg';
+    color:rgba(42, 55, 87, 0.6);
+}
