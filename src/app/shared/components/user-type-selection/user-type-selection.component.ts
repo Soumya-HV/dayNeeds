@@ -25,7 +25,12 @@ export class UserTypeSelectionComponent implements OnInit {
 
   selectEvent(userType) {
     localStorage.setItem('userType', userType);
-    this.router.navigate(['register/user']);
+    if(userType=='customer'){
+      this.router.navigate(['register/user']);
+    } else{
+      this.router.navigate(['register/vendor'])
+    }
+   
   }
   
 }

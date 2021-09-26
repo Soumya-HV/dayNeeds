@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as env from '../../../environments/environment'
+import { Router } from '@angular/router';
 @Injectable({
     providedIn: 'root'
 })
@@ -9,7 +10,7 @@ export class commonService {
     userDetails: any;
     customerAccount: boolean;
     vendorAccount : boolean;
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,private router: Router) {
     }
 
     getUseridDetails() {
@@ -26,6 +27,11 @@ export class commonService {
               this.vendorAccount = true;
             } else{
               this.vendorAccount = false;
+            }
+            if(localStorage.getItem('userType')== 'vendor'){
+              this.router.navigate(["vendor/home"]);
+            } else{
+              this.router.navigate(["customer/home"]);
             }
           });
       }

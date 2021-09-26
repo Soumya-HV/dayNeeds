@@ -26,11 +26,8 @@ export class VendorTabs {
   constructor() {}
 
   changeHomeIcon() {    
-    // this.resetAll();
-    this.ishomeSelected = true;
-    this.isproductSelected= false;
-    this.isscheduleSelected = false;
-    this.isorderSelected= false;
+    this.resetAll();
+    this.ishomeSelected = false;
   }
 
   changeProductIcon() {
