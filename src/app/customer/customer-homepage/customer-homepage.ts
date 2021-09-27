@@ -66,6 +66,14 @@ export class CustomerHomePage {
     return await modal.present();
   }
 
+  getUserDetails() {
+    this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
+      (res => {
+        this.cmnService.userDetails = res['response'];
+        console.log(res, this.cmnService.userDetails);
+      });
+  }
+
   getCategories() {
     this.http.get(env.environment.url + 'categories').subscribe
       (res => {

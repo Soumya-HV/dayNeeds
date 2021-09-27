@@ -18,12 +18,14 @@ export class ManageAddressComponent implements OnInit {
   constructor(public modalController: ModalController, private commonService:commonService, private http:HttpClient) { }
 
   ngOnInit() { 
-    console.log(this.commonService.userDetails.customerDetails.address);
-    this.http.get(env.environment.url + 'user/' + this.commonService.userDetails.customerDetails._id).subscribe
-    (res => {
+    this.getUserDetails();
+  }
+
+  getUserDetails() {
+    this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
+      (res => {
         this.commonService.userDetails = res['response'];
-        this.address = this.commonService.userDetails.customerDetails.address;
-        console.log(res, this.commonService.userDetails);
+        this.address = res['response']?.customerDetails?.address
       });
   }
 

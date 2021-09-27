@@ -1,0 +1,40 @@
+ion-title{
+    font: 500 1rem 'poppinsSemiBold';
+    color: rgba(42, 55, 87, 0.8);
+}
+
+ion-content{
+    --background:#F7F9FB !important
+}
+
+.addProduct, .updateProduct{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 8px rgba(255, 138, 101, 0.25);
+  border-radius: 20px;
+  height: 72px;
+  text-align: center;
+}
+
+.rewardamt{
+    font: 100 0.85rem 'poppinsMedium';
+    padding : 10px 0px 0px 0px; 
+    margin-bottom: 10px;
+}
+
+.updateProduct p{ 
+    color: rgba(255, 112, 67, 1);
+    font: 100 0.85rem 'poppinsMedium';
+}
+
+.icon img {
+    float: right;
+}
+
+.prod {
+    font: 100 0.75rem 'poppinsMedium';
+}
+.text span {
+    color: #FF7043;
+    font: 100 1rem 'poppinsSemiBold';
+}
+

@@ -6,6 +6,10 @@ import { NotificationComponent } from '../shared/components/notification/notific
 import { RewardsComponent } from '../shared/components/rewards/rewards.component';
 import { commonService } from '../core/services/common-service';
 import { Router } from '@angular/router';
+import { ShopDetailsComponent } from '../shop-details/shop-details.component';
+import { VendorShopdetailsComponent } from '../shared/components/vendor-shopdetails/vendor-shopdetails.component';
+import { VendorPaymentComponent } from '../shared/components/vendor-payment/vendor-payment.component';
+import { AddSubUserComponent } from '../shared/components/add-sub-user/add-sub-user.component';
 
 @Component({
   selector: 'app-sidemenu-vendor',
@@ -58,10 +62,32 @@ vendorAcc: any;
     return await modal.present();
   }
 
-  async openManageAddrModel() {
+  async openShopDetailsModel() {
     this.modalController.dismiss();
     const modal = await this.modalController.create({
-      component: ManageAddressComponent,
+      component: VendorShopdetailsComponent,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
+  }
+
+  async openAddUser() {
+    this.modalController.dismiss();
+    const modal = await this.modalController.create({
+      component: AddSubUserComponent,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
+  }
+
+  async openPaymentModel() {
+    this.modalController.dismiss();
+    const modal = await this.modalController.create({
+      component: VendorPaymentComponent,
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {

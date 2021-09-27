@@ -10,7 +10,7 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let rewards of userRewards" size=12 class="ion-justify-content-center">
+    <ion-row *ngFor="let rewards of userRewards; let i=index" size=12 class="ion-justify-content-center">
       <ion-col size=4>
         <div class="rewardCard">
           <p class="rewardamt" [style.color]="rewards.color">&#x20B9;{{rewards.amount}}</p>

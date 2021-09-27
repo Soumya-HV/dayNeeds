@@ -18,7 +18,7 @@ export class VendorPaymentComponent implements OnInit {
       'acNo': ['', Validators.required],
       'IFSCNo': ['', Validators.required],
       'GSTNo': ['', Validators.required],
-      'TANNo': ['', Validators.required]
+      'PANNo': ['', Validators.required]
     })
   }
 
