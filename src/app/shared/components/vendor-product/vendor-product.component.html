@@ -1,0 +1,60 @@
+<ion-content>
+  <ion-row style="margin: 30px 0 0 10px;box-shadow: none;">
+    <ion-col style="margin:auto" size="2">
+      <img (click)="closeModal()" src="../../assets/images/sidebar-icons/arrow-left.svg">
+    </ion-col>
+    <ion-col style="margin:auto" size="10" class="ion-no-padding">
+      <div class="vendor-name">
+        <span class="vendor-txt-trim">{{mode}} Product</span>
+      </div>
+    </ion-col>
+  </ion-row>
+  <form [formGroup]='productDetailsForm'>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size=5 class="cregCertificate ion-text-center ion-margin-start ion-margin-top ion-margin-end">
+        <p class="ion-margin-top">Upload Photo</p>
+        <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
+        <span class="">Optional</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=11 class="customerRegWrap">
+        <ion-input class="ion-margin-start" placeholder="Product Name" formControlName="name" required>
+        </ion-input>
+      </ion-col>
+      <ion-col size=11 class="customerRegWrap">
+        <ion-input class="ion-margin-start" placeholder="Description" formControlName="description" required>
+        </ion-input>
+      </ion-col>
+      <ion-col size=5 class="prodWrap">
+        <ion-input class="ion-margin-start" placeholder="Price" formControlName="price" required>
+        </ion-input>
+      </ion-col>
+      <ion-col size=5 class="prodWrap">
+        <!-- <ion-input class="ion-margin-start" placeholder="Unit" formControlName="unit" (click)='openUnitList()' required> -->
+        <!-- </ion-input> -->
+        <ion-label class="unitWrap ion-margin-start" size=12 (click)='openUnitList()'>Unit</ion-label>
+        <ion-icon src="../../../../assets/images/chevron-down.svg"></ion-icon>
+        <ion-list *ngIf="openUnits" >
+          <ion-item *ngFor="let unit of unitLists;let i=index">
+            <ion-label>{{unit.name}}</ion-label>
+            <ion-checkbox (ionChange)="selectCategory($event,unit,i)" [(ngModel)]="unit.checked" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <!-- <ion-col> -->
+        <!-- <div></div> -->
+      <!-- </ion-col> -->
+      <ion-col class="ion-margin-top ion-text-center">
+        <ion-icon src='../../../../assets/images/add-icon.svg'></ion-icon><span class="offerText">Add Offers For More
+          Quantity</span>
+      </ion-col>
+      <ion-col class="text-center" size=12>
+        <ion-button class="registerBtn" part="native" (click)="submitForm()" [disabled]="productDetailsForm.invalid || !unitSelected.checked "
+          justify-content-center>
+          Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

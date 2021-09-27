@@ -20,7 +20,8 @@ import { VendorPaymentComponent } from './components/vendor-payment/vendor-payme
 import { AddSubUserComponent } from './components/add-sub-user/add-sub-user.component';
 import { SelectCategory } from './components/select-categories/select-categories.component';
 import { VendorShopdetailsComponent } from './components/vendor-shopdetails/vendor-shopdetails.component';
-
+import { VendorProductComponent } from './components/vendor-product/vendor-product.component';
+import { VendorDabbastoryComponent } from './components/vendor-dabbastory/vendor-dabbastory.component'
 
 @NgModule({
   declarations: [
@@ -36,6 +37,8 @@ import { VendorShopdetailsComponent } from './components/vendor-shopdetails/vend
     VendorPaymentComponent,
     AddSubUserComponent,
     VendorShopdetailsComponent,
+    VendorProductComponent,
+    VendorDabbastoryComponent,
     SelectCategory],
   entryComponents: [],
   imports: [
@@ -62,7 +65,9 @@ import { VendorShopdetailsComponent } from './components/vendor-shopdetails/vend
     ManageAddressComponent,
     VendorPaymentComponent,
     VendorShopdetailsComponent,
+    VendorDabbastoryComponent,
     AddSubUserComponent,
+    VendorProductComponent,
     SelectCategory],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],
 })
