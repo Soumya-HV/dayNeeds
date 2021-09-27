@@ -57,9 +57,9 @@
 
     <ion-slides #categorySlider pager="false" [options]="categorySliderOpts">
       <ion-slide  *ngFor="let category of categories">
-        <div [ngStyle]="{'background-color': category.bgColor}" class="cat-section">
-          <img style="height: 60px;width: 60px;margin-top: 10px;" src="{{category.img}}" >
-            <div class="cat-name">{{category.name}}</div>
+        <div [ngStyle]="{'background-color': category.color}" (click)="navigateToVendorList(category)" class="cat-section">
+          <img  style="height: 60px;width: 60px;margin-top: 10px;border-radius: 4px;" src="{{category.categoryImage}}" >
+            <div class="cat-name">{{category.categoryName}}</div>
         </div>
       </ion-slide>
     </ion-slides>
