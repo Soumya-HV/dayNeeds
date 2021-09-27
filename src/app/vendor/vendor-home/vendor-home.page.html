@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div style="margin-left: 15px;margin-right:15px;">
+  <div style="margin: 0 24px;">
     <ion-row style="margin-top: 15px;">
       <ion-col style="margin:auto" size="2">
         <img (click)="openSideModal('profile')" src="../../assets/images/profile_icon.svg">
@@ -12,7 +12,8 @@
       <ion-col style="margin:auto" size="1" class="ion-no-padding">
         <ion-toolbar style="--background: #F7F9FB !important;" part="toolbar-container">
           <ion-buttons slot="secondary">
-            <ion-button id="cart-btn" (click)="openSideModal('notification')" ion-button icon-only class="ion-no-margin" style=width:80%;right:32%>
+            <ion-button id="cart-btn" (click)="openSideModal('notification')" ion-button icon-only class="ion-no-margin"
+              style=width:80%;right:32%>
               <ion-icon src="../../assets/images/bell.svg"></ion-icon>
               <ion-badge id="cart-badge">2</ion-badge>
             </ion-button>
@@ -21,7 +22,157 @@
       </ion-col>
     </ion-row>
     <div style="margin-bottom: 15px;">
-      <ion-searchbar class="search-cls searchbarinput" placeholder="Search by items name"></ion-searchbar>
+      <ion-searchbar class="search-cls searchbarinput" placeholder="Search"></ion-searchbar>
     </div>
+    <h4 class="week-txt">This Week</h4>
+    <div style="display: flex;justify-content:space-between">
+      <div class="order-card1">
+        <div class="order-count"><span>52</span></div>
+        <div class="order-txt"><span>Orders</span></div>
+      </div>
+      <div class="order-card1">
+        <div class="order-amount"><span>₹ 5200</span></div>
+        <div class="order-txt"><span>Amount</span></div>
+      </div>
+      <div class="order-card1">
+        <div class="order-percent"><span>45%</span></div>
+        <div class="order-txt"><span>Review</span></div>
+      </div>
     </div>
+    <h4 class="week-txt">Orders (In Progress)</h4>
+    <div style="display: -webkit-box;width: 100%;overflow-y: scroll;">
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-2.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-3.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-4.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-5.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-6.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-7.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-8.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-7.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-8.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-7.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-8.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+    </div>
+
+    <h4 class="week-txt">Orders Placed</h4>
+    <div style="display: -webkit-box;width: 100%;overflow-y: scroll;">
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-2.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-3.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-4.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-5.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-6.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-7.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-8.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-7.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-8.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-7.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-8.svg">
+      </ion-thumbnail>
+      <ion-thumbnail>
+        <img src=" ../../../assets/images/fake-thumbnails/thumbnail-1.svg">
+      </ion-thumbnail>
+    </div>
+
+    <h4 class="week-txt">Upcoming Visits</h4>
+    <ion-row>
+      <ion-col size="6">
+        <div class="visiting-cards">
+          <div style="padding: 12px 14px;">
+            <div class="date-txt">
+              <span style="float: left;">Today</span>
+              <span style="float: right;">04:00 PM</span>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="visiting-place">
+              <span>Sobha lake garden</span>
+            </div>
+            <div class="orders-count">
+              <span>8 orders</span>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="visiting-cards">
+          <div style="padding: 12px 14px;">
+            <div class="date-txt">
+              <span style="float: left;">Today</span>
+              <span style="float: right;">04:00 PM</span>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="visiting-place">
+              <span>Sobha lake garden</span>
+            </div>
+            <div class="orders-count">
+              <span>8 orders</span>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

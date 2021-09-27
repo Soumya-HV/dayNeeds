@@ -1,0 +1,125 @@
+ion-content{
+    --background: #F7F9FB !important;
+  }
+
+.ordersWrap{
+    font: 100 1rem 'poppinsSemiBold';
+    color: rgba(42, 55, 87, 0.8);
+    margin-top: 1.8rem;
+    text-align: center;
+  }
+.apartmentWrap {
+    background-color: #2A3757;
+    margin-top: 0.8rem;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  ion-segment{
+    background: rgba(251, 229, 201, 0.5);
+    box-shadow: inset 0px 1px 2px rgb(97 97 97 / 20%), inset 0px 2px 4px rgb(97 97 97 / 20%);
+    border-radius: 14px;
+  }
+  .switch-status{
+    margin-top: 0.8rem;
+    ion-segment-button {
+      --color-checked: rgba(0, 0, 0, 0.6) !important;
+      --background-checked: white !important;
+      --color: #FF7043;
+      font-weight: 600;
+      font-size: 10px;
+      border-radius: 14px;
+      margin-top: 6px;
+      font-family: 'poppinsReg';
+      margin-bottom: 6px;
+     --indicator-color: none;
+     min-height: 33px;
+
+    }
+  }
+
+.paid-txt-clr{
+    color: #2AB930;
+}
+.cod-txt-clr{
+  color: #FF7043;
+}
+
+
+  //pappu css ends here
+  
+  ion-card{
+    padding: 10px;
+    margin: 10px 30px;
+    border-radius: 15px;
+  }
+  
+  .arrow-left{
+    margin: 30px 0px 0px 18px ;
+  }
+  
+  .titleWrapper, .shopName{
+    color:rgba(42, 55, 87, 0.8) !important;
+    font: 600 1rem 'poppinsSemiBold' ;
+  }
+  
+  .titleContainer{
+    margin-top: 30px;
+  }
+   
+  .aptname {
+    font: 100 0.875rem 'poppinsMedium';
+    color: #fff;
+  }
+  
+  .aptdeliver {
+    font: 100 0.75rem 'poppinsMedium';
+    color: #C4C4C4;
+  }
+  
+  ion-label{
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .onWay{
+    text-transform: inherit;
+    font: 500 0.75rem 'poppinsMedium';
+    color: #FF7043;
+  }
+  
+
+  .tabcontent {
+    margin: 0 1.29rem;   
+    color: #2A3757;
+  }
+  
+  span{
+    font: 0.75rem 'poppinsMedium';
+  }
+  
+  .pname{
+    font: 0.625rem 'poppinsMedium';
+  }
+  
+  .tabHeader {
+    margin: 1.1rem;
+    font: 400 0.75rem 'poppinsReg';
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 4px;
+    // background: rgba(251, 231, 201, 1);
+    box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+    border-radius: 14px;
+  }
+
+  
+ 
+  
+  // ion-segment-button{
+  //   margin: 2px;
+  // }
+  
+  

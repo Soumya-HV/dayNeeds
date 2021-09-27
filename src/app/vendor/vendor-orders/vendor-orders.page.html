@@ -1,15 +1,91 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      VendorOrdersPage
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div style="margin: 0 30px;">
+    <div class="ordersWrap">Orders Placed</div>
+    <div *ngFor="let order of orderDetails;let i=index">
+      <ion-row class="apartmentWrap">
+        <ion-col size=6 style="text-align: start;padding-left: 15px;">
+          <span class="aptname">{{order.apartmentName}}</span>
+        </ion-col>
+        <ion-col size=6 style="text-align: end;padding-right: 15px;">
+          <span class="aptdeliver">{{order.deliveryTime}}</span>
+        </ion-col>
+      </ion-row>
+      <div class="switch-status">
+        <ion-segment [(ngModel)]="order.products[0].segment">
+          <ion-segment-button value="placed">
+            Order Placed
+          </ion-segment-button>
+          <ion-segment-button value="ontheway">
+            On the way
+          </ion-segment-button>
+          <ion-segment-button value="delivered">
+            Delivered
+          </ion-segment-button>
+        </ion-segment>
+      </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large"></ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <div [ngSwitch]="order.products[0].segment">
+
+        <div *ngSwitchCase="'placed'">
+          <div *ngFor="let orderPlaced of order.products[0].orderPlaced">
+            <ion-row style="border-bottom: 1.04688px solid rgba(0, 0, 0, 0.1);padding: 6px 0;">
+              <ion-col size="5">
+                <div><span>{{orderPlaced.name}}</span></div>
+              </ion-col>
+              <ion-col style="text-align: center;" size="3">
+                <div><span>{{orderPlaced.amount}}/-</span></div>
+              </ion-col>
+              <ion-col style="text-align: center;" size="4">
+                <div>
+                  <span><img style="margin-right: 6px;vertical-align: middle;"
+                      src="../../../assets/images/cod-close.svg"></span>
+                  <span class="cod-txt-clr">{{orderPlaced.status}}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'ontheway'">
+          <div *ngFor="let ontheway of order.products[1].ontheway">
+            <ion-row style="border-bottom: 1.04688px solid rgba(0, 0, 0, 0.1);padding: 6px 0;">
+              <ion-col size="5">
+                <div><span>{{ontheway.name}}</span></div>
+              </ion-col>
+              <ion-col style="text-align: center;" size="3">
+                <div><span>{{ontheway.amount}}/-</span></div>
+              </ion-col>
+              <ion-col style="text-align: center;" size="4">
+                <div>
+                  <span><img style="margin-right: 6px;vertical-align: middle;"
+                      src="../../../assets/images/order-delivered-tick.svg"></span>
+                  <span class="cod-txt-clr">{{ontheway.status}}</span>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+        <div  *ngSwitchCase="'delivered'">
+          <div *ngFor="let delivered of order.products[2].delivered">
+          <ion-row style="border-bottom: 1.04688px solid rgba(0, 0, 0, 0.1);padding: 6px 0;">
+            <ion-col size="5">
+              <div><span>{{delivered.name}}</span></div>
+            </ion-col>
+            <ion-col style="text-align: center;" size="3">
+              <div><span>{{delivered.amount}}/-</span></div>
+            </ion-col>
+            <ion-col style="text-align: center;" size="4">
+              <div>
+                <span><img style="margin-right: 6px;vertical-align: middle;"
+                    src="../../../assets/images/cod-close.svg"></span>
+                <span class="cod-txt-clr">{{delivered.status}}</span>
+              </div>
+            </ion-col>
+          </ion-row>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
