@@ -24,18 +24,20 @@
       </div>
     </ion-col>
   </ion-row>
-    <ion-grid *ngFor="let list of products">
-      <ion-row class="ion-margin-horizontal ion-margin-vertical">
-        <ion-col class="text" size=6><span>{{list?.catName}}</span></ion-col>
-        <ion-col class="icon" size=6><img src='../../../assets/images/edit-vendor.svg'></ion-col>
-      </ion-row>
-      <ion-row size=12 class='prod ion-margin-horizontal' *ngFor="let items of list?.list">
-        <ion-col size=6>{{items?.productName}}</ion-col>
-        <ion-col size=3>&#x20B9;{{items?.price}}</ion-col>
-        <ion-col size=1><ion-toggle class="ion-no-padding"></ion-toggle>
-        </ion-col>
-        <img class="ion-text-center vborder ion-margin-horizontal" src='../../../assets/images/vborderLine.svg'>
-      </ion-row>
-    </ion-grid>
+  <ion-grid *ngFor="let list of products">
+    <ion-row class="ion-margin-horizontal ion-margin-vertical">
+      <ion-col class="text" size=6><span>{{list?.catName}}</span></ion-col>
+      <ion-col class="icon" size=6><img src='../../../assets/images/edit-vendor.svg'></ion-col>
+    </ion-row>
+    <ion-row size=12 class='prod ion-margin-horizontal' *ngFor="let items of list?.list">
+      <ion-col size=6>{{items?.productName}}</ion-col>
+      <ion-col size=3>&#x20B9;{{items?.price}}</ion-col>
+      <ion-col size=1>
+        <ion-toggle class="ion-no-padding"></ion-toggle>
+      </ion-col>
+      <ion-col size=12 class="ion-no-padding ion-margin-horizontal"><img class="vborder"
+          src='../../../assets/images/vborderLine.svg'></ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
