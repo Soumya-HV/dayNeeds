@@ -37,51 +37,27 @@
       </ion-slide>
     </ion-slides>
     <h6 class="cat-head">Vegetable shops near you</h6>
-
-    <ion-row (click)="openShopDetail()" style="margin-left: 10px;margin-right: 5px;">
-      <ion-col class="card-img-sec" size="4">
-        <img class="card-img" src="../../assets/images/veg1.svg">
-      </ion-col>
-      <ion-col size="8" class="card-content">
-        <div style="padding: 0 15px;">
-          <div class="vendor-name">RK Vegetable Shop
-            <!-- <span><img style="margin-top: 3px;float: right;" src="../../assets/images/heart-outline.svg"></span> -->
+    <div *ngIf="vendorList.length > 0">
+      <ion-row ngFor="let vendor of vendorList" (click)="openShopDetail(vendor)"
+        style="margin-left: 10px;margin-right: 5px;">
+        <ion-col class="card-img-sec" size="4">
+          <img class="card-img" src="../../assets/images/veg1.svg">
+        </ion-col>
+        <ion-col size="8" class="card-content">
+          <div style="padding: 0 15px;">
+            <div class="vendor-name">{{vendor?.vendorDetails.businessDetails.buisnessName}}
+            </div>
+            <div *ngFor="let category of vendor?.vendorDetails.category">
+              <span [ngStyle]="{'background-color': category?.color}" class="vendor-cat">{{category.categoryName}}</span>
+            </div>
+            <div style=" padding-top: 15px;">
+              <div class="vendor-time">Tommorow,4pm</div>
+              <div class="vendor-rating">4.0<span style="vertical-align: -webkit-baseline-middle;"><img
+                    src="../../assets/images/rating.svg"></span></div>
+            </div>
           </div>
-          <div>
-            <span style="background: #DDEDEA;" class="vendor-cat">Vegetables</span>
-            <span style="background: #FCF4DD;" class="vendor-cat">Fruits</span>
-            <span style="background: #EAF2D7;" class="vendor-cat">Milk</span>
-          </div>
-          <div style=" padding-top: 15px;">
-            <div class="vendor-time">Tommorow,4pm</div>
-            <div class="vendor-rating">4.0<span style="vertical-align: -webkit-baseline-middle;"><img
-                  src="../../assets/images/rating.svg"></span></div>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-
-    <ion-row (click)="openShopDetail()" style="margin-left: 10px;margin-right: 5px;">
-      <ion-col class="card-img-sec" size="4">
-        <img class="card-img" src="../../assets/images/veg1.svg">
-      </ion-col>
-      <ion-col size="8" class="card-content">
-        <div style="padding: 0 15px;">
-          <div class="vendor-name">RK Vegetable Shop
-            <!-- <span><img style="margin-top: 3px;float: right;" src="../../assets/images/heart-outline.svg"></span> -->
-          </div>
-          <div>
-            <span style="background: #DDEDEA;" class="vendor-cat">Vegetables</span>
-            <span style="background: #FCF4DD;" class="vendor-cat">Fruits</span>
-            <span style="background: #EAF2D7;" class="vendor-cat">Milk</span>
-          </div>
-          <div style=" padding-top: 15px;">
-            <div class="vendor-time">Tommorow,4pm</div>
-            <div class="vendor-rating">4.0<span style="vertical-align: -webkit-baseline-middle;"><img
-                  src="../../assets/images/rating.svg"></span></div>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
+        </ion-col>
+      </ion-row>
+    </div>
   </div>
 </ion-content>

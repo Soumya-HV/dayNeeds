@@ -12,7 +12,7 @@ import * as env from '../../../environments/environment';
 export class VendorListPage {
 
   categoryId: any;
-  vendorList: any
+  vendorList= [];
   // categories = [
   //   {
   //     'img': '../../assets/images/cat-1.svg',
