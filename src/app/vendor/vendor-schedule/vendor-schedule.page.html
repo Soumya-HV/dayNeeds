@@ -1,15 +1,99 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      VendorSchedulePage
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <ion-header [translucent]="true"> -->
+<!-- <ion-toolbar> -->
+<!-- <ion-title> -->
+<!-- VendorSchedulePage -->
+<!-- </ion-title> -->
+<!-- </ion-toolbar> -->
+<!-- </ion-header> -->
+<!--  -->
+<!-- <ion-content [fullscreen]="true"> -->
+<!-- <ion-header collapse="condense"> -->
+<!-- <ion-toolbar> -->
+<!-- <ion-title size="large">Vendor Schedule Page</ion-title> -->
+<!-- <ion-row> -->
+<!-- <ion-col size="6"> -->
+<!-- <div class="visiting-cards"> -->
+<!-- <div style="padding: 12px 14px;"> -->
+<!-- <div class="date-txt"> -->
+<!-- <span style="float: left;">Today</span> -->
+<!-- <span style="float: right;">04:00 PM</span> -->
+<!-- </div> -->
+<!-- <div style="clear: both;"></div> -->
+<!-- <div class="visiting-place"> -->
+<!-- <span>Sobha lake garden</span> -->
+<!-- </div> -->
+<!-- <div class="orders-count"> -->
+<!-- <span>8 orders</span> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </ion-col> -->
+<!-- </ion-row> -->
+<!-- </ion-toolbar> -->
+<!-- </ion-header> -->
+<!-- </ion-content> -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">VendorSchedulePage</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="ordersWrap">Schedule Visit</div>
+  <ion-row size="12">
+    <ion-col size="6">
+      <!-- <ion-list> -->
+      <!-- <ion-item *ngFor="let apartment of apartmentsList"> -->
+      <!-- <ion-label>{{apartment.name}}</ion-label> -->
+      <!-- <ion-checkbox slot="end" [(ngModel)]="apartment.isChecked"></ion-checkbox> -->
+      <!-- </ion-item> -->
+      <!-- </ion-list> -->
+      <!-- <ion-item> -->
+      <!-- <ion-select *ngFor="let apartment of apartmentsList" multiple="true"> -->
+      <!-- <ion-select-option value="apartment">{{apartment.name}}</ion-select-option> -->
+      <!-- </ion-select> -->
+      <!-- </ion-item> -->
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]='scheduleDeliverForm' class="ion-margin-vertical">
+    <ion-row class="scheduleWrap ion-justify-content-center ion-margin-horizontal ion-margin-vertical  ion-padding-top">
+      <ion-col size=5 class="ion-text-center
+  customerRegWrap">
+        <ion-item>
+          <ion-datetime displayFormat="DD/MM/YY" placeholder="00/00/00" formControlName="date">
+          </ion-datetime>
+          <ion-icon src='../../../../assets/images/calendar.svg'></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size=5 class="customerRegWrap">
+        <ion-item>
+          <ion-datetime displayFormat="HH:mm" placeholder="00:00 Pm" formControlName="time"></ion-datetime>
+          <ion-icon src='../../../../assets/images/time.svg'></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col class="text-center" size=12>
+        <ion-button class="registerBtn" part="native" (click)="submitForm()" [disabled]="scheduleDeliverForm.invalid"
+          justify-content-center>
+          Schedule</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-row class="ion-margin-horizontal ion-margin-vertical">
+    <ion-col class='contentWrap ion-margin-vertical'>Scheduled Visit</ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-horizontal ion-margin-top">
+    <ion-col size="6" *ngFor="let schedule of scheduledVisits">
+      <div class="visiting-cards">
+        <div style="padding: 12px 14px;">
+          <div class="date-txt">
+            <span style="float: left;">{{schedule?.date}}</span>
+            <span style="float: right;">{{schedule?.time}}</span>
+          </div>
+          <div style="clear: both;"></div>
+          <div class="visiting-place">
+            <span>{{schedule?.place}}</span>
+          </div>
+          <div class="orders-count">
+            <span>{{schedule?.No}} orders</span>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
