@@ -14,7 +14,7 @@
   ion-margin-end">
       <p class="ion-margin-top">Upload Photo</p>
       <!-- <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png,  -->
-  <!-- image/jpeg"> -->
+      <!-- image/jpeg"> -->
       <span class="">Optional</span>
     </ion-col>
   </ion-row>
@@ -59,13 +59,35 @@
         <ion-input class="ion-margin-start" placeholder="Price Per Plate" formControlName="price" required>
         </ion-input>
       </ion-col>
-      <ion-col class="ion-margin-top ion-text-center">
+      <ion-col size=11 class="ion-margin-top"  *ngFor="let item of offerDetails">
+        <div class="priceUpdateWrap customerRegWrap " >
+          <div class="ion-margin-horizontal ion-margin-vertical">
+            <ion-label class="unitWrap">{{item.units}}kg</ion-label>
+            <ion-icon src='../../../../assets/images/close-offer.svg' class="rightalign" size="medium"
+              (click)="removeOffer(item)">
+            </ion-icon>
+            <ion-icon src='../../../../assets/images/edit.svg' class="rightalign" size="medium" (click)="editOffer(item)">
+            </ion-icon>
+          </div>
+          <ion-row>
+            <ion-col class="priceWrap">{{item.itemPrice}}</ion-col>
+            <ion-col class="priceWrap"> {{item.discount}}%</ion-col>
+            <ion-col class="priceWrap">{{item.offerPrice}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="text-center labelWrap">Item Price</ion-col>
+            <ion-col class="text-center labelWrap"> Discount</ion-col>
+            <ion-col class="text-center labelWrap">Offer Price</ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col class="ion-margin-top ion-text-center" (click)="addMore()">
         <ion-icon src='../../../../assets/images/add-icon.svg'></ion-icon><span class="offerText">Add Offers For More
           Quantity</span>
       </ion-col>
       <ion-col class="text-center" size=12>
-        <ion-button class="registerBtn" part="native" (click)="submitForm()"
-          [disabled]="productDetailsForm.invalid" justify-content-center>
+        <ion-button class="registerBtn" part="native" (click)="submitForm()" [disabled]="productDetailsForm.invalid"
+          justify-content-center>
           Add</ion-button>
       </ion-col>
     </ion-row>

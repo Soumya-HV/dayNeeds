@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
+import { UnitSelectComponent } from '../unit-select/unit-select.component';
 
 @Component({
   selector: 'app-vendor-product',
@@ -11,11 +12,10 @@ import { ModalController } from '@ionic/angular';
 export class VendorProductComponent implements OnInit {
   @Input() mode;
   productDetailsForm: FormGroup;
-  unitLists = [{ id: 1, name: 'Grams', checked: true }, { id: 2, name: 'Kg', checked: false }, { id: 3, name: 'ml', checked: false }]
   openUnits = false;
   unitSelected: any;
 
-  constructor(public modalController: ModalController, private fb: FormBuilder) {
+  constructor(public modalController: ModalController, private fb: FormBuilder, public popoverController: PopoverController) {
     this.productDetailsForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
@@ -25,13 +25,25 @@ export class VendorProductComponent implements OnInit {
 
   ngOnInit() { }
 
-  openUnitList() {
-    this.openUnits = !this.openUnits;
-   }
+  // openUnitList() {
+    // this.openUnits = !this.openUnits;
+  //  }
+
+   async openUnitList(ev: any) {
+    const popover = await this.popoverController.create({
+      component: UnitSelectComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    await popover.present();
+
+    const { role } = await popover.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
 
    selectCategory(event, unit, i) {
     this.unitSelected = unit;
-    console.log('unit list',unit, event, i, this.unitLists, this.productDetailsForm);    
    }
 
   closeModal() {

@@ -1,6 +1,9 @@
 ion-datetime {
     width: -webkit-fill-available;
-    background: rgba(231, 235, 240, 1);
+}
+
+ion-item {
+  --background: rgba(231, 235, 240, 1);
 }
 
 ion-content{
@@ -13,7 +16,25 @@ ion-input{
     font: 600 1rem 'poppinsReg';
   }
   
+  .priceWrap{
+    text-align: center;
+    font: 500 1rem 'poppinsMedium';
+  }
+
+  .labelWrap{
+    font: 500 0.75rem 'poppinsMedium';
+    color: #2A3757;
+  }
+
+  .unitWrap {
+    font: 500 1rem 'poppinsMedium';
+    color: #FF7043;
+  }
   
+  .rightalign{
+    float: right;
+    padding-left: 15px;
+  }
 .customerRegWrap {
     background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), 
  #E7EBF0;

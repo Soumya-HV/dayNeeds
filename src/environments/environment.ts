@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   url: 'https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/',
+  // url : 'https://82ca-117-213-245-225.ngrok.io/prod/',
   firebaseConfig: {
     apiKey: 'AIzaSyAnMONxA1GU2wcPnSLyU-VacVgZDSgJ5UU',
     authDomain: 'ironman-app-99a2f.firebaseapp.com',

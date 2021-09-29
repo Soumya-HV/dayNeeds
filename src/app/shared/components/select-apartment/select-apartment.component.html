@@ -1,0 +1,11 @@
+<ion-content>
+  <div class="text-center">Apartments</div>
+  <ion-list>
+    <ion-item *ngFor="let unit of apartmentsList;let i=index">
+      <ion-label>{{unit.apartmentName}}</ion-label>
+      <ion-checkbox (ionChange)="selectApartment($event,unit,i)" multiple=false [(ngModel)]="unit.checked"
+        [ngModelOptions]="{standalone: true}">
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

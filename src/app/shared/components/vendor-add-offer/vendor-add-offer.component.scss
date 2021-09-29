@@ -1,0 +1,52 @@
+
+ion-content{
+    --background: #F7F9FB;
+}
+.rightalign{
+    float: right;
+    font-size: larger;
+}
+
+.priceUpdateWrap{
+    font: 1rem 'poppinsMedium';
+}
+
+.labelWrap{
+    font: 500 0.875rem 'poppinsReg';
+    vertical-align: sub;
+}
+
+.registerBtn{
+    background: #FF7043 !important;
+    border-radius: 20px 0px !important;
+  }
+  ion-button::part(native) {
+    background: transparent;
+    font-family: 'poppinsReg';
+    width: 6.4rem;
+    font-size: 16px;   
+    text-transform: initial;
+    border-radius: 20px 0px !important;
+  }
+ 
+  ion-input {
+    padding: unset;
+    --placeholder-opacity: 1;
+    font: 600 1rem 'poppinsReg';
+  }
+
+  .priceLabel {
+    margin-top: 0.5rem;
+  }
+   
+.customerRegWrap {
+  background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), 
+#E7EBF0;
+ background-blend-mode: soft-light, normal;
+ border: 1px solid rgba(255, 255, 255, 0.4);
+ box-sizing: border-box;
+ box-shadow: inset -2.5px -2.5px 5px #FAFBFF, inset 2.5px 2.5px 5px #A6ABBD;
+ border-radius: 10px;
+ text-align: center;
+}
+  
