@@ -35,13 +35,13 @@
         <!-- </ion-input> -->
         <ion-label class="unitWrap ion-margin-start" size=12 (click)='openUnitList()'>Unit</ion-label>
         <ion-icon src="../../../../assets/images/chevron-down.svg"></ion-icon>
-        <ion-list *ngIf="openUnits" >
-          <ion-item *ngFor="let unit of unitLists;let i=index">
-            <ion-label>{{unit.name}}</ion-label>
-            <ion-checkbox (ionChange)="selectCategory($event,unit,i)" [(ngModel)]="unit.checked" [ngModelOptions]="{standalone: true}">
-            </ion-checkbox>
-          </ion-item>
-        </ion-list>
+        <!-- <ion-list *ngIf="openUnits" > -->
+          <!-- <ion-item *ngFor="let unit of unitLists;let i=index"> -->
+            <!-- <ion-label>{{unit.name}}</ion-label> -->
+            <!-- <ion-checkbox (ionChange)="selectCategory($event,unit,i)" [(ngModel)]="unit.checked" [ngModelOptions]="{standalone: true}"> -->
+            <!-- </ion-checkbox> -->
+          <!-- </ion-item> -->
+        <!-- </ion-list> -->
       </ion-col>
       <!-- <ion-col> -->
         <!-- <div></div> -->

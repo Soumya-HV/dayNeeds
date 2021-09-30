@@ -10,6 +10,9 @@ export class commonService {
     userDetails: any;
     customerAccount: boolean;
     vendorAccount : boolean;
+    storePriceValue: any;
+    unitSelected = [];
+
     constructor(private http: HttpClient,private router: Router) {
     }
 
