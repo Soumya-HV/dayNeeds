@@ -17,6 +17,7 @@ export class commonService {
         this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
           (res => {
             this.userDetails = res['response'];
+            localStorage.setItem('loginId',this.userDetails._id);
             console.log(res, this.userDetails);
             if(this.userDetails?.customerDetails){
               this.customerAccount = true;
@@ -33,6 +34,13 @@ export class commonService {
             } else{
               this.router.navigate(["customer/home"]);
             }
+          });
+      }
+      getandStoreuserLocalId() {
+        this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
+          (res => {
+            localStorage.setItem('loginId',res['response']._id);
+            console.log(res['response']._id);
           });
       }
 

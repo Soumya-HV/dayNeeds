@@ -82,3 +82,27 @@ ion-content {
 .categoryMenuModal{
   
 }
+
+
+.quantity-popover {
+  ion-select-popover ion-list ion-item {
+    --border-width: 0;
+    --inner-border-width: 0;
+    --background: rgb(218, 234, 246);
+    --border-radius: 2px;
+  }
+  ion-select-popover ion-list ion-item ion-radio {
+    --color: transparent;
+    --color-checked: transparent;
+  }
+  .popover-content{
+    --width: 120px !important;
+    overflow: hidden !important;
+    // --box-shadow: none;
+  }
+  ion-list{
+    padding: 0;
+  }
+}
+
+

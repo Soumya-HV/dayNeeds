@@ -6,7 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { commonService } from 'src/app/core/services/common-service';
 import { SelectCategory } from 'src/app/shared/components/select-categories/select-categories.component';
 import * as env from '../../../environments/environment';
-
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-register-user',

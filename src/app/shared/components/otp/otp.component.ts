@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { commonService } from 'src/app/core/services/common-service';
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
@@ -15,7 +16,8 @@ export class OTPComponent implements OnInit {
   OTPForm: FormGroup;
 
   constructor(private authService: AuthenticationService,
-    private fb: FormBuilder, private router: Router, private fireAuth: AngularFireAuth, private http: HttpClient) {
+    private fb: FormBuilder, private router: Router, private fireAuth: AngularFireAuth, private http: HttpClient,
+    private cmnService: commonService) {
     this.OTPForm = this.fb.group({
       OTP: ['', Validators.required]
     })
@@ -40,6 +42,7 @@ export class OTPComponent implements OnInit {
     localStorage.setItem('user_id', userData.user.uid);
     // console.log('tokenId', token, this.fireAuth.currentUser, userData.user.uid, localStorage.getItem('tokenId'));
     if (!userData?.additionalUserInfo?.isNewUser) {
+      this.cmnService.getandStoreuserLocalId();
       this.router.navigate(['customer/home']);
     } else {
       console.log(localStorage.getItem('phoneNum'));

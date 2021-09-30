@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides, ModalController } from '@ionic/angular';
 import { ShopDetailsComponent } from '../../shop-details/shop-details.component';
+import { Camera, CameraResultType,CameraSource,ImageOptions } from '@capacitor/camera';
 import * as env from '../../../environments/environment';
 @Component({
   selector: 'app-vendor-list',
@@ -13,28 +14,8 @@ export class VendorListPage {
 
   categoryId: any;
   vendorList= [];
-  // categories = [
-  //   {
-  //     'img': '../../assets/images/cat-1.svg',
-  //     'bgColor': '#DDEDEA',
-  //     'name': 'veggies'
-  //   },
-  //   {
-  //     'img': '../../assets/images/cat-2.svg',
-  //     'bgColor': '#FCF4DD',
-  //     'name': 'Fruits'
-  //   },
-  //   {
-  //     'img': '../../assets/images/cat-3.svg',
-  //     'bgColor': '#DAEAF6',
-  //     'name': 'Food'
-  //   },
-  //   {
-  //     'img': '../../assets/images/cat-4.svg',
-  //     'bgColor': '#FCE1E4',
-  //     'name': 'Meat'
-  //   },
-  // ]
+  imageElement: any;
+  base64: string="";
   @ViewChild('mySlider') slider: IonSlides;
   @ViewChild('categorySlider') catslider: IonSlides;
   sliderOpts = {
@@ -61,6 +42,7 @@ export class VendorListPage {
   }
 
   ngOnInit(){
+    Camera.requestPermissions({permissions:['photos']})
   }
 
   getVendorListbyCategoryId(){
@@ -70,6 +52,17 @@ export class VendorListPage {
       console.log(this.vendorList);
     });
 
+  }
+  pickImageFromGallery(){
+    var options:ImageOptions ={
+      source:CameraSource.Photos,
+      resultType:CameraResultType.DataUrl
+    }
+    Camera.getPhoto(options).then((result) =>{
+      this.base64 = result.dataUrl;
+    },(err)=>{
+      alert(err)
+    })
   }
 
   getVendorList(){
@@ -84,9 +77,10 @@ export class VendorListPage {
     this.router.navigate(['customer/home']);
   }
 
-  async openShopDetail() {
+  async openShopDetail(vendor) {
     const modal = await this.modalController.create({
       component: ShopDetailsComponent,
+      componentProps:{data:vendor._id},
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {

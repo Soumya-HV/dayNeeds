@@ -83,6 +83,16 @@ ion-content{
     width: 100%;
     bottom: 0;
     top: 0;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+.quantity-cls{
+    width: 105px;
+    height: 24px;
+    background: rgb(218, 234, 246);
+    padding: 16px;
+    border-radius: 10px;
 }
 .card-content{
     // border-top-right-radius: 10px;
@@ -136,3 +146,5 @@ ion-content{
     bottom: 0;
     right: 0;
 }
+
+
