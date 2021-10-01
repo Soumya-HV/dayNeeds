@@ -9,9 +9,17 @@
         <ion-label class="labelWrap">No. Of Units</ion-label>
       </ion-col>
       <ion-col size=6>
-        <ion-input class="customerRegWrap" part=native-input type="number" placeholder="Units" [(ngModel)]="unit"
-          (ionChange)='calcOfferPRice($event)'>
-        </ion-input>
+        <ion-row size=12>
+          <ion-input class="customerRegWrap" size=3 part=native-input type="number" placeholder="qty" [(ngModel)]="quantity"
+            (ionChange)='calcOfferPRice($event)'>
+          </ion-input>
+          <ion-select [(ngModel)]="unitSelected[0]"  size=3 (ionChange)="addCart(unitSelected, $event)"
+             [interfaceOptions]="{showBackdrop: false,cssClass:'quantity-popoveroffer'}" class="quantity-cls"
+            interface="popover">
+            <ion-select-option *ngFor="let units of unitSelected" [value]="units"> {{units.
+              name}}</ion-select-option>
+          </ion-select>
+        </ion-row>
       </ion-col>
       <ion-col size=6 class='priceLabel'>
         <ion-label class="labelWrap">Item Price</ion-label>

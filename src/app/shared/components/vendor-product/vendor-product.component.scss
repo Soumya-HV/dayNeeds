@@ -10,7 +10,34 @@
     --background: #F7F9FB !important;
   } 
 
-  .cregCertificate{
+  .rightalign{
+    float: right;
+    padding-left: 15px;
+  }
+
+   
+ .priceWrap{
+  text-align: center;
+  font: 500 1rem 'poppinsMedium';
+}
+.labelWrap{
+  font: 500 0.75rem 'poppinsMedium';
+  color: #2A3757;
+}
+.unitWrap {
+  font: 500 1rem 'poppinsMedium';
+  color: #FF7043;
+}
+
+ion-item{
+  --background:transparent;
+}
+
+ion-select {
+  width: 100%;
+}
+
+.cregCertificate{
       background: #E5EAEF;
       border-radius: 20px;
       height: 7rem;
@@ -45,7 +72,7 @@
   margin: 10px 0px 0px 22px;
 }
 
-ion-input{
+ion-input, ion-select{
   --placeholder-color: #2A3757;
   --placeholder-opacity: 1;
   font: 600 1rem 'poppinsReg';

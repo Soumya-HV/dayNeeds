@@ -24,6 +24,10 @@ ion-content{
    margin-right: 10px;
  }
 
+ ion-searchbar{
+  --background: rgba(231, 235, 240, 1);
+ }
+
  ion-datetime {
   width: -webkit-fill-available;
   // background: rgba(231, 235, 240, 1);

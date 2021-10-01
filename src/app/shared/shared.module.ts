@@ -25,6 +25,8 @@ import { VendorDabbastoryComponent } from './components/vendor-dabbastory/vendor
 import { VendorAddOfferComponent } from './components/vendor-add-offer/vendor-add-offer.component';
 import { UnitSelectComponent } from './components/unit-select/unit-select.component';
 import { SelectApartmentComponent } from './components/select-apartment/select-apartment.component';
+import { VendorEditProductComponent } from './components/vendor-edit-product/vendor-edit-product.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { SelectApartmentComponent } from './components/select-apartment/select-a
     VendorAddOfferComponent,
     SelectApartmentComponent,
     UnitSelectComponent,
+    VendorEditProductComponent,
     SelectCategory],
   entryComponents: [],
   imports: [
@@ -63,6 +66,7 @@ import { SelectApartmentComponent } from './components/select-apartment/select-a
     HttpClientModule,
     LoginComponent,
     OTPComponent,
+    VendorEditProductComponent,
     UnitSelectComponent,
     UserTypeSelectionComponent,
     SelectApartmentComponent,

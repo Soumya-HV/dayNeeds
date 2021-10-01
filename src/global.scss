@@ -83,8 +83,16 @@ ion-content {
   
 }
 
+.addModalClass .modal-wrapper {
+  height: 60%;
+  top: 120px;
+  width: 95%;
+  border-radius: 1%;
+  position: absolute;
+  display: block;
+  }
 
-.quantity-popover {
+.quantity-popover, .quantity-popoveroffer {
   ion-select-popover ion-list ion-item {
     --border-width: 0;
     --inner-border-width: 0;
@@ -95,6 +103,7 @@ ion-content {
     --color: transparent;
     --color-checked: transparent;
   }
+  
   .popover-content{
     --width: 120px !important;
     overflow: hidden !important;
@@ -102,6 +111,16 @@ ion-content {
   }
   ion-list{
     padding: 0;
+  }
+}
+
+.quantity-popoveroffer{
+  ion-select-popover ion-list ion-item {
+    --background: #fff !important;
+  }
+  .popover-content{
+    --width: 80px !important;
+    overflow: hidden !important;
   }
 }
 

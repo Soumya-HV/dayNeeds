@@ -1,8 +1,17 @@
 <ion-content>
   <div class="ordersWrap">Schedule Visit</div>
   <ion-row size="12">
-    <ion-col size="11" class="customerRegWrap ion-margin-horizontal" (click)='openUnitList()'>
-        <ion-label>Apartment Name</ion-label>
+    <!-- <ion-col size="11" class="customerRegWrap ion-margin-horizontal"> -->
+      <!-- <ion-searchbar (ionFocus)="navigateToProduct()" placeholder="Find Apartment Name Here" class="ion-no-padding"> -->
+      <!-- </ion-searchbar> -->
+      <!-- <div *ngFor="let apartment of apartmentsList"> -->
+      <!-- <ion-select [ngModel]="apartmentsList[0]" (ionChange)="addCart(apartment)" -->
+      <!-- [interfaceOptions]="{showBackdrop: false,cssClass:'quantity-popover'}" class="quantity-cls" -->
+      <!-- interface="popover"> -->
+      <!-- <ion-select-option *ngFor="let price of apartment" [value]="price"> {{price. -->
+      <!-- quantity}}</ion-select-option> -->
+      <!-- </ion-select> -->
+      <!-- </div> -->
       <!-- <ion-list> -->
       <!-- <ion-item *ngFor="let apartment of apartmentsList"> -->
       <!-- <ion-label>{{apartment.name}}</ion-label> -->
@@ -14,22 +23,26 @@
       <!-- <ion-select-option value="apartment">{{apartment.name}}</ion-select-option> -->
       <!-- </ion-select> -->
       <!-- </ion-item> -->
-    </ion-col>
+    <!-- </ion-col> -->
   </ion-row>
 
   <form [formGroup]='scheduleDeliverForm' class="ion-margin-vertical">
     <ion-row class="scheduleWrap ion-justify-content-center ion-margin-horizontal ion-margin-vertical  ion-padding-top">
-      <ion-col size=5 class="ion-text-center
-  customerRegWrap">
+      <ion-col size=11 class="customerRegWrap ion-margin-bottom" style="margin-right: 0px;">
+        <ion-searchbar (ionFocus)="navigateToProduct()" placeholder="Find Apartment Name Here" class="ion-no-padding" formControlName=apartment>
+        </ion-searchbar>
+      </ion-col>
+      <ion-col size=5 class="ion-text-center customerRegWrap" style="margin-right: 13px;">
         <ion-item>
-          <ion-datetime displayFormat="DD/MM/YY" placeholder="00/00/00" formControlName="date">
+          <ion-datetime displayFormat="DD/MM/YY" placeholder="00/00/00" formControlName="date" (ionChange)="dateTrigger()" >
           </ion-datetime>
           <ion-icon src='../../../../assets/images/calendar.svg'></ion-icon>
         </ion-item>
       </ion-col>
-      <ion-col size=5 class="customerRegWrap">
+      <ion-col size=5 class="customerRegWrap" style="margin-left: 0px;">
         <ion-item>
-          <ion-datetime (ionChange)="timeTrigger()" displayFormat="HH:mm:ss" placeholder="00:00 Pm" formControlName="time"></ion-datetime>
+          <ion-datetime (ionChange)="timeTrigger()" display-format="h:mm A" picker-format="h:mm A"
+            placeholder="00:00 Pm" formControlName="time"></ion-datetime>
           <ion-icon src='../../../../assets/images/time.svg'></ion-icon>
         </ion-item>
       </ion-col>
@@ -48,12 +61,12 @@
       <div class="visiting-cards">
         <div style="padding: 12px 14px;">
           <div class="date-txt">
-            <span style="float: left;">{{schedule?.date}}</span>
-            <span style="float: right;">{{schedule?.time}}</span>
+            <span style="float: left;">{{schedule?.visitDate | date: 'dd/MM/YY'}}</span>
+            <span style="float: right;">{{schedule?.visitTime}}</span>
           </div>
           <div style="clear: both;"></div>
           <div class="visiting-place">
-            <span>{{schedule?.place}}</span>
+            <span>{{schedule?.appartment}}</span>
           </div>
           <div class="orders-count">
             <span>{{schedule?.No}} orders</span>

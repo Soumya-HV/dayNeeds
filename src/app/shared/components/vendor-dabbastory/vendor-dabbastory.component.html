@@ -12,10 +12,13 @@
   <ion-row class="ion-justify-content-center">
     <ion-col size=5 class="cregCertificate ion-text-center ion-margin-start ion-margin-top 
   ion-margin-end">
-      <p class="ion-margin-top">Upload Photo</p>
-      <!-- <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png,  -->
-      <!-- image/jpeg"> -->
-      <span class="">Optional</span>
+      <div (click)="pickImageFromGallery()">
+        <div style="text-align: center;" [ngClass]="uploadPic ? 'ion-no-margin' : 'ion-margin-top'">
+          <span [hidden]="uploadPic">Upload Photo</span>
+        </div>
+        <img [src]="base64">
+        <span [hidden]="uploadPic" class="">Optional</span>
+      </div>
     </ion-col>
   </ion-row>
   <form [formGroup]='productDetailsForm'>
@@ -29,13 +32,13 @@
       </ion-col>
       <ion-col size=5 class="customerRegWrap  ion-margin-top">
         <ion-item>
-          <ion-datetime displayFormat="HH:mm" placeholder=From formControlName="startTime"></ion-datetime>
+          <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder=From formControlName="startTime" (ionChange)="timeTrigger('start')"></ion-datetime>
           <ion-icon src='../../../../assets/images/time.svg'></ion-icon>
         </ion-item>
       </ion-col>
       <ion-col size=5 class="customerRegWrap  ion-margin-top" style="margin-left: 30px;">
         <ion-item>
-          <ion-datetime displayFormat="HH:mm" placeholder=To formControlName="endTime"></ion-datetime>
+          <ion-datetime display-format="h:mm A" picker-format="h:mm A" placeholder=To formControlName="endTime" (ionChange)="timeTrigger('end')"></ion-datetime>
           <ion-icon src='../../../../assets/images/time.svg'></ion-icon>
         </ion-item>
       </ion-col>
@@ -59,18 +62,19 @@
         <ion-input class="ion-margin-start" placeholder="Price Per Plate" formControlName="price" required>
         </ion-input>
       </ion-col>
-      <ion-col size=11 class="ion-margin-top"  *ngFor="let item of offerDetails">
-        <div class="priceUpdateWrap customerRegWrap " >
+      <ion-col size=11 class="ion-margin-top" *ngFor="let item of offerDetails">
+        <div class="priceUpdateWrap customerRegWrap ">
           <div class="ion-margin-horizontal ion-margin-vertical">
-            <ion-label class="unitWrap">{{item.units}}kg</ion-label>
+            <ion-label class="unitWrap">{{item.quantity}}{{item.unit}}</ion-label>
             <ion-icon src='../../../../assets/images/close-offer.svg' class="rightalign" size="medium"
               (click)="removeOffer(item)">
             </ion-icon>
-            <ion-icon src='../../../../assets/images/edit.svg' class="rightalign" size="medium" (click)="editOffer(item)">
+            <ion-icon src='../../../../assets/images/edit.svg' class="rightalign" size="medium"
+              (click)="editOffer(item)">
             </ion-icon>
           </div>
           <ion-row>
-            <ion-col class="priceWrap">{{item.itemPrice}}</ion-col>
+            <ion-col class="priceWrap">{{item.priceOfItem}}</ion-col>
             <ion-col class="priceWrap"> {{item.discount}}%</ion-col>
             <ion-col class="priceWrap">{{item.offerPrice}}</ion-col>
           </ion-row>

@@ -12,9 +12,16 @@
   <form [formGroup]='productDetailsForm'>
     <ion-row class="ion-justify-content-center">
       <ion-col size=5 class="cregCertificate ion-text-center ion-margin-start ion-margin-top ion-margin-end">
-        <p class="ion-margin-top">Upload Photo</p>
-        <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
-        <span class="">Optional</span>
+        <!-- <p class="ion-margin-top">Upload Photo</p> -->
+        <!-- <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg"> -->
+        <!-- <span class="">Optional</span> -->
+        <div (click)="pickImageFromGallery()">
+          <div style="text-align: center;" [ngClass]="uploadPic ? 'ion-no-margin' : 'ion-margin-top'">
+            <span [hidden]="uploadPic">Upload Photo</span>
+          </div>
+          <img [src]="base64">
+          <span [hidden]="uploadPic" class="">Optional</span>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -31,28 +38,45 @@
         </ion-input>
       </ion-col>
       <ion-col size=5 class="prodWrap">
-        <!-- <ion-input class="ion-margin-start" placeholder="Unit" formControlName="unit" (click)='openUnitList()' required> -->
-        <!-- </ion-input> -->
-        <ion-label class="unitWrap ion-margin-start" size=12 (click)='openUnitList()'>Unit</ion-label>
-        <ion-icon src="../../../../assets/images/chevron-down.svg"></ion-icon>
-        <!-- <ion-list *ngIf="openUnits" > -->
-          <!-- <ion-item *ngFor="let unit of unitLists;let i=index"> -->
-            <!-- <ion-label>{{unit.name}}</ion-label> -->
-            <!-- <ion-checkbox (ionChange)="selectCategory($event,unit,i)" [(ngModel)]="unit.checked" [ngModelOptions]="{standalone: true}"> -->
-            <!-- </ion-checkbox> -->
-          <!-- </ion-item> -->
-        <!-- </ion-list> -->
+        <ion-item class="unitWrapper">
+          <ion-select [compareWith]="compareWith" placeholder='Units' multiple="true" (ionChange)="unitSelect($event)" formControlName="unit">
+            <ion-select-option *ngFor="let unit of unitLists" [value]="unit">{{unit.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
       <!-- <ion-col> -->
-        <!-- <div></div> -->
+      <!-- <div></div> -->
       <!-- </ion-col> -->
-      <ion-col class="ion-margin-top ion-text-center">
+      <ion-col size=11 class="ion-margin-top" *ngFor="let item of offerDetails">
+        <div class="priceUpdateWrap customerRegWrap ">
+          <div class="ion-margin-horizontal ion-margin-vertical">
+            <ion-label class="unitWrap">{{item.quantity}} {{item.unit}}</ion-label>
+            <ion-icon src='../../../../assets/images/close-offer.svg' class="rightalign" size="medium"
+              (click)="removeOffer(item)">
+            </ion-icon>
+            <ion-icon src='../../../../assets/images/edit.svg' class="rightalign" size="medium"
+              (click)="editOffer(item)">
+            </ion-icon>
+          </div>
+          <ion-row>
+            <ion-col class="priceWrap">{{item.priceOfItem}}</ion-col>
+            <ion-col class="priceWrap"> {{item.discount}}%</ion-col>
+            <ion-col class="priceWrap">{{item.offerPrice}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="text-center labelWrap">Item Price</ion-col>
+            <ion-col class="text-center labelWrap"> Discount</ion-col>
+            <ion-col class="text-center labelWrap">Offer Price</ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col class="ion-margin-top ion-text-center" (click)=addMore()>
         <ion-icon src='../../../../assets/images/add-icon.svg'></ion-icon><span class="offerText">Add Offers For More
           Quantity</span>
       </ion-col>
       <ion-col class="text-center" size=12>
-        <ion-button class="registerBtn" part="native" (click)="submitForm()" [disabled]="productDetailsForm.invalid || !unitSelected.checked "
-          justify-content-center>
+        <ion-button class="registerBtn" part="native" (click)="submitForm()"
+          [disabled]="productDetailsForm.invalid  " justify-content-center>
           Add</ion-button>
       </ion-col>
     </ion-row>
