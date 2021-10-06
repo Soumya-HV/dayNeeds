@@ -87,6 +87,11 @@ vendorAcc: any;
     this.router.navigate(['vendor/home']);
   }
 
+  openOrders(){
+    this.modalController.dismiss();
+    this.router.navigate(['user/location']);
+  }
+
   // switchCustomer(){
   //   this.modalController.dismiss();
   //   localStorage.setItem('userType', 'customer');
