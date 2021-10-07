@@ -1,5 +1,12 @@
 <ion-content padding>
-
-  <div #map id="map"></div> 
-  
-  </ion-content>
+  <div style="padding: 15px;" class="form-group">
+    <!-- <label>Enter address</label> -->
+    <input style="width: 100%;padding: 10px;" type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+      placeholder="Search  Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+  </div>
+  <agm-map style="height: 450px;" [latitude]="lat" [longitude]="lng" [zoom]="15" [disableDefaultUI]="false">
+    <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+    </agm-marker>
+  </agm-map>
+  <h6>{{address}}</h6>
+</ion-content>

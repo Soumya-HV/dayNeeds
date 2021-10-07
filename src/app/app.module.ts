@@ -14,10 +14,11 @@ import { AngularFireModule } from '@angular/fire'
 import { RegisterUserComponent } from '../app/modules/register-user/register-user.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpConfigInterceptor } from './core/interceptor/http-config.interceptor';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AuthenticationService } from './core/services/authentication.service';
 import { RegisterVendorComponent } from './modules/register-vendor/register-vendor.component';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
+// import { GeoLocationComponent } from './modules/geo-location/geo-location.component';
 
 @NgModule({
   declarations: [AppComponent, RegisterUserComponent,RegisterVendorComponent],
@@ -29,7 +30,7 @@ import { RegisterVendorComponent } from './modules/register-vendor/register-vend
     FormsModule, ReactiveFormsModule],
   providers: [
               AuthenticationService,
-              Geolocation,
+              NativeGeocoder,
               { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
               {provide: HTTP_INTERCEPTORS,useClass: HttpConfigInterceptor,multi: true}
             ],

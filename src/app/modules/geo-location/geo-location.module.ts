@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GeoLocationRoutingModule } from './geo-location-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -8,7 +9,8 @@ import { GeoLocationRoutingModule } from './geo-location-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    GeoLocationRoutingModule
+    GeoLocationRoutingModule,
+    // SharedModule
   ]
 })
 export class GeoLocationModule { }

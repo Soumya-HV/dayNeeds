@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, NgZone } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation/ngx'; 
-declare var google;
-
+import { Geolocation } from '@capacitor/geolocation';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { MapsAPILoader, AgmMap } from '@agm/core';
 
 @Component({
   selector: 'app-geo-location',
@@ -10,67 +10,123 @@ declare var google;
   styleUrls: ['./geo-location.component.scss'],
 })
 export class GeoLocationComponent implements OnInit {
-  options : GeolocationOptions;
-  currentPos : Geoposition;
-  @ViewChild('map') mapElement: ElementRef;
-map: any;
-  constructor(public navCtrl: NavController,private geolocation : Geolocation) { }
 
-  ngOnInit() {}
-
-  getUserPosition(){
-    this.options = {
-    enableHighAccuracy : false
-    };
-    this.geolocation.getCurrentPosition(this.options).then((pos : Geoposition) => {
-
-        this.currentPos = pos;     
-
-        console.log(pos);
-        this.addMap(pos.coords.latitude,pos.coords.longitude);
-
-    },(err : PositionError)=>{
-        console.log("error : " + err.message);
-    ;
-    })
-}
-
-addMap(lat,long){
-
-  let latLng = new google.maps.LatLng(lat, long);
-
-  let mapOptions = {
-  center: latLng,
-  zoom: 15,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
+  lat: number;
+  lng: number;
+  private geoCoder;
+  zoom: number;
+  address: string;
+  @ViewChild('search',{static:false})
+  public searchElementRef: ElementRef;
+  constructor(public navCtrl: NavController, private nativeGeocoder: NativeGeocoder,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone) {
   }
 
-  this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-  this.addMarker();
+  ngOnInit() {
+  }
 
-}
+  ionViewDidEnter() {
+    //load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      // this.setCurrentPosition();
+      this.setCurrentLocation();
+      this.geoCoder = new google.maps.Geocoder;
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          console.log(place);
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+          this.address = place.formatted_address;
+          //set latitude, longitude and zoom
+          this.lat = place.geometry.location.lat();
+          this.lng = place.geometry.location.lng();
+          console.log(this.lat,this.lng);
+        });
+      });
+    });
+  }
 
-addMarker(){
+  private setCurrentLocation() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.zoom = 8;
+        this.getAddress(this.lat, this.lng);
+      });
+    }
+  }
 
-  let marker = new google.maps.Marker({
-  map: this.map,
-  animation: google.maps.Animation.DROP,
-  position: this.map.getCenter()
-  });
+  getAddress(latitude, longitude) {
+    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+      console.log(results);
+      console.log(status);
+      if (status === 'OK') {
+        if (results[0]) {
+          this.zoom = 12;
+          this.address = results[0].formatted_address;
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
 
-  let content = "<p>This is your current position !</p>";          
-  let infoWindow = new google.maps.InfoWindow({
-  content: content
-  });
+    });
+  }
 
-  google.maps.event.addListener(marker, 'click', () => {
-  infoWindow.open(this.map, marker);
-  });
+  markerDragEnd($event: MouseEvent) {
+    let event = JSON.stringify($event);
+    let parseJSON = JSON.parse(event);
+    console.log(parseJSON)
+    this.lat = parseJSON.latLng.lat;
+    this.lng = parseJSON.latLng.lng;
+    console.log(this.lat, this.lng);
+    this.getAddress(this.lat,this.lng);
+  }
 
-}
+  async setCurrentPosition() {
+    const coordinates = await Geolocation.getCurrentPosition();
+    this.ngZone.run(() => {
+      this.lat = coordinates.coords.latitude;
+      this.lng = coordinates.coords.longitude;
+      this.getAddressfromCoords();
+    })
+  }
 
-ionViewDidEnter(){
-  this.getUserPosition();
-}  
+  // async locate() {
+  //   alert('caling loacate')
+  //   const coordinates = await Geolocation.getCurrentPosition();
+  //   this.coords = coordinates.coords;
+  //   alert(JSON.stringify(this.coords));
+  //   console.log("coordinates", this.coords);
+  //   if (this.coords) {
+  //     alert('calling addres');
+  //     this.getAddressfromCoords();
+  //   }
+  // }
+
+
+
+  getAddressfromCoords() {
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+    };
+    this.nativeGeocoder.reverseGeocode(this.lat, this.lng, options)
+      .then((result: NativeGeocoderResult[]) =>
+        alert(JSON.stringify(result))
+        // console.log(JSON.stringify(result[0]))
+      )
+      .catch((error: any) => console.log(error));
+  }
 
 }

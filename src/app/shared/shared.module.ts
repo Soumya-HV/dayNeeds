@@ -7,13 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
-import { SmsRetriever } from '@ionic-native/sms-retriever/ngx';
 import { OTPComponent } from './components/otp/otp.component';
 import { RewardsComponent } from './components/rewards/rewards.component';
 import { AddressComponent } from './components/address/address.component';
 import { UserTypeSelectionComponent } from './components/user-type-selection/user-type-selection.component';
-import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+// import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ManageAddressComponent } from './components/manage-address/manage-address.component';
 import { VendorPaymentComponent } from './components/vendor-payment/vendor-payment.component';
@@ -26,15 +24,14 @@ import { VendorAddOfferComponent } from './components/vendor-add-offer/vendor-ad
 import { UnitSelectComponent } from './components/unit-select/unit-select.component';
 import { SelectApartmentComponent } from './components/select-apartment/select-apartment.component';
 import { VendorEditProductComponent } from './components/vendor-edit-product/vendor-edit-product.component';
-
-
+import { AgmCoreModule } from '@agm/core';
+import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
 @NgModule({
   declarations: [
     WelcomeComponent,
     LoginComponent,
     OTPComponent, 
     UserTypeSelectionComponent,
-    GeoLocationComponent,
     RewardsComponent,
     AddressComponent,
     NotificationComponent, 
@@ -48,7 +45,8 @@ import { VendorEditProductComponent } from './components/vendor-edit-product/ven
     SelectApartmentComponent,
     UnitSelectComponent,
     VendorEditProductComponent,
-    SelectCategory],
+    SelectCategory,
+    GeoLocationComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -56,8 +54,11 @@ import { VendorEditProductComponent } from './components/vendor-edit-product/ven
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCHzvusQWw8cplAWj39XLMlbxDAwm56OVI', 
+      libraries: ['places']
+    })],
   exports: [
     WelcomeComponent,
     CommonModule,
@@ -70,7 +71,6 @@ import { VendorEditProductComponent } from './components/vendor-edit-product/ven
     UnitSelectComponent,
     UserTypeSelectionComponent,
     SelectApartmentComponent,
-    GeoLocationComponent,
     RewardsComponent,
     AddressComponent,
     NotificationComponent,
@@ -81,7 +81,7 @@ import { VendorEditProductComponent } from './components/vendor-edit-product/ven
     VendorDabbastoryComponent,
     AddSubUserComponent,
     VendorProductComponent,
-    SelectCategory],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SmsRetriever,Geolocation],
+    SelectCategory,GeoLocationComponent],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
 })
 export class SharedModule {}
