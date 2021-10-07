@@ -14,9 +14,10 @@ import {commonService } from '../../core/services/common-service';
 })
 export class VendorSchedulePage implements OnInit {
   scheduleDeliverForm: FormGroup;
-  scheduledVisits = [{id:1 ,visitDate: '2021-09-26T05:31:56.499Z', visitTime: '4:00pm', appartment: 'Shobha Lake Garden', No: 8}, {id:2 ,visitDate: '2021-11-06T09:40:56.499Z', visitTime: '6:00pm', appartment: 'Casin Apartments', No: 10}];
+  // scheduledVisits = [{id:1 ,visitDate: '2021-09-26T05:31:56.499Z', visitTime: '4:00pm', appartment: 'Shobha Lake Garden', No: 8}, {id:2 ,visitDate: '2021-11-06T09:40:56.499Z', visitTime: '6:00pm', appartment: 'Casin Apartments', No: 10}];
   apartmentsList = [{ id: 1, name: 'Skandha' }, { id: 2, name: 'GreenValley' }];
   selectedApartment: any;
+  scheduledVisits: any;
   // apartmentsList: any;
   
   constructor(private fb: FormBuilder, private http: HttpClient, private modalController: ModalController, private cmnService:commonService) {
@@ -87,7 +88,8 @@ export class VendorSchedulePage implements OnInit {
   getScheduleVisits(){
     console.log(this.scheduleDeliverForm.value, this.cmnService.userDetails);
     this.http.get(env.environment.url + `shedule-visit/vendor/${this.cmnService.userDetails._id}`).subscribe(res => {
-      console.log(res['response']);      
+      console.log(res['response']);   
+      this.scheduledVisits = res['response'];   
     })
     }
 

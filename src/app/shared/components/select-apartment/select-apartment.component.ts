@@ -31,8 +31,11 @@ export class SelectApartmentComponent implements OnInit {
   }
 
 
-  searchItem() {
-    this.http.get(env.environment.url + 'apartments').subscribe(res => {
+  searchItem(searchVal) {
+    console.log(searchVal);
+    
+    http://localhost:3000/prod/apartments/filterAppartments/{searchingWord}
+    this.http.get(env.environment.url + 'apartments/filterAppartments/' + searchVal).subscribe(res => {
       this.apartmentsList = res['response'];
       console.log(this.apartmentsList);
     })

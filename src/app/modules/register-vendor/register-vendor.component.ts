@@ -84,7 +84,7 @@ export class RegisterVendorComponent implements OnInit {
         body['shopName'] = this.vendorRegisterForm.value.shopName,
         body['vendorName'] = this.vendorRegisterForm.value.userName,
         body['email'] = this.vendorRegisterForm.value.userMail,
-        body['categoryId'] = categoryId.toString(),
+        body['categoryId'] = categoryId,
         body['firebaseUId'] = localStorage.getItem('user_id')
       console.log(body)
       this.http.post<any>(env.environment.url + 'createNewUser', body).subscribe(res => {

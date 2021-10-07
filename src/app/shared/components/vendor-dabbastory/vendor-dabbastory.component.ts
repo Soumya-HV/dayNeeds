@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImageOptions, CameraSource, CameraResultType, Camera } from '@capacitor/camera';
@@ -65,6 +65,23 @@ export class VendorDabbastoryComponent implements OnInit {
     Camera.getPhoto(options).then((result) => {
       this.base64 = result.dataUrl;
       this.uploadPic = true;
+      console.log(result);
+     let body={img: this.base64}
+     const formData = new FormData();
+     formData.append("file", body.img);
+     
+      this.http.put(env.environment.url + `upload`, formData, 
+      {headers: new HttpHeaders(
+        {
+          'Authorization': `Bearer ${localStorage.getItem('tokenId')}`,
+          'X-Skip-Interceptor': '',
+          'ContentType': 'multipart/form-data'
+        },
+      )}
+      ).subscribe(res => {
+        console.log('ressss', res);
+      });
+      
     }, (err) => {
       alert(err)
     })
