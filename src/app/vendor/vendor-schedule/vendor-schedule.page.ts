@@ -87,7 +87,7 @@ export class VendorSchedulePage implements OnInit {
 
   getScheduleVisits(){
     console.log(this.scheduleDeliverForm.value, this.cmnService.userDetails);
-    this.http.get(env.environment.url + `shedule-visit/vendor/${this.cmnService.userDetails._id}`).subscribe(res => {
+    this.http.get(env.environment.url + `shedule-visit/vendor/${localStorage.getItem('loginId')}`).subscribe(res => {
       console.log(res['response']);   
       this.scheduledVisits = res['response'];   
     })

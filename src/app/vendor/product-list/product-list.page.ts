@@ -31,7 +31,7 @@ export class ProductListPage {
   }
 
   getProductsofVendor() {
-    this.http.get(env.environment.url + `items/vendor/${this.cmnService.userDetails._id}`).subscribe(
+    this.http.get(env.environment.url + `items/vendor/${localStorage.getItem('loginId')}`).subscribe(
       res => {
         console.log('subscribe', res);
       });
