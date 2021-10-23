@@ -10,10 +10,13 @@ import * as env from '../../../../environments/environment'
 })
 export class SelectApartmentComponent implements OnInit {
   apartmentsList = [{ _id: 1, apartmentName: 'Skandha' }, { _id: 2, apartmentName: 'Krishna Satura' }]
-  // apartmentsList :any;
   constructor(private modalController: ModalController, private http: HttpClient) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.http.get(env.environment.url + 'apartments').subscribe(res => {
+      this.apartmentsList = res['response'];
+    });
+   }
 
   checkBlur() {
     this.modalController.dismiss();

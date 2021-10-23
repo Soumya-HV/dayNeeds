@@ -31,13 +31,8 @@ export class VendorSchedulePage implements OnInit {
   ngOnInit() {
     var date = new Date();
     console.log(this.apartmentsList, date.toISOString(),this.cmnService.userDetails?.vendorDetails.createdDate);
-
-    console.log(this.scheduleDeliverForm.value);
-    
+    console.log(this.scheduleDeliverForm.value);    
     this.getScheduleVisits();
-    // this.http.get(env.environment.url + 'apartments').subscribe(res => {
-    //   this.apartmentsList = res['response'];
-    // })
   }
 
   timeTrigger() {
@@ -51,8 +46,7 @@ export class VendorSchedulePage implements OnInit {
   dateTrigger() {
     var date = new Date(this.scheduleDeliverForm.value.date);
     var selectedDate = date.toISOString();
-    console.log(selectedDate, date, this.scheduleDeliverForm.value.date);
-    
+    console.log(selectedDate, date, this.scheduleDeliverForm.value.date);    
   }
 
   submitForm() {
