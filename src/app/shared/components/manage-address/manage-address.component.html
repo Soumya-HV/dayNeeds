@@ -12,7 +12,10 @@
     </ion-row>
     <ion-row>
       <div class="addGroup" *ngFor="let addr of address">
-        <p class="delLocation"> Deliver to: {{addr.typeOfAddress}} <span class="default" *ngIf='addr.default'>(Default)</span></p>
+        <p class="delLocation"> Deliver to: {{addr.typeOfAddress}} <span class="default" *ngIf='addr.default'>(Default)</span> 
+          <ion-checkbox slot="end" [value]="checked" [checked]="false"
+          (ionChange)="onSelectionChange($event)">
+          </ion-checkbox></p>
         <p class="delAdd">No.{{addr.houseNo}} , {{addr.block}} , {{addr.appartmentName}} , {{addr.landMark}} , {{addr.address}}</p>
         <p class="delNum">Mob: +91 - {{addr.contactNumber}} <ion-icon src='../../assets/images/ci_edit.svg' (click)="opensideModal('edit', addr._id)"></ion-icon></p>
       </div>

@@ -64,14 +64,28 @@
     </ion-card>
     <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items
       <span>
-        <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg">
+        <img style="vertical-align: middle;" *ngIf="!showDetails" src="../../../assets/images/down-arrow.svg">
+        <img style="vertical-align: middle;" *ngIf="showDetails" src="../../../assets/images/invertdropdown.svg">
       </span>
     </div>
     <div *ngIf="showDetails">
-      In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form
-      of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
-      final copy is available. Wikipedia
-
+      <ion-row *ngFor="let items of orderedItems" class="itemWrap">
+        <ion-col size=4>
+          {{items?.name}}
+        </ion-col>
+        <ion-col size=3>
+          {{items?.qty}}
+        </ion-col>
+        <ion-col size=2>
+          {{items?.qtyno}}
+        </ion-col>
+        <ion-col size=3>
+          {{items?.price}}
+        </ion-col>
+        <p size=12>
+        </p>
+      </ion-row>
+      <div class="text-right"> <img style="vertical-align: middle;" src="../../../assets/images/tabreorder.svg"></div>
     </div>
   </div>
 

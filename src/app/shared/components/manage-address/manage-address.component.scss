@@ -29,7 +29,7 @@ ion-content{
 
 .delNum{
     font: 100 12px 'PoppinsMedium';  
-    color: #535E78;   
+    color: #b0b9cc;   
     margin-bottom: 0px;
 }
 
@@ -45,4 +45,10 @@ ion-icon {
 
 .addImg{
    margin-top: 25px; 
+}
+ion-checkbox{
+    float: right;
+    --background-checked: #ff7043;
+    --border-color-checked: #ff7043;
+    --border-color: #ff7043;
 }

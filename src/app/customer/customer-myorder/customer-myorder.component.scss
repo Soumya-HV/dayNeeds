@@ -143,6 +143,15 @@ ion-card-header{
 .order-detail-section{
     text-align: center;
     color: #2A3757;
-    padding: 3px;
-    font-family: 'poppinsMedium';
+    padding: 10px 0px;
+    font: 500 12px 'poppinsMedium';
+    margin-bottom: 1rem;
+}
+.itemWrap{
+    margin-left: 1rem;
+    font: 500 10.95px 'poppinsMedium';
+    p{
+        border: 0.84953px solid rgba(0, 0, 0, 0.1);
+        margin: 0px;
+    }
 }

@@ -1,0 +1,127 @@
+ion-content{
+    --background: #F7F9FB !important;
+}
+
+// ion-card{
+    // padding: 10px;
+    // margin: 10px 30px;
+    // border-radius: 15px;
+// }
+ 
+.arrow-left{
+    margin: 30px 0px 0px 18px ;
+}
+
+.titleWrapper, .shopName{
+    color:rgba(42, 55, 87, 0.8) !important;
+    font: 600 1rem 'poppinsSemiBold' ;
+}
+
+.titleContainer{
+    margin-top: 30px;
+}
+
+.addGroup{
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 312px;
+    height: 104px;
+    margin: 0px 24px 16px 16px;
+}
+
+.delLocation{
+    font: 100 14px 'PoppinsMedium';  
+    color: #535E78;  
+    margin-bottom: 0px;
+}
+
+.delAdd {
+  font: 100 12px 'PoppinsReg';    
+  color: #2A3757;
+  margin: 4px 0px;
+}
+
+.delNum{
+    font: 100 12px 'PoppinsMedium';  
+    color: #b0b9cc;   
+    margin-bottom: 0px;
+}
+
+
+.default{
+    color: #C4C4C4;
+    font-size: 9px;
+}
+
+ion-item {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+ion-radio::part(container){
+    border-color: #ff7043;
+ --color-checked: #ff7043;
+}
+
+ion-label {
+    font: 100 14px 'poppinsMedium' !important;
+    color: rgba(42, 55, 87, 0.6) !important;
+}
+
+.addDelWrap{
+    font: 500 12px 'poppinsMedium' ;
+    color: rgba(42, 55, 87, 0.6);
+    margin-left: 20px;
+}
+
+.orderDetails{
+    font: 500 12px 'poppinsMedium' ;
+    color: rgba(42, 55, 87, 0.6);
+    margin-left: 2rem;
+}
+
+ion-col{
+    span{
+        margin-right: 2px;
+    }
+}
+
+.amountPayable {
+    font: 500 12px 'poppinsMedium' ;
+    color: rgba(42, 55, 87, 0.6);
+    margin-left: 2rem;
+}
+
+.amountWrap {
+    font: 500 12px 'poppinsMedium' ;
+    color: rgba(42, 55, 87, 0.6);
+    margin-left: 1rem;
+}
+
+.checkoutWrap{
+    background: #FF8A65;
+    padding: 15px;
+    font: 15px 'poppinsSemiBold';
+    color: #fff;
+    border-top-left-radius: 23px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.totalamountWrap {
+    background:#2A3757;
+    color: #fff;
+    font: 15px 'poppinsSemiBold';
+    text-align: center;
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    padding: 12px;
+}
+
+.totalamountWrap span {
+    vertical-align: sub;
+}

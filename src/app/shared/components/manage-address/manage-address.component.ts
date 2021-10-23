@@ -33,6 +33,10 @@ export class ManageAddressComponent implements OnInit {
     this.modalController.dismiss();
   }
 
+  onSelectionChange() {
+
+  }
+  
   async opensideModal(mode, id) {
     this.modalController.dismiss();
     const modal = await this.modalController.create({
