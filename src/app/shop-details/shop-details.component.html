@@ -21,34 +21,35 @@
           <div style="border-radius: 6px;padding: 5px 10px;" *ngFor="let weekList of weekLists">
             <div class="week-day">{{weekList.week.substring(0,2)}}</div>
             <div class="week-date">{{weekList.num}}</div>
-            <div  class="day-visiting"><img src="../../assets/images/available-day.svg"></div>
+            <div class="day-visiting"><img src="../../assets/images/available-day.svg"></div>
           </div>
         </div>
       </ion-card-header>
     </ion-card>
 
-    <ion-row *ngFor="let itemList of itemLists" style="margin-left: 10px;margin-right: 5px;;margin-bottom: 1em;">
-      <ion-col  style=" background: #DAEAF6;border-top-left-radius: 10px;padding: 0;
+    <ion-row *ngFor="let itemList of itemLists;let i=index"
+      style="margin-left: 10px;margin-right: 5px;;margin-bottom: 1em;">
+      <ion-col style=" background: #DAEAF6;border-top-left-radius: 10px;padding: 0;
       border-bottom-left-radius: 10px;" size="3.5">
         <img class="card-img" src="{{itemList.productImage}}">
       </ion-col>
-      <ion-col  style="background: white;border-top-right-radius: 10px;padding: 0;" size="8.5">
+      <ion-col style="background: white;border-top-right-radius: 10px;padding: 0;" size="8.5">
         <div class="card-content" style="padding-left: 15px;">
           <div class="vendor-name">{{itemList.itemName}}</div>
           <!-- <div class="vendor-cat">Meethi paratta + Subji</div> -->
           <div>
-            <ion-select [ngModel]="itemList.priceList[0]"  (ionChange)="addCart(itemList)" [interfaceOptions]="{showBackdrop: false,cssClass:'quantity-popover'}" class="quantity-cls" interface="popover" >
-              <ion-select-option  *ngFor="let price of itemList.priceList" [value] ="price"> {{price.quantity}}</ion-select-option>
+            <ion-select [ngModel]="itemList.priceList[0]" (ionChange)="addCart(itemList,itemList.priceList, $event, i)"
+              [interfaceOptions]="{showBackdrop: false,cssClass:'quantity-popover'}" class="quantity-cls"
+              interface="popover">
+              <ion-select-option *ngFor="let price of itemList.priceList;let j=index" [value]="price"> {{price.quantity}}
+              </ion-select-option>
             </ion-select>
-          </div>
-          <div>
-            <div style="float: left;" class="vendor-amnt">Rs.80</div>
+            <div style="float: left;" class="vendor-amnt">{{itemList?.selectedPrice}}</div>
             <div class="add-btn">
-              <img style="vertical-align: super;" src="../../assets/images/plus.svg">
+              <img [ngClass]="(itemList?.cartImg == 'plus') ? 'alignSuper': 'alignMiddle' " src="../../assets/images/{{itemList?.cartImg}}.svg" (click)="addedToCart(i)">
               <!-- <img style="vertical-align: middle;" src="../../assets/images/selected_item_tick.svg"> -->
             </div>
-             
-          </div>    
+          </div>
         </div>
       </ion-col>
     </ion-row>
