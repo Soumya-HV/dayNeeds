@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { commonService } from 'src/app/core/services/common-service';
 import * as env from '../../../../environments/environment';
+import { SelectApartmentComponent } from '../select-apartment/select-apartment.component';
+import { SelectBlockComponent } from '../select-block/select-block.component';
+import { SelectFloorComponent } from '../select-floor/select-floor.component';
 
 
 @Component({
@@ -39,6 +42,10 @@ export class AddressComponent implements OnInit {
   @Input() mode;
   @Input() id;
   editId: any;
+  isDefault = false;
+  selectedApartment: any;
+  selectedApartmentBlocks: any;
+  selectedApartmentFloors: any;
 
   constructor(public modalController: ModalController, private fb: FormBuilder, private http: HttpClient, private commonService: commonService) {
     this.addressForm = this.fb.group({
@@ -46,6 +53,7 @@ export class AddressComponent implements OnInit {
       'apartmentName': ['', Validators.required],
       'houseNo': ['', Validators.required],
       'blockNo': ['', Validators.required],
+      'floorNo': ['', Validators.required],
       'address': ['', Validators.required],
       'landmark': ['', Validators.required],
       'mblNo': ['', Validators.required]
@@ -83,6 +91,7 @@ export class AddressComponent implements OnInit {
 
   onSelectionChange(val) {
     console.log(val);
+    this.isDefault = val.detail.checked;
   }
 
   closeModal() {
@@ -95,12 +104,13 @@ export class AddressComponent implements OnInit {
         "userName": this.addressForm.value.userName,
         "appartmentName": this.addressForm.value.apartmentName,
         "houseNo": this.addressForm.value.houseNo,
+        "floorNo": this.addressForm.value.floorNo,
         "block": this.addressForm.value.blockNo,
         "address": this.addressForm.value.address,
         "landMark": this.addressForm.value.landmark,
         "contactNumber": this.addressForm.value.mblNo,
-        "typeOfAddress": this.selectedGroup.value,
-        "isDefault": true
+        "typeOfAddress": this.selectedGroup,
+        "isDefault": this.isDefault
       }
     };
 
@@ -122,7 +132,7 @@ export class AddressComponent implements OnInit {
 
   radioGroupChange(event) {
     console.log("radioGroupChange", event.detail);
-    this.selectedGroup = event.detail;
+    this.selectedGroup = event.detail.value;
   }
 
   radioFocus() {
@@ -135,4 +145,55 @@ export class AddressComponent implements OnInit {
   radioBlur() {
     console.log("radioBlur");
   }
+  
+
+  async navigateToApartmentList(ev: any) {
+      const modal = await this.modalController.create({
+        component: SelectApartmentComponent,
+        cssClass: 'apartment_selection'
+      });
+      await modal.present();
+      modal.onDidDismiss().then((data) => { 
+        console.log(data['data']);
+        this.selectedApartment = data?.data?._id;
+        this.selectedApartmentBlocks = data?.data?.apartmentBlocks;
+        this.selectedApartmentFloors = data?.data?.apartmentFloors;
+        this.addressForm.patchValue({
+          apartmentName: data?.data?.apartmentName
+        })
+        console.log('onDidDismiss resolved with role', this.addressForm);
+      });
+    }
+
+    async navigateToApartmentBlockList(ev: any) {
+      const modal = await this.modalController.create({
+        component: SelectBlockComponent,
+        cssClass: 'apartment_selection',
+        componentProps: {selectedApartmentBlocks : this.selectedApartmentBlocks}
+      });
+      await modal.present();
+      modal.onDidDismiss().then((data) => { 
+        console.log(data['data']);
+        this.addressForm.patchValue({
+          blockNo: data?.data
+        })
+        console.log('onDidDismiss resolved with role', this.addressForm);
+      });
+    }
+
+    async navigateToApartmentFloorList(ev: any) {
+      const modal = await this.modalController.create({
+        component: SelectFloorComponent,
+        cssClass: 'apartment_selection',
+        componentProps: {selectedApartmentFloors : this.selectedApartmentFloors}
+      });
+      await modal.present();
+      modal.onDidDismiss().then((data) => { 
+        console.log(data['data']);
+        this.addressForm.patchValue({
+          floorNo: data?.data
+        })
+        console.log('onDidDismiss resolved with role', this.addressForm);
+      });
+    }
 }

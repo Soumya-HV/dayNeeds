@@ -20,6 +20,10 @@ font: 500 16px 'poppinsMedium';
     text-transform: capitalize;
 }
 
+ion-searchbar{
+    font:  400 1rem 'poppinsMedium';
+}
+
 .customerRegWrap{
    margin: 10px 23px 0px 13px;
    background: linear-gradient(317.7deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 105.18%), 
@@ -61,3 +65,24 @@ font: 500 16px 'poppinsMedium';
  ion-radio {
      margin-right: 3px;
  }
+
+ 
+ion-radio::part(container){
+    border-color: #ff7043;
+ --color-checked: #ff7043;
+}
+
+.defaultLabel {
+    margin-left: 1.3rem;
+    span{
+        vertical-align: top;
+        margin-left: 1rem;
+        font: 100 12px 'poppinsReg';
+    }
+}
+
+ion-checkbox{
+    --background-checked: #ff7043;
+    --border-color-checked: #ff7043;
+    --border-color: #ff7043;
+}
