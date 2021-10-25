@@ -9,7 +9,7 @@ import * as env from '../../../../environments/environment'
   styleUrls: ['./select-apartment.component.scss'],
 })
 export class SelectApartmentComponent implements OnInit {
-  apartmentsList = [{ _id: 1, apartmentName: 'Skandha' }, { _id: 2, apartmentName: 'Krishna Satura' }]
+  apartmentsList = [];
   constructor(private modalController: ModalController, private http: HttpClient) { }
 
   ngOnInit() {
@@ -36,9 +36,8 @@ export class SelectApartmentComponent implements OnInit {
 
   searchItem(searchVal) {
     console.log(searchVal);
-    
     http://localhost:3000/prod/apartments/filterAppartments/{searchingWord}
-    this.http.get(env.environment.url + 'apartments/filterAppartments/' + searchVal).subscribe(res => {
+    this.http.get(env.environment.url +  'apartments/filterAppartments/' + searchVal).subscribe(res => {
       this.apartmentsList = res['response'];
       console.log(this.apartmentsList);
     })

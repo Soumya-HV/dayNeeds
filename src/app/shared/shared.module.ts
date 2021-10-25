@@ -28,6 +28,8 @@ import { AgmCoreModule } from '@agm/core';
 import { GeoLocationComponent } from '../modules/geo-location/geo-location.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { CustomizeOrderCartComponent } from './components/customize-order-cart/customize-order-cart.component';
+import { SelectBlockComponent } from './components/select-block/select-block.component';
+import { SelectFloorComponent } from './components/select-floor/select-floor.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,7 @@ import { CustomizeOrderCartComponent } from './components/customize-order-cart/c
     VendorEditProductComponent,
     SelectCategory,
     GeoLocationComponent,
-    PlaceOrderComponent, CustomizeOrderCartComponent],
+    PlaceOrderComponent, CustomizeOrderCartComponent, SelectBlockComponent, SelectFloorComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -85,7 +87,7 @@ import { CustomizeOrderCartComponent } from './components/customize-order-cart/c
     VendorDabbastoryComponent,
     AddSubUserComponent,
     VendorProductComponent,
-    SelectCategory,GeoLocationComponent, PlaceOrderComponent, CustomizeOrderCartComponent],
+    SelectCategory,GeoLocationComponent, SelectFloorComponent,PlaceOrderComponent, CustomizeOrderCartComponent, SelectBlockComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
 })
 export class SharedModule {}

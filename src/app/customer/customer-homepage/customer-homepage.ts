@@ -6,6 +6,7 @@ import { SideMenuCustomerComponent } from '../../sidemenu-customer/sidemenu-cust
 import * as env from '../../../environments/environment';
 import { NotificationComponent } from '../../shared/components/notification/notification.component';
 import { NavigationExtras, Router } from '@angular/router';
+import { ManageAddressComponent } from 'src/app/shared/components/manage-address/manage-address.component';
 
 @Component({
   selector: 'app-customer-homepage',
@@ -59,6 +60,16 @@ export class CustomerHomePage {
     let cname = (name == 'notification') ? NotificationComponent : SideMenuCustomerComponent
     const modal = await this.modalController.create({
       component: cname,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
+  }
+
+  async openModalAddress(name) {
+    const modal = await this.modalController.create({
+      component: ManageAddressComponent,
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {
