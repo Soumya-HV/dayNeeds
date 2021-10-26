@@ -33,7 +33,8 @@ export class ManageAddressComponent implements OnInit {
     this.modalController.dismiss();
   }
 
-  onSelectionChange($event, id) {
+  onSelectionChange($event, id, i) {
+    console.log(id, $event, i, this.address);
     for (let j = 0; j < this.address.length; j++) {
       if (this.address[j]?._id == id) {
         this.address[j]['isDeliveryAddress'] = true;
@@ -41,13 +42,34 @@ export class ManageAddressComponent implements OnInit {
         this.address[j]['isDeliveryAddress'] = false;
       }
     }
+    // (this.address[i]['isDeliveryAddress']) ? this.address[i]['isDeliveryAddress'] = false :  this.address[i]['isDeliveryAddress'] = true ;
+
+    // let PKQ = this.address.filter(x => x.isDeliveryAddress == true)[0];
+    // this.address[this.address.indexOf(PKQ)].isDeliveryAddress = false;
+    // this.address[i].isDeliveryAddress = true;
+    // console.log(PKQ);
+    // 
+
+    // let idFound = this.address.filter(x => x._id == id);   
+    // this.address[this.address.indexOf(idFound[0])].isDeliveryAddress = true;
+    // // console.log(idFound,this.address.indexOf(idFound[0]), this.address[this.address.indexOf(idFound[0])], this.address);
+
+    // this.address[i]['isDeliveryAddress'] = true;
+    // this.address[this.address.indexOf(idFound[0])].isDeliveryAddress = true;
+
+    // for (let j = 0; j < this.address.length; j++) {
+    // if (this.address[j]?._id == id) {
+    // console.log(id, this.address[j]?._id);
+    // this.address[j]['isDeliveryAddress'] = true;
+    // }
+    // }
     console.log(this.address);
-    
-    this.http.put(env.environment.url + 'user/' + localStorage.getItem('user_id') + '/address/' + id + '/deliveryAddress/true', {}).subscribe
-      (res => {
-        console.log(res);
-      });
-    // http://localhost:3000/prod/user/615c62da3b00ad53500b63f3/address/6173cf11445bc60009caf48f/deliveryAddress/true
+
+    // this.http.put(env.environment.url + 'user/' + localStorage.getItem('loginId') + '/address/' + id + '/deliveryAddress/' + true, {}).subscribe
+    // (res => {
+    // console.log(res);
+    // });
+  
   }
 
   async opensideModal(mode, id) {
