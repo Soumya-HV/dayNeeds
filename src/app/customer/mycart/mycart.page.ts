@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { commonService } from '../../core/services/common-service';
-
+import * as env from '../../../environments/environment';
 @Component({
   selector: 'app-mycart',
   templateUrl: 'mycart.page.html',
@@ -9,6 +10,7 @@ import { commonService } from '../../core/services/common-service';
 })
 export class MyCartPage {
   noOfProducts: number = 1;
+  loginId;
   // stockLists = [{
     // catName: 'RK Vegetables',
     // catDetails: [{ id: 1, image: '../../assets/images/chilli.svg', pName: 'Green Chilli', qty: '100g', price: 80, qtyno: 1 },
@@ -46,7 +48,10 @@ export class MyCartPage {
     }]
   }];
 
-  constructor(private router: Router, private tabService: commonService) { }
+  constructor(private router: Router, private tabService: commonService,private http: HttpClient,) {
+    this.loginId = localStorage.getItem('loginId');
+    this.getMyCartLists()
+   }
 
   ngOnInit() { }
 
@@ -54,6 +59,12 @@ export class MyCartPage {
     if (this.noOfProducts > 0) {
       this.noOfProducts -= 1;
     }
+  }
+
+  getMyCartLists(){
+    this.http.get(env.environment.url + 'carts/customer/'+this.loginId).subscribe(res => {
+      console.log(res);
+    });
   }
 
   increaseNumber() {

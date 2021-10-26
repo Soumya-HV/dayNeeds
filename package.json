@@ -36,6 +36,7 @@
     "@ionic/angular": "^5.7.0",
     "@ionic/pwa-elements": "^3.0.2",
     "@types/googlemaps": "^3.39.13",
+    "capacitor-razorpay": "git+https://github.com/razorpay/razorpay-capacitor.git",
     "cordova-plugin-nativegeocoder": "^3.4.1",
     "firebase": "^8.8.1",
     "jetifier": "^2.0.0",
