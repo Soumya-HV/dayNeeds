@@ -38,15 +38,16 @@
           <div class="vendor-name">{{itemList.itemName}}</div>
           <!-- <div class="vendor-cat">Meethi paratta + Subji</div> -->
           <div>
-            <ion-select [ngModel]="itemList.priceList[0]" (ionChange)="addCart(itemList,itemList.priceList, $event, i)"
+            <ion-select style="font-size: 12px;" [ngModel]="itemList.priceList[0]" (ionChange)="changeQuantity(itemList,itemList.priceList, $event, i)"
               [interfaceOptions]="{showBackdrop: false,cssClass:'quantity-popover'}" class="quantity-cls"
               interface="popover">
-              <ion-select-option *ngFor="let price of itemList.priceList;let j=index" [value]="price"> {{price.quantity}}
+              <ion-select-option *ngFor="let price of itemList.priceList;let j=index" [value]="price"> {{price.quantity}}/{{price.unit}}
               </ion-select-option>
             </ion-select>
-            <div style="float: left;" class="vendor-amnt">{{itemList?.selectedPrice}}</div>
+            <div style="float: left;" class="vendor-amnt">₹. {{itemList?.selectedPrice}}</div>
             <div class="add-btn">
-              <img [ngClass]="(itemList?.cartImg == 'plus') ? 'alignSuper': 'alignMiddle' " src="../../assets/images/{{itemList?.cartImg}}.svg" (click)="addedToCart(i)">
+              <img class="alignMiddle" *ngIf="itemList?.isPresentInCart"  src="../../assets/images/selected_item_tick.svg" >
+              <img class="alignSuper" *ngIf="!itemList?.isPresentInCart"  src="../../assets/images/plus.svg" (click)="addedToCart(itemList,i)" >
               <!-- <img style="vertical-align: middle;" src="../../assets/images/selected_item_tick.svg"> -->
             </div>
           </div>

@@ -90,9 +90,11 @@ ion-content{
 .quantity-cls{
     width: 105px;
     height: 24px;
-    background: rgb(218, 234, 246);
+    // background: ;
+    background: white;
     padding: 16px;
     border-radius: 10px;
+    border: 1px solid rgb(218, 234, 246);
 }
 .card-content{
     // border-top-right-radius: 10px;
