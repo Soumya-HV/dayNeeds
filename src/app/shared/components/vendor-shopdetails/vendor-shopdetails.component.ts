@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./vendor-shopdetails.component.scss'],
 })
 export class VendorShopdetailsComponent implements OnInit {
+  addDelivery = false;
   address = [{ _id: '1', houseNo: '8', block: 'A-Block', appartmentName: 'Garuda Park Square', landMark: 'HVResidence', address: 'Bangalore - 560049', contactNumber: '99999 99999', shopName: 'RK Vegetables' }];
   constructor(public modalController: ModalController) { }
 
@@ -14,5 +15,9 @@ export class VendorShopdetailsComponent implements OnInit {
 
   closeModal(){
     this.modalController.dismiss();
+  }
+
+  addDeliveryCharges() {
+    this.addDelivery =true;
   }
 }

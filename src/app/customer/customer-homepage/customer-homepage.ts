@@ -51,9 +51,11 @@ export class CustomerHomePage {
     speed: 1000,
 
   }
+  addressSelected: any;
   constructor(public modalController: ModalController, private http: HttpClient, private cmnService: commonService ,private router : Router) {
     this.getCategories();
     this.getDabbaStoriesList();
+    this.getUserDetails();
   }
 
   async openSideModal(name) {
@@ -81,6 +83,7 @@ export class CustomerHomePage {
     this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
       (res => {
         this.cmnService.userDetails = res['response'];
+        this.addressSelected = this.cmnService?.userDetails?.customerDetails?.address[0], 
         console.log(res, this.cmnService.userDetails);
       });
   }

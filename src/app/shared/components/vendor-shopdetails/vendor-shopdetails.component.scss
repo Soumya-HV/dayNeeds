@@ -41,3 +41,16 @@ ion-label{
     font: 100 0.75rem 'poppinsReg';
     color:rgba(42, 55, 87, 0.6);
 }
+
+ion-checkbox {
+    float: right;
+    --background-checked: #ff7043;
+    --border-color-checked: #ff7043;
+    --border-color: #ff7043;
+}
+
+.pull-right{
+    float: right;
+    margin-top: 5px;
+    height: 15px;
+}
