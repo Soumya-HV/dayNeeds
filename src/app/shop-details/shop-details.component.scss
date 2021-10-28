@@ -154,5 +154,10 @@ ion-content{
     bottom: 0;
     right: 0;
 }
-
+ion-checkbox{
+    float: right;
+    --background-checked: #ff7043;
+    --border-color-checked: #ff7043;
+    --border-color: #ff7043;
+}
 
