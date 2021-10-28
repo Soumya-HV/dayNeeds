@@ -12,6 +12,8 @@ export class commonService {
     vendorAccount : boolean;
     storePriceValue: any;
     unitSelected = [];
+    showTabs=true;
+    checkoutAmount: any;
 
     constructor(private http: HttpClient,private router: Router) {
     }
