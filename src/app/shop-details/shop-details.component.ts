@@ -45,6 +45,7 @@ export class ShopDetailsComponent implements OnInit {
   }
 
   getItemsByVendor() {
+    this.itemLists =[];
     this.http.get(env.environment.url + 'items/vendor/' + this.vendorId + '/user/' + this.loginId).subscribe
       (res => {
         var item = res['response'];
@@ -83,6 +84,7 @@ export class ShopDetailsComponent implements OnInit {
       "item": item._id,
       "selectedUnit": this.selectedUnit,
       "selectedQuantity": this.qtyselected,
+      "selectedItemPrice":this.totalPrice,
       "noOfquantity": 1,
       "totalPrice": this.totalPrice
     };

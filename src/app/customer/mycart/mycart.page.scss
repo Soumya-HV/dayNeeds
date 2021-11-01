@@ -4,7 +4,7 @@ ion-content{
 
 ion-card{
     padding: 10px;
-    margin: 10px 30px;
+    margin: 10px 20px;
     border-radius: 15px;
 }
  
@@ -19,6 +19,36 @@ ion-card{
 
 .titleContainer{
     margin-top: 30px;
+}
+
+.list-md{
+    background: none;
+}
+
+
+
+.img-col{
+    background: #DAEAF6;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    height: 110px;
+    .product-img{
+        height: 100%;
+        width: 65%;
+        vertical-align: middle;
+    }
+}
+
+.prod-col{
+    height: 110px;
+}
+
+.quanty-col{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0;
+
 }
 
 .vendor-name, .vendor-name-dairy{
@@ -61,7 +91,7 @@ ion-card{
 .vendor-amnt {
     font: 300 14px 'poppinsMedium';
     color: #2A3757;
-    margin: 10px 0px;
+    padding-top: 15px;
 }
 .vendor-amnt-dairy{
     font: 300 12px 'poppinsMedium';
@@ -132,17 +162,40 @@ text-align: center;
 ion-item::part(native) {
 border: unset !important;
 }
-// 
-// .hide-card {
-    // -webkit-box-shadow: none!important;
-    // background: transparent;
-    // text-align: center;
-    // padding-top: 18px;
-//   }
 
-// .shopName {
-//     font: 600 1rem 'poppinsSemiBold' ;
-// }  
+ion-item{
+    height: 110px;
+    --inner-padding-end: 0px;
+    --padding-start:0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+  
 .chatIcon {
     float: right;
+}
+
+.totalamountWrap {
+    background:#2A3757;
+    color: #fff;
+    font: 20px 'poppinsSemiBold';
+    text-align: center;
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    padding: 12px;
+}
+
+.totalamountWrap span {
+    vertical-align: sub;
+}
+.checkoutWrap{
+    background: #FF8A65;
+    padding: 15px;
+    font: 20px 'poppinsSemiBold';
+    color: #fff;
+    border-top-left-radius: 23px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
 }

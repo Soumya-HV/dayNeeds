@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './core/services/authentication.service';
 import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { commonService } from '../app/core/services/common-service';
 import * as env from '../environments/environment';
+import { Subject } from 'rxjs';
+import { takeUntil, filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  closed$ = new Subject<any>();
+  // showTabs = true; // <-- show tabs by default
   constructor(
     private router: Router,
     private platform: Platform,
@@ -37,6 +41,24 @@ export class AppComponent {
        
       }
     });
+  }
+
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      takeUntil(this.closed$)
+    ).subscribe(event => {
+      console.log("routing",event['url']);
+      if (event['url'] === '/customer/mycart') {
+        this.cmnService.showTabs = false; // <-- hide tabs on specific pages
+      } else{
+        this.cmnService.showTabs = true;
+      }
+    });
+  }
+  
+  ngOnDestroy() {
+    this.closed$.next(); // <-- close subscription when component is destroyed
   }
 
   // getUseridDetails() {

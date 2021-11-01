@@ -20,12 +20,10 @@ arrow-left.svg" />
     </div>
   </ion-row>
   <ion-list>
-    <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)" #radioGroup>
-      <ion-item lines="none" *ngFor="let item of radio_list" (ionFocus)="radioFocus()" (ionSelect)="radioSelect($event)"
-        (ionBlur)="radioBlur()">
+    <ion-radio-group name="radio-group" [(ngModel)]="selectedDate" (ionChange)="radioGroupChange()" #radioGroup>
+      <ion-item lines="none" *ngFor="let item of radio_list" (ionSelect)="radioSelect($event)">
         <ion-label>{{item.name}}</ion-label>
-        <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" part="container" checked="{{item.
-  checked}}">
+        <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" part="container">
         </ion-radio>
       </ion-item>
     </ion-radio-group>
@@ -34,31 +32,43 @@ arrow-left.svg" />
   <span class="addDelWrap">Add delivery instructions(if any)</span>
 
   <ion-list>
-    <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)" #radioGroup>
-      <ion-item lines="none" *ngFor="let item of radiorewards_list" (ionFocus)="radioFocus()"
-        (ionSelect)="radioSelect($event)" (ionBlur)="radioBlur()">
+    <ion-radio-group allow-empty-selection="true" name="radio-group" #radioGroup>
+      <ion-item lines="none" *ngFor="let item of radiorewards_list" (ionSelect)="radioSelect($event)"
+        (ionBlur)="radioBlur()">
         <ion-label>{{item.name}}</ion-label>
-        <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" part="container" checked="{{item.
-  checked}}">
+        <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" part="container">
         </ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
 
-  <ion-row class="orderDetails" *ngFor="let details of orderDetails">
+  <ion-row class="orderDetails" >
     <ion-col size=6>
-      {{details?.name}}
+      Basket Value
     </ion-col>
     <ion-col size=6>
-      <span>&#x20B9;</span>{{details?.value}}
+      <span>&#x20B9;</span>{{this.orderedDetails?.grandTotalPrice}}
     </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size=5 class="amountPayable">Total Amount Payable</ion-col>
-    <ion-col size=4 class="amountWrap"><span>&#x20B9;</span>{{details?.value}}</ion-col>
   </ion-row>
 
-  <ion-row style="position: fixed; bottom: 0;width: 100%;" size=12>
+  <ion-row class="orderDetails" >
+    <ion-col size=6>
+      Delivery Charge
+    </ion-col>
+    <ion-col size=6>
+      <span>&#x20B9;</span>{{this.orderedDetails?.deliveryCharge}}
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size=5 class="amountPayable">Total Amount Payable</ion-col>
+    <ion-col size=4 class="amountWrap"><span>&#x20B9;</span>{{this.orderedDetails?.grandTotalPrice + this.orderedDetails?.deliveryCharge}}</ion-col>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer>
+  <ion-row size=12>
     <ion-col size=8 class="totalamountWrap">
       <span>Pay using PhonePe</span>
     </ion-col>
@@ -66,5 +76,4 @@ arrow-left.svg" />
       <span (click)="checkoutEvent()">Place Order</span>
     </ion-col>
   </ion-row>
-
-</ion-content>
+</ion-footer>
