@@ -126,4 +126,13 @@ ion-content {
   }
 }
 
+.addBtn{
+  position: absolute;
+  width: 107px;
+  height: 40px;
+  left: calc(50% - 107px/2 + 2.5px);
+  bottom: 226px;
+  background: #FF7043;
+  border-radius: 20px 0px;
+}
 
