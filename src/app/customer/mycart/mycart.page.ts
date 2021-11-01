@@ -15,6 +15,7 @@ export class MyCartPage {
   loginId;
   cartItems: any;
   fullResponse: any;
+  vendorId;
   // stockLists = [{
   // catName: 'RK Vegetables',
   // catDetails: [{ id: 1, image: '../../assets/images/chilli.svg', pName: 'Green Chilli', qty: '100g', price: 80, qtyno: 1 },
@@ -72,7 +73,7 @@ export class MyCartPage {
 
   decreaseQuantity(cart, index) {
     this.cartItems[index].noOfquantity -= 1;
-      this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice  ;
+    this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
     let post = {
       "quantity": this.cartItems[index].noOfquantity,
       "totalPrice": this.cartItems[index].totalPrice
@@ -96,6 +97,7 @@ export class MyCartPage {
   getMyCartLists() {
     this.http.get(env.environment.url + 'carts/customer/' + this.loginId).subscribe(res => {
       this.fullResponse = res['response'];
+      this.vendorId = res['response'].vendorId;
       this.cartItems = res['response'].cartItems;
       console.log(this.cartItems);
     });
@@ -121,14 +123,22 @@ export class MyCartPage {
   }
 
   async checkoutEvent() {
-    var options = {
-      'totalPrice': 50000,  // amount in the smallest currency unit
+    // var options = {
+    //   'totalPrice': 50000,  // amount in the smallest currency unit
+    //   'currency': "INR",
+    // };
+    // this.cmnService.checkoutAmount = options;
+    let params = {
+      'orderdItems': this.cartItems,
+      'customerId': this.loginId,
+      'grandTotalPrice': 140,
+      'vendorId': this.vendorId,
+      'deliveryCharge': 50,
       'currency': "INR",
-    };
-    this.cmnService.checkoutAmount = options;
+    }
     const modal = await this.modalController.create({
       component: PlaceOrderComponent,
-      // componentProps: { data: 'success' },
+      componentProps: { data : JSON.stringify(params) },
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {

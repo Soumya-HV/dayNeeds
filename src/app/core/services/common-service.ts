@@ -14,6 +14,7 @@ export class commonService {
     unitSelected = [];
     showTabs=true;
     checkoutAmount: any;
+    customerdeliveryAddress: any;
 
     constructor(private http: HttpClient,private router: Router) {
     }
@@ -25,6 +26,7 @@ export class commonService {
             localStorage.setItem('loginId',this.userDetails._id);
             console.log(res, this.userDetails);
             if(this.userDetails?.customerDetails){
+              this.customerdeliveryAddress = this.userDetails.customerDetails?.address[0];
               this.customerAccount = true;
             } else{
               this.customerAccount = false;
