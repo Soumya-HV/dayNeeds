@@ -10,8 +10,16 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let rewards of userRewards; let i=index" size=12 class="ion-justify-content-center">
+    <ion-row size=12 class="ion-justify-content-center">
       <ion-col size=4>
+        <div class="rewardCard">
+          <p class="rewardamt" [style.color]="userRewards[0].color">&#x20B9;{{userRewards[0].amount}}</p>
+          <p class="rewardtype">{{userRewards[0].type}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col *ngFor="let rewards of userRewards | slice:1; let i=index" size=4>
         <div class="rewardCard">
           <p class="rewardamt" [style.color]="rewards.color">&#x20B9;{{rewards.amount}}</p>
           <p class="rewardtype">{{rewards.type}}</p>

@@ -14,6 +14,16 @@
       <p class="greetingmsg"><img src='../../../../assets/images/bot.svg'/>Hi Priyanka</p>
       <p class="helpmsg">Help us to provide better Service</p>
       <p class="ratemsg">Rate your purchase with RK Vegetables</p>
+      <ionic-rating-component #rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#488aff" 
+        defaultColor = "#f4f4f4"
+        readonly="false"
+        rating="3"
+        fontSize = "32px"
+        (ratingChanged)="onRatingChange($event)">
+    </ionic-rating-component>
     </div>
   </div>
 </ion-content>

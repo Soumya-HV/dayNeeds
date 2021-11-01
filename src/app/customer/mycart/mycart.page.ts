@@ -72,26 +72,28 @@ export class MyCartPage {
   }
 
   decreaseQuantity(cart, index) {
-    this.cartItems[index].noOfquantity -= 1;
-    this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
-    let post = {
-      "quantity": this.cartItems[index].noOfquantity,
-      "totalPrice": this.cartItems[index].totalPrice
+    if (this.cartItems[index].noOfquantity > 0) {
+      this.cartItems[index].noOfquantity -= 1;
+      this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
+      let post = {
+        "quantity": this.cartItems[index].noOfquantity,
+        "totalPrice": this.cartItems[index].totalPrice
+      }
+      this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
+        console.log(res);
+      });
     }
-    this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
-      console.log(res);
-    });
   }
   increaseQuantity(cart, index) {
-    this.cartItems[index].noOfquantity += 1;
-    this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
-    let post = {
-      "quantity": this.cartItems[index].noOfquantity,
-      "totalPrice": this.cartItems[index].totalPrice
-    }
-    this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
-      console.log(res);
-    });
+      this.cartItems[index].noOfquantity += 1;
+      this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
+      let post = {
+        "quantity": this.cartItems[index].noOfquantity,
+        "totalPrice": this.cartItems[index].totalPrice
+      }
+      this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
+        console.log(res);
+      });
   }
 
   getMyCartLists() {
@@ -138,7 +140,7 @@ export class MyCartPage {
     }
     const modal = await this.modalController.create({
       component: PlaceOrderComponent,
-      componentProps: { data : JSON.stringify(params) },
+      componentProps: { data: JSON.stringify(params) },
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {

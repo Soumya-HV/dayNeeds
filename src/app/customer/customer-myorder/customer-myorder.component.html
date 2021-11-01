@@ -41,22 +41,22 @@
   </div>
 
 
-  <div class="section-wrapper">
+  <div class="section-wrapper" *ngFor="let order of orderedItems; let i=index;">
     <ion-card>
       <ion-card-header>
         <ion-row>
           <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">Fri 02 Mar 2021</div>
-            <div class="vendor-name">RK Vegetables</div>
+            <div class="ordered-date">{{orderedItems?.expectedDeliveryDate | date: 'dd/MM/YY' }}</div>
+            <div class="vendor-name">{{orderedItems?.expectedDeliveryDate}}</div>
           </ion-col>
           <ion-col size="6" style="padding: 0;">
             <!-- <div class="waiting-accept">Waiting for Acceptance</div>
             <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div> -->
-            <div style="text-align: end;margin-top: 8px;"><span class="order-accepted">Order Accepted</span></div>
+            <div style="text-align: end;margin-top: 8px;"><span class="order-accepted">{{orderedItems?.orderStatus}}</span></div>
           </ion-col>
         </ion-row>
         <ion-row style="justify-content: space-between;">
-          <div class="ordered-amount">Rs.650.00</div>
+          <div class="ordered-amount"><span *ngIf="orderedItems?.currency == 'INR'"></span>&#x20B9;{{orderedItems?.grandTotalPrice}}</div>
           <div class="ordered-time">Today,4.00pm</div>
           <div class="ordered-type"><img src="../../assets/images/cod-close.svg"><span class="cod-txt">COD</span></div>
         </ion-row>

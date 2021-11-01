@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicRatingComponentModule } from 'ionic-rating-component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { OTPComponent } from './components/otp/otp.component';
@@ -56,7 +57,8 @@ import { SelectFloorComponent } from './components/select-floor/select-floor.com
   entryComponents: [],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
+    IonicRatingComponentModule, 
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -70,6 +72,7 @@ import { SelectFloorComponent } from './components/select-floor/select-floor.com
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    IonicRatingComponentModule,
     HttpClientModule,
     LoginComponent,
     OTPComponent,

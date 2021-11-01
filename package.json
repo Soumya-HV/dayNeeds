@@ -39,6 +39,7 @@
     "capacitor-razorpay": "git+https://github.com/razorpay/razorpay-capacitor.git",
     "cordova-plugin-nativegeocoder": "^3.4.1",
     "firebase": "^8.8.1",
+    "ionic-rating-component": "^1.2.1",
     "jetifier": "^2.0.0",
     "moment": "^2.29.1",
     "rxjs": "~6.6.0",

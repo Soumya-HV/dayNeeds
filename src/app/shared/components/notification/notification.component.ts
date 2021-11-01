@@ -16,5 +16,8 @@ export class NotificationComponent implements OnInit {
   closeModal(){
     this.modalController.dismiss();
   }
+  onRatingChange(rating){
+
+  }
 
 }
