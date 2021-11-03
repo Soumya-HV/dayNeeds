@@ -27,8 +27,13 @@ vendorAcc: any;
     this.vendorAcc = this.cmnService.vendorAccount;
     console.log("customer",this.customerAcc);
     console.log("vendor",this.vendorAcc);
-    console.log('usertype',this.userType);
-   
+    console.log('usertype',this.userType);   
+  }
+  
+  logOutEvent() {
+    localStorage.clear();
+    this.modalController.dismiss();
+    this.router.navigateByUrl('/login');
   }
 
   closeModal() {

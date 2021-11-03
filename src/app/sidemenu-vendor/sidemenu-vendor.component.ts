@@ -39,6 +39,11 @@ vendorAcc: any;
     this.modalController.dismiss();
   }
 
+  logOutEvent() {
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
+
 
   async openRewardModel() {
     this.modalController.dismiss();

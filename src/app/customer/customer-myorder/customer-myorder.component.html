@@ -9,35 +9,34 @@
   </ion-row>
 
   <div class="section-wrapper">
-    <ion-card>
-      <ion-card-header>
-        <ion-row>
-          <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">Fri 02 Mar 2021</div>
-            <div class="vendor-name">RK Vegetables</div>
-          </ion-col>
-          <ion-col size="6" style="padding: 0;">
-            <div class="waiting-accept">Waiting for Acceptance</div>
-            <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div>
-          </ion-col>
-        </ion-row>
-        <ion-row style="justify-content: space-between;">
-          <div class="ordered-amount">Rs.650.00</div>
-          <div class="ordered-time">Today,4.00pm</div>
-          <div class="ordered-type"><img src="../../assets/images/cod-close.svg"><span class="cod-txt">COD</span></div>
-        </ion-row>
-      </ion-card-header>
-    </ion-card>
-    <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items
-      <span>
-        <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg">
-      </span>
-    </div>
-    <div *ngIf="showDetails">
+    <!-- <ion-card> -->
+      <!-- <ion-card-header> -->
+        <!-- <ion-row> -->
+          <!-- <ion-col size="6" style="padding: 0;"> -->
+            <!-- <div class="ordered-date">Fri 02 Mar 2021</div> -->
+            <!-- <div class="vendor-name">RK Vegetables</div> -->
+          <!-- </ion-col> -->
+          <!-- <ion-col size="6" style="padding: 0;"> -->
+            <!-- <div class="waiting-accept">Waiting for Acceptance</div> -->
+            <!-- <!-- <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div> --> 
+          <!-- </ion-col> -->
+        <!-- </ion-row> -->
+        <!-- <ion-row style="justify-content: space-between;"> -->
+          <!-- <div class="ordered-amount">Rs.650.00</div> -->
+          <!-- <div class="ordered-time">Today,4.00pm</div> -->
+          <!-- <!-- <div class="ordered-type"><img src="../../assets/images/cod-close.svg"><span class="cod-txt">COD</span></div> -->      <!-- </ion-row> -->
+      <!-- </ion-card-header> -->
+    <!-- </ion-card> -->
+    <!-- <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items -->
+      <!-- <span> -->
+        <!-- <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg"> -->
+      <!-- </span> -->
+    <!-- </div> -->
+    <!-- <div *ngIf="showDetails"> -->
       <!-- In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form
       of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
       final copy is available. Wikipedia -->
-    </div>
+    <!-- </div> -->
   </div>
 
 
@@ -46,19 +45,19 @@
       <ion-card-header>
         <ion-row>
           <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">{{orderedItems?.expectedDeliveryDate | date: 'dd/MM/YY' }}</div>
-            <div class="vendor-name">{{orderedItems?.expectedDeliveryDate}}</div>
+            <div class="ordered-date">{{orderedItems?.orderPlacedDate | date: 'dd/MM/YY' }}</div>
+            <div class="vendor-name">{{orderedItems?.vendorName}}</div>
           </ion-col>
           <ion-col size="6" style="padding: 0;">
-            <!-- <div class="waiting-accept">Waiting for Acceptance</div>
-            <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div> -->
-            <div style="text-align: end;margin-top: 8px;"><span class="order-accepted">{{orderedItems?.orderStatus}}</span></div>
+           <div class="waiting-accept">Waiting for Acceptance</div>
+             <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div>
+            <div style="text-align: end;margin-top: 8px;"><span class="order-accepted">{{orderedItems?.paymentStatus}}</span></div>
           </ion-col>
         </ion-row>
         <ion-row style="justify-content: space-between;">
           <div class="ordered-amount"><span *ngIf="orderedItems?.currency == 'INR'"></span>&#x20B9;{{orderedItems?.grandTotalPrice}}</div>
-          <div class="ordered-time">Today,4.00pm</div>
-          <div class="ordered-type"><img src="../../assets/images/cod-close.svg"><span class="cod-txt">COD</span></div>
+          <div class="ordered-time">{{orderedItems?.expectedDeliveryDate | date: 'dd/MM/YY' }}</div>
+          <div class="ordered-type"><img src="../../assets/images/cod-close.svg"><span class="cod-txt">{{orderedItems?.paymentStatus}}</span></div>
         </ion-row>
       </ion-card-header>
     </ion-card>
@@ -90,40 +89,40 @@
   </div>
 
 
-  <div class="section-wrapper">
-    <ion-card>
-      <ion-card-header>
-        <ion-row>
-          <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">Fri 02 Mar 2021</div>
-            <div class="vendor-name">RK Vegetables</div>
-          </ion-col>
-          <ion-col size="6" style="padding: 0;">
-            <!-- <div class="waiting-accept">Waiting for Acceptance</div>
-            <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div> -->
+  <!-- <div class="section-wrapper"> -->
+    <!-- <ion-card> -->
+      <!-- <ion-card-header> -->
+        <!-- <ion-row> -->
+          <!-- <ion-col size="6" style="padding: 0;"> -->
+            <!-- <div class="ordered-date">Fri 02 Mar 2021</div> -->
+            <!-- <div class="vendor-name">RK Vegetables</div> -->
+          <!-- </ion-col> -->
+          <!-- <ion-col size="6" style="padding: 0;"> -->
+            <!-- <!-- <div class="waiting-accept">Waiting for Acceptance</div> -->
+            <!-- <!-- <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div> --> 
             <!-- <div style="text-align: end;margin-top: 8px;"><span class="order-accepted">Order Accepted</span></div> -->
-            <div style="text-align: end;margin-top: 8px;"><span class="order-delivered">Delivered</span></div>
-          </ion-col>
-        </ion-row>
-        <ion-row style="justify-content: space-between;">
-          <div class="ordered-amount">Rs.650.00</div>
-          <div class="ordered-time">Today,4.00pm</div>
-          <div class="ordered-type"><img src="../../assets/images/order-delivered-tick.svg"><span class="paid-txt">Paid</span></div>
-        </ion-row>
-      </ion-card-header>
-    </ion-card>
-    <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items
-      <span>
-        <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg">
-      </span>
-    </div>
-    <div *ngIf="showDetails">
-      <!-- In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form
-      of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
-      final copy is available. Wikipedia -->
+            <!-- <!-- <div style="text-align: end;margin-top: 8px;"><span class="order-delivered">Delivered</span></div> --> 
+          <!-- </ion-col> -->
+        <!-- </ion-row> -->
+        <!-- <ion-row style="justify-content: space-between;"> -->
+          <!-- <div class="ordered-amount">Rs.650.00</div> -->
+          <!-- <div class="ordered-time">Today,4.00pm</div> -->
+          <!-- <!-- <div class="ordered-type"><img src="../../assets/images/order-delivered-tick.svg"><span class="paid-txt">Paid</span></div> --> 
+        <!-- </ion-row> -->
+      <!-- </ion-card-header> -->
+    <!-- </ion-card> -->
+    <!-- <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items -->
+      <!-- <span> -->
+        <!-- <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg"> -->
+      <!-- </span> -->
+    <!-- </div> -->
+    <!-- <div *ngIf="showDetails"> -->
+      <!-- <!-- <!-- In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form --> 
+      <!-- <!-- of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before --> 
+      <!-- final copy is available. Wikipedia --> 
 
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 
 
 
