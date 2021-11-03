@@ -8,7 +8,7 @@ const routes: Routes = [
     component: VendorListPage,
   },
   {
-    path: 'vendorfilterbyCatId',
+    path: '/:category_id',
     component: VendorListPage,
   }
 ];

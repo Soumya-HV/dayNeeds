@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-customize-order-cart',
@@ -7,16 +9,18 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./customize-order-cart.component.scss'],
 })
 export class CustomizeOrderCartComponent implements OnInit {
-  success = false;
-  error = true;
-  replace = false;
+  @Input() data;
 
-  constructor(private modalController: ModalController) { }
 
-  ngOnInit() { }
+  constructor(private modalController: ModalController, private router: Router) { }
+
+  ngOnInit() {
+  }
 
   backToCart() {
-    window.location.reload();
+    this.modalController.dismiss();
+    // window.location.reload();
+    this.router.navigate(['customer/home'])
   }
 
 }

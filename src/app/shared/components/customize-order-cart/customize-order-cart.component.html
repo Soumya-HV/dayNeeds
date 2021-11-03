@@ -5,16 +5,16 @@
     </div>
   </div>
   <ion-row>
-    <ion-col size="12" class="ion-justify-content-center text-center" *ngIf="success">
+    <ion-col size="12" class="ion-justify-content-center text-center" *ngIf="this.data=='success'">
       <span class="titleWrap">Congratulations!!!</span>
       <p class="contentWrap">Your order have been Placed Successfully</p>
     </ion-col>
-    <ion-col size="12" class="ion-justify-content-center text-center" *ngIf="error">
+    <ion-col size="12" class="ion-justify-content-center text-center" *ngIf="this.data=='error'">
       <span class="titleWrap">Oops!</span>
       <p class="contentWrap">Unable to process your request.</p>
       <span class="contentWrap">Please try again...</span>
     </ion-col>
-    <ion-col *ngIf="replace" class="ion-justify-content-center replacecart">
+    <ion-col *ngIf="this.data=='replace'" class="ion-justify-content-center replacecart">
       <span class="titleWrap">Replace Cart Item?</span>
       <p class="contentWrap">Your Basket contains items from RK vegtables. Do you want to discard the selection and add
         new delivery Location? </p>

@@ -1,18 +1,18 @@
 <ion-tabs class="no-lines">
   <ion-tab-bar slot="bottom"  *ngIf="this.cmnService.showTabs">
-    <ion-tab-button tab="home" (click)="otherTabClicked()">
+    <ion-tab-button tab="home" >
       <ion-icon style="font-size: 28px;" src="../../assets/images/home.svg"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="vendor-list" (click)="otherTabClicked()">
+    <ion-tab-button tab="vendor-list"  (click)="navigateVendor()">
       <ion-icon src="../../assets/images/category.svg"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="mycart" (click)="cartListClicked()">
+    <ion-tab-button tab="mycart" >
       <ion-icon src="../../assets/images/mylist.svg"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="myorder" (click)="otherTabClicked()">
+    <ion-tab-button tab="myorder" >
       <ion-icon src="../../assets/images/myorder.svg"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>

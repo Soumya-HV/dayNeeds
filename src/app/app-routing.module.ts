@@ -10,7 +10,7 @@ import { AuthGuard } from './core/services/auth-guard.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  // { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   {
     path: 'welcome',
     component: WelcomeComponent
@@ -64,7 +64,7 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules,onSameUrlNavigation: 'reload' })
   ],
   exports: [RouterModule]
 })

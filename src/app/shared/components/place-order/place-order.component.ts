@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { commonService } from 'src/app/core/services/common-service';
 import { CustomizeOrderCartComponent } from '../customize-order-cart/customize-order-cart.component';
 import * as env from '../../../../environments/environment';
@@ -39,7 +39,7 @@ export class PlaceOrderComponent implements OnInit {
   ];
   selectedDate: any;
   constructor(private router: Router, private modalController: ModalController,
-    private cmnService: commonService, private http: HttpClient, private alertController: AlertController) {
+    private cmnService: commonService, private http: HttpClient, private alertController: AlertController, public navCtrl:NavController,) {
     this.selectedDate = this.radio_list[0].value;
   }
 
@@ -141,9 +141,26 @@ export class PlaceOrderComponent implements OnInit {
     }
     console.log(params);
     this.http.post(env.environment.url + 'capturePayment', params).subscribe(res => {
+      if(res['error']==false){
+        this.modalController.dismiss();
+        this.callModal();
+
+      }
       console.log(JSON.stringify(res));
     })
     
+  }
+
+  async callModal(){
+    const modal = await this.modalController.create({
+      component: CustomizeOrderCartComponent,
+      cssClass: 'addModalClass',
+     componentProps: { data: 'success' },
+    });
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+    }); 
+    return await modal.present();
   }
 
   async presentAlert(response: string) {

@@ -15,17 +15,21 @@ export class CustomerTabsPage {
    
   }
 
-  cartListClicked() {
-    this.cmnService.cartScreen = true;
-    this.router.navigate(['customer/mycart']);
-  }
+  // cartListClicked() {
+  //   this.cmnService.cartScreen = true;
+  //   this.router.navigate(['customer/mycart']);
+  // }
 
-  otherTabClicked() {
-    this.cmnService.cartScreen = false;
-  }
+  // otherTabClicked() {
+  //   this.cmnService.cartScreen = false;
+  // }
 
   async checkoutEvent() {
    
+  }
+
+  navigateVendor(){
+    this.router.navigate(['customer/vendor-list'])
   }
 }
 

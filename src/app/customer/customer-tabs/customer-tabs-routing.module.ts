@@ -15,6 +15,10 @@ const routes: Routes = [
         path: 'vendor-list',
         loadChildren: () => import('../vendor-list/vendor-list.module').then(m => m.VendorListPageModule)
       },
+      // {
+      //   path: 'vendor-list',
+      //   loadChildren: () => import('../vendor-list/vendor-list.module').then(m => m.VendorListPageModule)
+      // },
       {
         path: 'mycart',
         loadChildren: () => import('../mycart/mycart.module').then(m => m.MyCartPageModule)
