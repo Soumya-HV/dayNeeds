@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //  url: 'https://ygn8q40qaf.execute-api.ap-south-1.amazonaws.com/prod/',
-   url: 'https://0719-117-222-112-234.ngrok.io/prod/', 
+   url: 'https://d689-117-213-253-207.ngrok.io/prod/', 
   
   firebaseConfig: {
     apiKey: 'AIzaSyAnMONxA1GU2wcPnSLyU-VacVgZDSgJ5UU',

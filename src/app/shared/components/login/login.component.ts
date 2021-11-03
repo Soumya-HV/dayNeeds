@@ -6,6 +6,7 @@ import firebase from 'firebase/app';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
+import { commonService } from 'src/app/core/services/common-service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   @Output() isNewUser = new EventEmitter();
   user;
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthenticationService,
-    private alertController: AlertController,
+    private alertController: AlertController,public cmnService: commonService,
     private http: HttpClient,
     private auth: AngularFireAuth) {
     this.ionicForm = this.fb.group({
@@ -61,8 +62,10 @@ export class LoginComponent implements OnInit {
       console.log('Please provide all the required values!')
       return false;
     } else {
+      this.cmnService.present();
       this.authService.signInWithPhoneNumber(body.mobileNumber, this.recaptchaVerifier)
         .then((success) => {
+          this.cmnService.dismiss();
           console.log(success);
           localStorage.setItem('phoneNum', this.ionicForm.value.mobileNumber);
           this.router.navigate(['otp']);

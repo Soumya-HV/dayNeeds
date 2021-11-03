@@ -16,6 +16,7 @@ import { ManageAddressComponent } from 'src/app/shared/components/manage-address
 export class CustomerHomePage {
   categories : any;
   dabbastoriesLists: any;
+  dummy = Array(15);
   // categories = [
   //   {
   //     'img': '../../assets/images/cat-1.svg',
@@ -54,7 +55,7 @@ export class CustomerHomePage {
   addressSelected: any;
   constructor(public modalController: ModalController, private http: HttpClient, private cmnService: commonService ,private router : Router) {
     this.getCategories();
-    this.getDabbaStoriesList();
+    // this.getDabbaStoriesList();
     this.addressSelected = this.cmnService.customerdeliveryAddress;
   }
 
@@ -83,6 +84,7 @@ export class CustomerHomePage {
   getCategories() {
     this.http.get(env.environment.url + 'categories').subscribe
       (res => {
+        this.getDabbaStoriesList();
         this.categories = res['response'];
         console.log(this.categories);
       // console.log("category lists"+res);
@@ -97,12 +99,14 @@ export class CustomerHomePage {
        "category_id":category._id
       }
     };
-   this.router.navigate(['customer/vendor-list/vendorfilterbyCatId'],navigationExtras); 
+    this.router.routeReuseStrategy.shouldReuseRoute = function() { return false; };
+   this.router.navigate(['customer/vendor-list'],navigationExtras); 
   }
 
   getDabbaStoriesList(){
     this.http.get(env.environment.url + 'item/home-made-items').subscribe
     (res => {
+      this.dummy =[];
       this.dabbastoriesLists = res['response'];
       console.log(this.dabbastoriesLists);
     });

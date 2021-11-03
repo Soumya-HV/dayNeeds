@@ -96,6 +96,13 @@ ion-content{
     border-radius: 10px;
     border: 1px solid rgb(218, 234, 246);
 }
+.select-quantity-dairy{
+    height: 24px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #F8D4EF;
+   
+}
 .card-content{
     // border-top-right-radius: 10px;
     // border-bottom-right-radius: 10px;
@@ -118,7 +125,13 @@ ion-content{
     letter-spacing: 0.02em;
     color: #2A3757;
     padding-bottom: 10px;
-    padding-top: 10px;
+    width: 90%;
+    // padding-top: 10px;
+    .text-els{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 .vendor-cat{
     font-family: 'poppinsReg';
@@ -162,4 +175,39 @@ ion-checkbox{
     --border-color-checked: #ff7043;
     --border-color: #ff7043;
 }
+.calender-align{
+    background-color: white;
+    position: relative;
+    display: flex;
+    height: 28px;
+    align-items: center;
+    // justify-content: space-between;
+    max-width: 300px;
+    width: 100%;
+    border: none;
+    background: #F8D4EF;
+    border-radius: 10px;
+    padding: 9px;
+}
+
+.start-dte{
+    // border: 1px solid #F8D4EF;
+    // border-radius: 15px;
+    // background: #F8D4EF;
+    padding-left: 0;
+    font-size: 10px;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+.end-dte{
+    // border: 1px solid #F8D4EF;
+    // border-radius: 15px;
+    // background: #F8D4EF;
+
+    padding-left: 0;
+    font-size: 13px;
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
 
