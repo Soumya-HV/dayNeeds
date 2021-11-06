@@ -12,7 +12,7 @@ import * as env from '../../../environments/environment';
 export class CustomerMyOrderComponent implements OnInit {
   showDetails = false;
   loginId;
-  orderLists: any;
+  orderLists =[];
   orderedItems = [{ id: 1, name: 'Onion', qty: '100g', qtyno: '1', price: '50.00' }, { id: 1, name: 'Tomatoes', qty: '500g', qtyno: '1', price: '30.00' }, { id: 1, name: 'Okra', qty: '200g', qtyno: '1', price: '70.00' }];
   constructor(public modalController: ModalController, private router: Router, private tabService: commonService,private http: HttpClient) {
     this.loginId = localStorage.getItem('loginId');
@@ -22,7 +22,8 @@ export class CustomerMyOrderComponent implements OnInit {
 
   ionViewWillEnter(){
     this.http.get(env.environment.url + 'customer/' + this.loginId+'/orders').subscribe(res => {
-      console.log(res);
+      this.orderLists = res['response'];
+      console.log(this.orderLists);
     })
   }
 

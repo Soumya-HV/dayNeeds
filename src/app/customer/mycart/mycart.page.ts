@@ -131,7 +131,7 @@ export class MyCartPage {
     let params = {
       'orderdItems': this.cartItems,
       'customerId': this.loginId,
-      'grandTotalPrice': 140,
+      'grandTotalPrice': this.fullResponse.grandTotalPrice,
       'vendorId': this.vendorId,
       'deliveryCharge': 50,
       'currency': "INR",
