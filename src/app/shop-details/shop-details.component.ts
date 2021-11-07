@@ -53,13 +53,15 @@ export class ShopDetailsComponent implements OnInit {
         for (let k = 0; k < item.length; k++) {
           (item[k].priceList[0]) ? item[k]['selectedPrice'] = item[k].priceList[0].offerPrice : [];
           (item[k].priceList[0]) ?  item[k]['isPresentInCart'] = item[k].priceList[0].isPresentInCart : false;
+          (item[k].priceList[0]) ?  item[k]['selectedUnit'] = item[k].priceList[0].unit : false;
+          (item[k].priceList[0]) ?  item[k]['selectedQuantity'] = item[k].priceList[0].quantity : false;
           this.itemLists.push(item[k]);
         }
         this.dummy=[];
-        this.qtyselected = this.itemLists[0].priceList[0].quantity;
-        this.selectedUnit = this.itemLists[0].priceList[0].unit;
-        this.totalPrice = this.itemLists[0].priceList[0].offerPrice;
-        this.itemId = this.itemLists[0].priceList[0]._id;
+        // this.qtyselected = this.itemLists[0].priceList[0].quantity;
+        // this.selectedUnit = this.itemLists[0].priceList[0].unit;
+        // this.totalPrice = this.itemLists[0].priceList[0].offerPrice;
+        // this.itemId = this.itemLists[0].priceList[0]._id;
         console.log(this.itemLists);
       });
   }
@@ -72,23 +74,26 @@ export class ShopDetailsComponent implements OnInit {
     let value = val.findIndex(item => (item.quantity) === event.detail.value.quantity);
     this.itemLists[i]['selectedPrice'] = this.itemLists[i].priceList[value].offerPrice;
     this.itemLists[i]['isPresentInCart'] = this.itemLists[i].priceList[value].isPresentInCart;
-    this.qtyselected = event.detail.value.quantity;
-    this.selectedUnit = event.detail.value.unit;
-    this.totalPrice = event.detail.value.offerPrice;
-    this.itemId = item._id
+    this.itemLists[i]['selectedUnit'] = this.itemLists[i].priceList[value].unit;
+    this.itemLists[i]['selectedQuantity'] = this.itemLists[i].priceList[value].quantity;
+    // this.qtyselected = event.detail.value.quantity;
+    // this.selectedUnit = event.detail.value.unit;
+    // this.totalPrice = event.detail.value.offerPrice;
+    // this.itemId = item._id
   }
 
   addedToCart(item, i) {
+    console.log(item);
     this.itemLists[i]['isPresentInCart'] = true;
     let body = {
       "customerId": this.loginId,
       "vendorId": this.vendorId,
       "item": item._id,
-      "selectedUnit": this.selectedUnit,
-      "selectedQuantity": this.qtyselected,
-      "selectedItemPrice":this.totalPrice,
+      "selectedUnit": item.selectedUnit,
+      "selectedQuantity": item.selectedQuantity,
+      "selectedItemPrice":item.selectedPrice,
       "noOfquantity": 1,
-      "totalPrice": this.totalPrice
+      "totalPrice": item.selectedPrice
     };
     console.log(body);
     this.http.post(env.environment.url + 'cart', body).subscribe(res => {

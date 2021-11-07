@@ -39,7 +39,9 @@ export class MyCartPage {
     }
   }
 
+
   decreaseQuantity(cart, index) {
+    this.fullResponse.grandTotalPrice = this.fullResponse.grandTotalPrice - this.cartItems[index].selectedItemPrice;
     this.cartItems[index].noOfquantity -= 1;
     this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
     let post = {
@@ -51,6 +53,7 @@ export class MyCartPage {
     });
   }
   increaseQuantity(cart, index) {
+    this.fullResponse.grandTotalPrice = this.fullResponse.grandTotalPrice + this.cartItems[index].selectedItemPrice;
     this.cartItems[index].noOfquantity += 1;
     this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
     let post = {
