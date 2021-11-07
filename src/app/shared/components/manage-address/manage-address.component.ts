@@ -23,8 +23,10 @@ export class ManageAddressComponent implements OnInit {
   }
 
   getUserDetails() {
+    this.commonService.present();
     this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
       (res => {
+        this.commonService.dismiss();
         this.commonService.userDetails = res['response'];
         this.address = res['response']?.customerDetails?.address;
         for(let j=0 ; j<this.address.length; j++) {
