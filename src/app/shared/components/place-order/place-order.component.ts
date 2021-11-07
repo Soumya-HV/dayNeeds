@@ -15,7 +15,7 @@ import { Checkout } from 'capacitor-razorpay';
 export class PlaceOrderComponent implements OnInit {
   @Input() data;
   orderedDetails: any;
-  address = [{ _id: '1', typeOfAddress: 'Home', houseNo: 'No:8, A-Block,Garuda Park Square,HVResidence, Bangalore - 560049', contactNumber: '99999 99999', default: true }];
+  // address = [{ _id: '1', typeOfAddress: 'Home', houseNo: 'No:8, A-Block,Garuda Park Square,HVResidence, Bangalore - 560049', contactNumber: '99999 99999', default: true }];
   priceDetails = [{ id: '1', name: 'Basket Value', value: '50.00' }, { id: '2', name: 'Delivery Charge', value: '00.00' }];
   vendorId;
   loginId;
@@ -39,9 +39,13 @@ export class PlaceOrderComponent implements OnInit {
     },
   ];
   selectedDate: any;
+  address: any;
   constructor(private router: Router, private modalController: ModalController,
     private cmnService: commonService, private http: HttpClient, private alertController: AlertController, public navCtrl:NavController,) {
     this.selectedDate = this.radio_list[0].value;
+    this.address = this.cmnService.customerdeliveryAddress;
+    console.log(this.address);
+    
   }
 
   ngOnInit() {

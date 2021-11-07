@@ -22,9 +22,13 @@ export class ShopDetailsComponent implements OnInit {
   priceValueLists: any;
   selectedUnit: any;
   dummy = Array(10);
+  vendorName: any;
   constructor(public modalController: ModalController, private http: HttpClient, public navParams: NavParams) {
-    this.vendorId = this.navParams.get('data');
-    console.log('vendorId', this.vendorId);
+    console.log(this.navParams.get('data'));
+    
+    this.vendorId = this.navParams.get('data')._id;
+    this.vendorName = this.navParams.get('data').vendorDetails.businessDetails.buisnessName,
+    console.log('vendorId', this.vendorId, this.vendorName);
     this.loginId = localStorage.getItem('loginId');
     this.getItemsByVendor();
   }

@@ -40,6 +40,7 @@ export class MyCartPage {
   }
 
   decreaseQuantity(cart, index) {
+    
     if (this.cartItems[index].noOfquantity > 0) {
       this.cartItems[index].noOfquantity -= 1;
       this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
@@ -50,8 +51,12 @@ export class MyCartPage {
       this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
         console.log(res);
       });
-    }
+      if(this.cartItems[index].noOfquantity == 0) {
+        this.presentAlertConfirm(cart);
+      }
+    } 
   }
+
   increaseQuantity(cart, index) {
       this.cartItems[index].noOfquantity += 1;
       this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;

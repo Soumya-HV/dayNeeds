@@ -25,16 +25,16 @@ export class AddressComponent implements OnInit {
   radio_list = [
     {
       name: 'Home',
-      value: 'home',
-      checked: false,
+      value: 'Home',
+      checked: true,
     }, {
       name: 'Office',
-      value: 'office',
-      checked: true,
+      value: 'Office',
+      checked: false,
 
     }, {
       name: 'Other',
-      value: 'other',
+      value: 'Other',
       checked: false,
     },
   ];
@@ -46,6 +46,7 @@ export class AddressComponent implements OnInit {
   selectedApartment: any;
   selectedApartmentBlocks: any;
   selectedApartmentFloors: any;
+  selectedAddressType: string;
 
   constructor(public modalController: ModalController, private fb: FormBuilder, private http: HttpClient, private commonService: commonService) {
     this.addressForm = this.fb.group({
@@ -79,14 +80,18 @@ export class AddressComponent implements OnInit {
           });
           for (let i = 0; i < this.radio_list.length; i++) {
             this.radio_list[i].checked = false;
-            if (res['response'].customerDetails?.address[0]?.typeOfAddress == this.radio_list[i].value) {
+            if (res['response'].customerDetails?.address[0]?.typeOfAddress.toLowerCase() == this.radio_list[i].value.toLowerCase()) {             
               this.radio_list[i].checked = true;
+              this.selectedAddressType = this.radio_list[i].value
             }
           }
         })
     } else {
       this.addressForm.reset();
+      this.selectedAddressType = this.radio_list[0].value
     }
+    console.log(this.selectedAddressType);
+    
   }
 
   onSelectionChange(val) {
@@ -135,17 +140,10 @@ export class AddressComponent implements OnInit {
     this.selectedGroup = event.detail.value;
   }
 
-  radioFocus() {
-    console.log("radioFocus");
-  }
   radioSelect(event) {
     console.log("radioSelect", event.detail);
     this.selectedItem = event.detail;
   }
-  radioBlur() {
-    console.log("radioBlur");
-  }
-  
 
   async navigateToApartmentList(ev: any) {
       const modal = await this.modalController.create({

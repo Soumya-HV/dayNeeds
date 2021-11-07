@@ -5,6 +5,8 @@ import { IonSlides, ModalController } from '@ionic/angular';
 import { ShopDetailsComponent } from '../../shop-details/shop-details.component';
 import { Camera, CameraResultType,CameraSource,ImageOptions } from '@capacitor/camera';
 import * as env from '../../../environments/environment';
+import { commonService } from 'src/app/core/services/common-service';
+import { ManageAddressComponent } from 'src/app/shared/components/manage-address/manage-address.component';
 @Component({
   selector: 'app-vendor-list',
   templateUrl: 'vendor-list.page.html',
@@ -30,11 +32,24 @@ export class VendorListPage {
     speed: 1000,
 
   }
-  constructor(public modalController: ModalController,private http: HttpClient, private router: Router,private activatedRoute : ActivatedRoute) {
+  addressSelected: any;
+  constructor(public modalController: ModalController,private http: HttpClient, private router: Router,private activatedRoute : ActivatedRoute, private cmnService:commonService) {
     activatedRoute.queryParams.subscribe(params => {
       this.categoryId = params.category_id;
       console.log(this.categoryId);
+      this.addressSelected = this.cmnService.customerdeliveryAddress;
     })
+  }
+
+
+  async openModalAddress(name) {
+    const modal = await this.modalController.create({
+      component: ManageAddressComponent,
+      cssClass: 'sideMenuModal'
+    });
+    modal.onDidDismiss().then((data) => {
+    });
+    return await modal.present();
   }
 
   ionViewWillEnter(){
@@ -90,7 +105,7 @@ export class VendorListPage {
   async openShopDetail(vendor) {
     const modal = await this.modalController.create({
       component: ShopDetailsComponent,
-      componentProps:{data:vendor._id},
+      componentProps:{data:vendor},
       cssClass: 'sideMenuModal'
     });
     modal.onDidDismiss().then((data) => {

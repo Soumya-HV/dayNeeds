@@ -23,6 +23,9 @@ export class CustomerMyOrderComponent implements OnInit {
   ionViewWillEnter(){
     this.http.get(env.environment.url + 'customer/' + this.loginId+'/orders').subscribe(res => {
       this.orderLists = res['response'];
+      this.orderLists.forEach(element => {
+        element['showDetails'] = false;
+      });
       console.log(this.orderLists);
     })
   }

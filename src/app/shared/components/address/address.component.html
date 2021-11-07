@@ -52,12 +52,12 @@
           </ion-input>
         </ion-col>
         <ion-list>
-          <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)"
-            #radioGroup>
+          <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)" [(ngModel)]="selectedAddressType"
+            #radioGroup [ngModelOptions]="{standalone: true}">
             <ion-item lines="none" *ngFor="let item of radio_list" (ionFocus)="radioFocus()"
               (ionSelect)="radioSelect($event)" (ionBlur)="radioBlur()">
               <ion-label>{{item.name}}</ion-label>
-              <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}">
+              <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}">
               </ion-radio>
             </ion-item>
           </ion-radio-group>

@@ -8,37 +8,7 @@
     </ion-col>
   </ion-row>
 
-  <!-- <div class="section-wrapper">
-    <ion-card>
-      <ion-card-header>
-        <ion-row>
-          <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">Fri 02 Mar 2021</div>
-            <div class="vendor-name">RK Vegetables</div>
-          </ion-col>
-          <ion-col size="6" style="padding: 0;">
-            <div class="waiting-accept">Waiting for Acceptance</div>
-            <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div>
-          </ion-col>
-        </ion-row>
-        <ion-row style="justify-content: space-between;">
-          <div class="ordered-amount">Rs.650.00</div>
-          <div class="ordered-time">Today,4.00pm</div>
-          <div class="ordered-type"><img src="../../assets/images/cod-close.svg"><span class="cod-txt">COD</span></div>
-        </ion-row>
-      </ion-card-header>
-    </ion-card>
-    <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items
-      <span>
-        <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg">
-      </span>
-    </div>
-    <div *ngIf="showDetails">
-    </div>
-  </div> -->
-
-
-  <div *ngFor="let orderList of orderLists" class="section-wrapper">
+  <div *ngFor="let orderList of orderLists;let i=index" class="section-wrapper">
     <ion-card>
       <ion-card-header>
         <ion-row>
@@ -48,31 +18,36 @@
           <ion-col size="6" style="padding: 0;">
             <!-- <div class="waiting-accept">Waiting for Acceptance</div>
             <div style="text-align: end;margin-top: 12px;"><span class="cancel-order">Cancel Order</span></div> -->
-            <div *ngIf="orderList?.orderStatus == 'ordered'" style="text-align: end;margin-top: 8px;">
-              <span class="order-accepted">Ordered</span></div>
-              <div *ngIf="orderList?.orderStatus !== 'ordered'" style="text-align: end;margin-top: 8px;">
-                <span class="order-accepted">Order Accepted</span></div>
+            <div *ngIf="orderList?.orderStatus == 'ordered'" style="text-align: end;margin-top: 3px;">
+              <span class="order-accepted">Ordered</span>
+            </div>
+            <div *ngIf="orderList?.orderStatus !== 'ordered'" style="text-align: end;margin-top: 3px;">
+              <span class="order-accepted">Order Accepted</span>
+            </div>
           </ion-col>
         </ion-row>
         <div class="vendor-name">{{orderList?.vendorName}}</div>
         <ion-row style="justify-content: space-between;">
           <div class="ordered-amount">Rs {{orderList?.grandTotalPrice}}</div>
           <div class="ordered-time">{{orderList?.expectedDeliveryDate | date}}</div>
-          <div *ngIf="orderList?.paymentStatus !=='Paid'" class="ordered-type"><img src="../../assets/images/cod-close.svg">
+          <div *ngIf="orderList?.paymentStatus !=='Paid'" class="ordered-type"><img
+              src="../../assets/images/cod-close.svg">
             <span class="cod-txt">COD</span>
           </div>
-          <div *ngIf="orderList?.paymentStatus =='Paid'" class="ordered-type"><img src="../../assets/images/order-delivered-tick.svg">
-            <span class="paid-txt">Paid</span></div>
+          <div *ngIf="orderList?.paymentStatus =='Paid'" class="ordered-type"><img
+              src="../../assets/images/order-delivered-tick.svg">
+            <span class="paid-txt">Paid</span>
+          </div>
         </ion-row>
       </ion-card-header>
     </ion-card>
-    <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items
+    <div (click)="orderList.showDetails = !orderList.showDetails" class="order-detail-section">Ordered Items
       <span>
-        <img style="vertical-align: middle;" *ngIf="!showDetails" src="../../../assets/images/down-arrow.svg">
-        <img style="vertical-align: middle;" *ngIf="showDetails" src="../../../assets/images/invertdropdown.svg">
+        <img style="vertical-align: middle;" *ngIf="!orderList?.showDetails" src="../../../assets/images/down-arrow.svg">
+        <img style="vertical-align: middle;" *ngIf="orderList?.showDetails" src="../../../assets/images/invertdropdown.svg">
       </span>
     </div>
-    <div *ngIf="showDetails">
+    <div *ngIf="orderList?.showDetails">
       <ion-row *ngFor="let item of orderList.orderedItems" class="itemWrap">
         <ion-col size=4>
           {{item?.itemName}}
@@ -86,42 +61,16 @@
         <ion-col size=3>
           {{item?.totalPrice}}
         </ion-col>
-        <p size=12>
-        </p>
+       <ion-col size=12 class="ion-no-padding ion-no-margin">
+         <img class="vborder" src='../../../assets/images/vborderLine.svg'></ion-col>
       </ion-row>
-      <div class="text-right"> <img style="vertical-align: middle;" src="../../../assets/images/tabreorder.svg"></div>
+      <ion-row>
+        <ion-col size=12>
+          <img style="vertical-align: middle;float: right;" size=6 src="../../../assets/images/reorderbtn.png">
+        </ion-col>
+      </ion-row>
     </div>
   </div>
-
-
-  <!-- <div class="section-wrapper">
-    <ion-card>
-      <ion-card-header>
-        <ion-row>
-          <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">Fri 02 Mar 2021</div>
-            <div class="vendor-name">RK Vegetables</div>
-          </ion-col>
-          <ion-col size="6" style="padding: 0;">
-           
-            <div style="text-align: end;margin-top: 8px;"><span class="order-delivered">Delivered</span></div>
-          </ion-col>
-        </ion-row>
-        <ion-row style="justify-content: space-between;">
-          <div class="ordered-amount">Rs.650.00</div>
-          <div class="ordered-time">Today,4.00pm</div>
-          <div class="ordered-type"><img src="../../assets/images/order-delivered-tick.svg"><span class="paid-txt">Paid</span></div>
-        </ion-row>
-      </ion-card-header>
-    </ion-card>
-    <div (click)="showDetails = !showDetails" class="order-detail-section">Ordered Items
-      <span>
-        <img style="vertical-align: middle;" src="../../assets/images/down-arrow.svg">
-      </span>
-    </div>
-    <div *ngIf="showDetails">
-    </div>
-  </div> -->
 
 
 

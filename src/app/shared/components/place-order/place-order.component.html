@@ -9,14 +9,10 @@ arrow-left.svg" />
     </ion-col>
   </ion-row>
   <ion-row>
-    <div class="addGroup" *ngFor="let addr of address">
-      <p class="delLocation"> Deliver to: {{addr.typeOfAddress}} <span class="default"
-          *ngIf='addr.default'>(Default)</span></p>
-      <p class="delAdd">{{addr.houseNo}} , {{addr.block}} , {{addr.appartmentName}} , {{addr.
-        landMark}} , {{addr.address}}</p>
-      <p class="delNum">Mob: +91 - {{addr.contactNumber}} <ion-icon src='../../assets/images/
-    ci_edit.svg' (click)="opensideModal('edit', addr._id)"></ion-icon>
-      </p>
+    <div class="addGroup">
+      <p class="delLocation"> Deliver to: {{address.typeOfAddress}} <span class="default"  *ngIf='address.isDefault'>(Default)</span></p>      
+      <p class="delAdd">No.{{address.houseNo}} , {{address.block}} , {{address.appartmentName}} , {{address.landMark}} , {{address.address}}</p>  
+      <p class="delNum">Mob: +91 - {{address.contactNumber}} <ion-icon src='../../assets/images/ci_edit.svg' (click)="opensideModal('edit', address._id)"></ion-icon></p>
     </div>
   </ion-row>
   <ion-list>
