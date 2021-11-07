@@ -65,7 +65,7 @@
       </ion-row>
     </form>
     <div class="defaultLabel">
-      <ion-checkbox slot="end" [value]="checked" [checked]="false" (ionChange)="onSelectionChange($event)">
+      <ion-checkbox slot="end" [value]="checked" [checked]="isDefault" (ionChange)="onSelectionChange($event)">
       </ion-checkbox><span>Save As Default Address</span>
     </div>
     <div class="text-center">

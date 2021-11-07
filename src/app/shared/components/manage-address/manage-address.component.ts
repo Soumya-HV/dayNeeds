@@ -14,7 +14,8 @@ export class ManageAddressComponent implements OnInit {
   // address = [{ _id: '1', deliverTo: 'Home', deliverAddress: 'No:8, A-Block,Garuda Park Square, HVResidence, Bangalore - 560049', deliverNum: '99999 99999', default: true },
   // { _id: '2', deliverTo: 'Office', deliverAddress: 'No:8, A-Block,Garuda Park Square, HVResidence, Bangalore - 560049', deliverNum: '99999 99999', default: false }];
   address: any;
-
+  deliveryAddress: any;
+  checkedIdx = -1;
   constructor(public modalController: ModalController, private commonService: commonService, private http: HttpClient) { }
 
   ngOnInit() {
@@ -25,8 +26,14 @@ export class ManageAddressComponent implements OnInit {
     this.http.get(env.environment.url + 'user/' + localStorage.getItem('user_id')).subscribe
       (res => {
         this.commonService.userDetails = res['response'];
-        this.address = res['response']?.customerDetails?.address
+        this.address = res['response']?.customerDetails?.address;
+        for(let j=0 ; j<this.address.length; j++) {
+          if(this.address[j]['isDeliveryAddress']) {
+            this.checkedIdx = j;
+          }
+        }
       });
+      
   }
 
   closeModal() {
@@ -34,42 +41,11 @@ export class ManageAddressComponent implements OnInit {
   }
 
   onSelectionChange($event, id, i) {
-    console.log(id, $event, i, this.address);
-    for (let j = 0; j < this.address.length; j++) {
-      if (this.address[j]?._id == id) {
-        this.address[j]['isDeliveryAddress'] = true;
-      } else {
-        this.address[j]['isDeliveryAddress'] = false;
-      }
-    }
-    // (this.address[i]['isDeliveryAddress']) ? this.address[i]['isDeliveryAddress'] = false :  this.address[i]['isDeliveryAddress'] = true ;
-
-    // let PKQ = this.address.filter(x => x.isDeliveryAddress == true)[0];
-    // this.address[this.address.indexOf(PKQ)].isDeliveryAddress = false;
-    // this.address[i].isDeliveryAddress = true;
-    // console.log(PKQ);
-    // 
-
-    // let idFound = this.address.filter(x => x._id == id);   
-    // this.address[this.address.indexOf(idFound[0])].isDeliveryAddress = true;
-    // // console.log(idFound,this.address.indexOf(idFound[0]), this.address[this.address.indexOf(idFound[0])], this.address);
-
-    // this.address[i]['isDeliveryAddress'] = true;
-    // this.address[this.address.indexOf(idFound[0])].isDeliveryAddress = true;
-
-    // for (let j = 0; j < this.address.length; j++) {
-    // if (this.address[j]?._id == id) {
-    // console.log(id, this.address[j]?._id);
-    // this.address[j]['isDeliveryAddress'] = true;
-    // }
-    // }
-    console.log(this.address);
-
-    // this.http.put(env.environment.url + 'user/' + localStorage.getItem('loginId') + '/address/' + id + '/deliveryAddress/' + true, {}).subscribe
-    // (res => {
-    // console.log(res);
-    // });
-  
+    if ($event.detail.checked) {
+      this.http.put(env.environment.url + 'user/' + localStorage.getItem('loginId') + '/address/' + id + '/deliveryAddress/' + true, {}).subscribe
+        (res => {
+        });
+    } 
   }
 
   async opensideModal(mode, id) {

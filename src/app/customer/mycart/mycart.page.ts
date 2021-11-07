@@ -40,8 +40,7 @@ export class MyCartPage {
   }
 
 
-  decreaseQuantity(cart, index) {
-    
+  decreaseQuantity(cart, index) {    
     if (this.cartItems[index].noOfquantity > 0) {
       this.cartItems[index].noOfquantity -= 1;
       this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;

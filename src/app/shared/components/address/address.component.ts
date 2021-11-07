@@ -78,6 +78,7 @@ export class AddressComponent implements OnInit {
             'landmark': res['response'].customerDetails?.address[0]?.landMark,
             'mblNo': res['response'].customerDetails?.address[0]?.contactNumber,
           });
+          this.isDefault = res['response'].customerDetails?.address[0]?.isDefault;
           for (let i = 0; i < this.radio_list.length; i++) {
             this.radio_list[i].checked = false;
             if (res['response'].customerDetails?.address[0]?.typeOfAddress.toLowerCase() == this.radio_list[i].value.toLowerCase()) {             
@@ -90,8 +91,7 @@ export class AddressComponent implements OnInit {
       this.addressForm.reset();
       this.selectedAddressType = this.radio_list[0].value
     }
-    console.log(this.selectedAddressType);
-    
+    console.log(this.selectedAddressType);    
   }
 
   onSelectionChange(val) {

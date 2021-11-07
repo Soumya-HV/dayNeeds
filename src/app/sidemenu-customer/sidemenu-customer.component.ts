@@ -94,7 +94,8 @@ vendorAcc: any;
 
   openOrders(){
     this.modalController.dismiss();
-    this.router.navigate(['user/location']);
+    this.router.navigate(['customer/myorder']);
+    // this.router.navigate(['user/location']);
   }
 
   // switchCustomer(){

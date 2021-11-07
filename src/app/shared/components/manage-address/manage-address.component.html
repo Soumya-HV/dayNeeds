@@ -13,7 +13,7 @@
     <ion-row>
       <div class="addGroup" *ngFor="let addr of address;let i=index">
         <p class="delLocation"> Deliver to: {{addr.typeOfAddress}} <span class="default" *ngIf='addr.isDefault'>(Default)</span> 
-          <ion-checkbox slot="end" [value]="checked" [checked]="addr.isDeliveryAddress"
+          <ion-checkbox slot="end" [ngModel]="checkedIdx == i" (ngModelChange)="$event ? checkedIdx = i : checkedIdx = -1" 
           (ionChange)="onSelectionChange($event, addr._id, i)">
           </ion-checkbox></p>
         <p class="delAdd">No.{{addr.houseNo}} , {{addr.block}} , {{addr.appartmentName}} , {{addr.landMark}} , {{addr.address}}</p>  
