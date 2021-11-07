@@ -39,6 +39,7 @@ export class MyCartPage {
     }
   }
 
+
   decreaseQuantity(cart, index) {
     
     if (this.cartItems[index].noOfquantity > 0) {
@@ -58,15 +59,16 @@ export class MyCartPage {
   }
 
   increaseQuantity(cart, index) {
-      this.cartItems[index].noOfquantity += 1;
-      this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
-      let post = {
-        "quantity": this.cartItems[index].noOfquantity,
-        "totalPrice": this.cartItems[index].totalPrice
-      }
-      this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
-        console.log(res);
-      });
+    this.fullResponse.grandTotalPrice = this.fullResponse.grandTotalPrice + this.cartItems[index].selectedItemPrice;
+    this.cartItems[index].noOfquantity += 1;
+    this.cartItems[index].totalPrice = this.cartItems[index].noOfquantity * this.cartItems[index].selectedItemPrice;
+    let post = {
+      "quantity": this.cartItems[index].noOfquantity,
+      "totalPrice": this.cartItems[index].totalPrice
+    }
+    this.http.put(env.environment.url + 'cart/' + cart._id + '/updatequantity', post).subscribe(res => {
+      console.log(res);
+    });
   }
 
   getMyCartLists() {
