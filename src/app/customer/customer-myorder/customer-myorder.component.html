@@ -43,8 +43,7 @@
       <ion-card-header>
         <ion-row>
           <ion-col size="6" style="padding: 0;">
-            <div class="ordered-date">{{orderList?.orderPlacedDate}}</div>
-            <div class="vendor-name">{{orderList?.vendorName}}</div>
+            <div class="ordered-date">{{orderList?.orderPlacedDate | date}}</div>
           </ion-col>
           <ion-col size="6" style="padding: 0;">
             <!-- <div class="waiting-accept">Waiting for Acceptance</div>
@@ -55,9 +54,10 @@
                 <span class="order-accepted">Order Accepted</span></div>
           </ion-col>
         </ion-row>
+        <div class="vendor-name">{{orderList?.vendorName}}</div>
         <ion-row style="justify-content: space-between;">
-          <div class="ordered-amount">{{orderList?.grandTotalPrice}}</div>
-          <div class="ordered-time">{{orderList?.expectedDeliveryDate}}</div>
+          <div class="ordered-amount">Rs {{orderList?.grandTotalPrice}}</div>
+          <div class="ordered-time">{{orderList?.expectedDeliveryDate | date}}</div>
           <div *ngIf="orderList?.paymentStatus !=='Paid'" class="ordered-type"><img src="../../assets/images/cod-close.svg">
             <span class="cod-txt">COD</span>
           </div>

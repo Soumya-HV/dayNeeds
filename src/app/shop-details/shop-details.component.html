@@ -1,5 +1,22 @@
 <ion-content>
-  <div style="margin-left: 15px;margin-right:15px;">
+  <ion-item *ngFor="let item of dummy">
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+
+  <div *ngIf="itemLists" style="margin-left: 15px;margin-right:15px;">
     <ion-row style="margin-top: 15px;box-shadow: none;margin-bottom: 0;">
       <ion-col style="margin:auto" size="2">
         <img (click)="closeModal()" src="../../assets/images/sidebar-icons/arrow-left.svg">

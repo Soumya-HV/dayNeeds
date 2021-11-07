@@ -7,6 +7,22 @@
       <span class="titleWrapper">My Cart</span>
     </ion-col>
   </ion-row>
+  <ion-item  *ngFor="let item of dummy">
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
 
   <!-- <ion-card text-center> -->
     <!-- <span class="shopName">RK Vegetables</span> -->
@@ -14,14 +30,11 @@
     <img class="chatIcon" *ngIf="stockLists[0]?.catName == 'Upload Prescription'" src="../../assets/images/upload.svg" />  -->
   <!-- </ion-card> -->
 
-  <ion-list style="margin: 10px 20px;">
+  <ion-list *ngIf="cartItems.length > 0" style="margin: 10px 20px;">
     <ion-item-sliding style="margin-bottom:15px" *ngFor="let cartItem of cartItems;let i=index;">
       <ion-item-options side="start">
       </ion-item-options>
-      <ion-item lines="none" class="no-padding">
-        <!-- <div class="listWrapper" [style.background]='grey' size="3.5">
-          <img class="card-img" src="../../../assets/images/tomato.svg">
-        </div> -->
+      <ion-item lines="none" class="no-padding item-list">
         <ion-col class="img-col" size="4">
           <img class="product-img" src="{{cartItem.item.productImage}}">
         </ion-col>
@@ -38,7 +51,7 @@
 
         <ion-col class="quanty-col" size="3">
           <span>
-            <img src="../../assets/images/akar-icons_minus.svg" (click)="decreaseQuantity(cartItem,i)" style="background: #FFC8B6;
+            <img src="../../assets/images/akar-icons_minus.svg" (click)="decreaseQuantity(cartItem,i)" style="background: #585555;
                 padding: 3px 2px;
                 border-radius: 3px;vertical-align:middle;">
           </span>
@@ -139,8 +152,12 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  <div style="text-align: center;margin-top: 35%;" *ngIf="dummy.length == 0  && cartItems.length == 0">
+    <img style="width: 250px;text-align: center;" src="../../../assets/images/empty-cart.png">
+    <div style="font-weight: bold;color: gray;"><span>Your cart is empty :)</span></div>
+  </div>
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="cartItems?.length > 0">
   <ion-row  size=12>
     <ion-col size=8 class="totalamountWrap">
       <span>Rs.{{this.fullResponse?.grandTotalPrice}}</span>
