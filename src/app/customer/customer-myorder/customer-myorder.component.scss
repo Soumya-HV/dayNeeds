@@ -90,6 +90,10 @@ ion-card-header{
     letter-spacing: 0.02em;
     color: #2A3757;   
     margin-bottom: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ordered-amount{
     font-family: 'poppinsSemiBold';

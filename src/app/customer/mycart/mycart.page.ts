@@ -13,55 +13,23 @@ import { ModalController } from '@ionic/angular';
 export class MyCartPage {
   noOfProducts: number = 1;
   loginId;
-  cartItems: any;
+  cartItems =[];
   fullResponse: any;
   vendorId;
-  // stockLists = [{
-  // catName: 'RK Vegetables',
-  // catDetails: [{ id: 1, image: '../../assets/images/chilli.svg', pName: 'Green Chilli', qty: '100g', price: 80, qtyno: 1 },
-  // { id: 2, image: '../../assets/images/tomato.svg', pName: 'Tomato', qty: '1kg', price: 100, qtyno: 1 }]
-  // }];
-
-  // stockLists = [{
-  // catName: 'Dairy Products',
-  // bgColor: '#F8D4EF',
-  // catDetails: [{
-  // id: 1, image: '../../assets/images/nsm.svg', pName: 'Nandini Special Toned Milk',
-  // qty: '500ml', price: 80, qtyno: 1, coupons: 30, required: 'Alternate Days', DOA: 'March 2021'
-  // },
-  // {
-  //  id: 1, image: '../../assets/images/nsm.svg', pName: 'Nandini Doubled Toned Milk',
-  //  qty: '500ml', price: 100, qtyno: 1, coupons: 8, required: 'Weekends', DOA: 'March 2021'
-  // }]
-  // }];
-  // 
-  // stockLists = [{
-  // catName: 'JJ Carwash',
-  // bgColor: '#F2F4F8',
-  // catDetails: [{
-  // id: 1, image: '../../assets/images/carwash.svg', pName: 'Car Wash',
-  // on: '4:00 pm', price: 2000, noOfWashes: 4 , required: 'Sunday', DOA: 'March 2021'
-  // }]
-  // }];
-
-  // stockLists = [{
-  //   catName: 'Upload Prescription',
-  //   bgColor: '#EBDEE0',
-  //   catDetails: [{
-  //     id: 1, image: '../../assets/images/pharmacy.svg', pName: 'BP Tablet',
-  //     qty: '15', price: 120.00, qtyno: 1
-  //   }]
-  // }];
+  dummy = Array(10);
 
   constructor(private router: Router, private cmnService: commonService, private http: HttpClient,
     private modalController: ModalController) {
     this.loginId = localStorage.getItem('loginId');
+    
 
   }
 
   ionViewWillEnter() {
+    this.dummy = Array(10);
     this.getMyCartLists();
   }
+ 
 
   ngOnInit() { }
 
@@ -98,6 +66,7 @@ export class MyCartPage {
 
   getMyCartLists() {
     this.http.get(env.environment.url + 'carts/customer/' + this.loginId).subscribe(res => {
+      this.dummy =[];
       this.fullResponse = res['response'];
       this.vendorId = res['response'].vendorId;
       this.cartItems = res['response'].cartItems;
@@ -133,7 +102,7 @@ export class MyCartPage {
     let params = {
       'orderdItems': this.cartItems,
       'customerId': this.loginId,
-      'grandTotalPrice': 140,
+      'grandTotalPrice': this.fullResponse.grandTotalPrice,
       'vendorId': this.vendorId,
       'deliveryCharge': 50,
       'currency': "INR",

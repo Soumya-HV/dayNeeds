@@ -21,6 +21,7 @@ export class ShopDetailsComponent implements OnInit {
   index: any;
   priceValueLists: any;
   selectedUnit: any;
+  dummy = Array(10);
   constructor(public modalController: ModalController, private http: HttpClient, public navParams: NavParams) {
     this.vendorId = this.navParams.get('data');
     console.log('vendorId', this.vendorId);
@@ -54,6 +55,7 @@ export class ShopDetailsComponent implements OnInit {
           (item[k].priceList[0]) ?  item[k]['isPresentInCart'] = item[k].priceList[0].isPresentInCart : false;
           this.itemLists.push(item[k]);
         }
+        this.dummy=[];
         this.qtyselected = this.itemLists[0].priceList[0].quantity;
         this.selectedUnit = this.itemLists[0].priceList[0].unit;
         this.totalPrice = this.itemLists[0].priceList[0].offerPrice;
@@ -90,7 +92,7 @@ export class ShopDetailsComponent implements OnInit {
     };
     console.log(body);
     this.http.post(env.environment.url + 'cart', body).subscribe(res => {
-      this.getItemsByVendor();
+      // this.getItemsByVendor();
       console.log(res);
     });
   }

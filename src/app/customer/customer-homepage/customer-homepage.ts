@@ -16,29 +16,8 @@ import { ManageAddressComponent } from 'src/app/shared/components/manage-address
 export class CustomerHomePage {
   categories : any;
   dabbastoriesLists: any;
-  dummy = Array(15);
-  // categories = [
-  //   {
-  //     'img': '../../assets/images/cat-1.svg',
-  //     'bgColor': '#DDEDEA',
-  //     'name': 'veggies'
-  //   },
-  //   {
-  //     'img': '../../assets/images/cat-2.svg',
-  //     'bgColor': '#FCF4DD',
-  //     'name': 'Fruits'
-  //   },
-  //   {
-  //     'img': '../../assets/images/cat-3.svg',
-  //     'bgColor': '#DAEAF6',
-  //     'name': 'Food'
-  //   },
-  //   {
-  //     'img': '../../assets/images/cat-4.svg',
-  //     'bgColor': '#FCE1E4',
-  //     'name': 'Meat'
-  //   },
-  // ]
+  dummy = Array(10);
+  
   @ViewChild('mySlider') slider: IonSlides;
   @ViewChild('categorySlider') catslider: IonSlides;
   sliderOpts = {
@@ -54,9 +33,14 @@ export class CustomerHomePage {
   }
   addressSelected: any;
   constructor(public modalController: ModalController, private http: HttpClient, private cmnService: commonService ,private router : Router) {
-    this.getCategories();
+   
     // this.getDabbaStoriesList();
     this.addressSelected = this.cmnService.customerdeliveryAddress;
+  }
+
+  ionViewWillEnter(){
+    this.dummy = Array(10);
+    this.getCategories();
   }
 
   async openSideModal(name) {

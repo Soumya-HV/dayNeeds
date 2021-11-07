@@ -24,6 +24,7 @@ export class PlaceOrderComponent implements OnInit {
     value: 'Rs.20(Rewards)',
     checked: true
   }];
+  razorpaymentAmount;
 
   radio_list = [
     {
@@ -47,6 +48,7 @@ export class PlaceOrderComponent implements OnInit {
     this.orderedDetails = JSON.parse(this.data);
     this.orderedDetails.expectedDeliveryDate = new Date();
     this.orderedDetails.deliveryAddress = this.cmnService.customerdeliveryAddress;
+    this.orderedDetails.grandTotalPrice = this.orderedDetails.grandTotalPrice * 100;
     this.vendorId = this.orderedDetails.vendorId;
     this.loginId = localStorage.getItem('loginId');
     console.log(this.orderedDetails);
@@ -80,6 +82,7 @@ export class PlaceOrderComponent implements OnInit {
   }
 
   async checkoutEvent() {
+    this.cmnService.present();
     //  let params = {
     //    'totalPrice':50000,
     //    'currency':'INR'
@@ -96,6 +99,7 @@ export class PlaceOrderComponent implements OnInit {
     this.http.post(env.environment.url + 'createRazorPayOrder', this.orderedDetails).subscribe(res => {
       if (res['error'] == false) {
         console.log('razorpay orderId', res['response'].razorPayOrderId);
+        // this.orderedDetails.grandTotalPrice = this.orderedDetails.grandTotalPrice * 100;
         this.payWithRazorpay(res['response'].razorPayOrderId);
       }
       console.log(res);
@@ -110,7 +114,7 @@ export class PlaceOrderComponent implements OnInit {
       image: 'https://i.imgur.com/3g7nmJC.png',
       order_id: orderId,//Order ID generated in Step 1
       currency: 'INR',
-      name: 'Acme Corp',
+      name: 'Dayneeds',
       prefill: {
         email: 'gaurav.kumar@example.com',
         contact: '9191919191'
@@ -120,15 +124,17 @@ export class PlaceOrderComponent implements OnInit {
       }
     }
     try {
+      this.cmnService.dismiss();
       let data = (await Checkout.open(options));
       console.log(JSON.stringify(data.response));
       this.storePaymentId(data.response);
     } catch (error) {
-      this.presentAlert(error.message); //Doesn't appear at all
+      this.paymentFailed(error.message); //Doesn't appear at all
     }
   }
 
   async storePaymentId(response) {
+    this.cmnService.present();
     let params =
     {
       razorPayOrderId: response['razorpay_order_id'],
@@ -142,6 +148,7 @@ export class PlaceOrderComponent implements OnInit {
     console.log(params);
     this.http.post(env.environment.url + 'capturePayment', params).subscribe(res => {
       if(res['error']==false){
+        this.cmnService.dismiss();
         this.modalController.dismiss();
         this.callModal();
 
@@ -154,7 +161,7 @@ export class PlaceOrderComponent implements OnInit {
   async callModal(){
     const modal = await this.modalController.create({
       component: CustomizeOrderCartComponent,
-      cssClass: 'addModalClass',
+      cssClass: '',
      componentProps: { data: 'success' },
     });
     modal.onDidDismiss().then((data) => {
@@ -163,7 +170,7 @@ export class PlaceOrderComponent implements OnInit {
     return await modal.present();
   }
 
-  async presentAlert(response: string) {
+  async paymentFailed(response: string) {
     // let responseObj = JSON.parse(response)
     console.log("message" + JSON.stringify(response));
     console.log("message" + response['razorpay_payment_id']);

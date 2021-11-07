@@ -1,6 +1,6 @@
 <ion-content>
   <div style="margin-top: 12rem;">
-    <div class="successWrap" *ngIf="success">
+    <div class="successWrap" *ngIf="this.data=='success'">
       <img src="../../../../assets/images/Icontick.svg" />
     </div>
   </div>
@@ -24,7 +24,7 @@
       </p>
     </ion-col>
 
-    <img src="../../../../assets/images/continueShopping.svg" *ngIf="success" style="margin-left: 4rem;"/>
-    <img src="../../../../assets/images/backToCart.svg" *ngIf="error" (click)="backToCart()" style="margin-left: 4rem;"/>
+    <img src="../../../../assets/images/continueShopping.svg" (click)="backToCart()" *ngIf="this.data=='success'" style="margin-left: 4rem;"/>
+    <img src="../../../../assets/images/backToCart.svg" *ngIf="this.data=='error'" (click)="backToCart()" style="margin-left: 4rem;"/>
   </ion-row>
 </ion-content>

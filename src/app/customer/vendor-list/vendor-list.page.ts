@@ -16,6 +16,7 @@ export class VendorListPage {
   vendorList= [];
   imageElement: any;
   base64: string="";
+  dummy = Array(10);
   @ViewChild('mySlider') slider: IonSlides;
   @ViewChild('categorySlider') catslider: IonSlides;
   sliderOpts = {
@@ -33,13 +34,20 @@ export class VendorListPage {
     activatedRoute.queryParams.subscribe(params => {
       this.categoryId = params.category_id;
       console.log(this.categoryId);
-      if(this.categoryId){
-        this.getVendorListbyCategoryId();
-      } else{
-        this.getVendorList();
-      }
     })
   }
+
+  ionViewWillEnter(){
+    console.log('ion view will enter');
+    this.dummy = Array(10);
+    if(this.categoryId){
+      this.getVendorListbyCategoryId();
+    } else{
+      this.getVendorList();
+    }
+  }
+
+
 
   ngOnInit(){
     Camera.requestPermissions({permissions:['photos']})
@@ -48,6 +56,7 @@ export class VendorListPage {
   getVendorListbyCategoryId(){
     this.http.get(env.environment.url+'category/'+this.categoryId+'/vendors').subscribe
     (res => {
+      this.dummy=[];
       this.vendorList = res['response'];
       console.log(this.vendorList);
     });
@@ -68,6 +77,7 @@ export class VendorListPage {
   getVendorList(){
     this.http.get(env.environment.url+'vendors').subscribe
     (res => {
+      this.dummy=[];
       this.vendorList = res['response'];
       console.log(this.vendorList);
     });
