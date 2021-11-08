@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { IonicRatingComponentModule } from 'ionic-rating-component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { OTPComponent } from './components/otp/otp.component';
@@ -31,6 +30,7 @@ import { PlaceOrderComponent } from './components/place-order/place-order.compon
 import { CustomizeOrderCartComponent } from './components/customize-order-cart/customize-order-cart.component';
 import { SelectBlockComponent } from './components/select-block/select-block.component';
 import { SelectFloorComponent } from './components/select-floor/select-floor.component';
+import { IonicRatingModule } from "ionic4-rating";
 
 @NgModule({
   declarations: [
@@ -58,11 +58,11 @@ import { SelectFloorComponent } from './components/select-floor/select-floor.com
   imports: [
     BrowserModule, 
     IonicModule.forRoot(),
-    IonicRatingComponentModule, 
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+     IonicRatingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCHzvusQWw8cplAWj39XLMlbxDAwm56OVI', 
       libraries: ['places']
@@ -72,7 +72,6 @@ import { SelectFloorComponent } from './components/select-floor/select-floor.com
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicRatingComponentModule,
     HttpClientModule,
     LoginComponent,
     OTPComponent,
@@ -90,7 +89,8 @@ import { SelectFloorComponent } from './components/select-floor/select-floor.com
     VendorDabbastoryComponent,
     AddSubUserComponent,
     VendorProductComponent,
-    SelectCategory,GeoLocationComponent, SelectFloorComponent,PlaceOrderComponent, CustomizeOrderCartComponent, SelectBlockComponent],
+    SelectCategory,GeoLocationComponent, SelectFloorComponent,PlaceOrderComponent, CustomizeOrderCartComponent,
+     SelectBlockComponent,IonicRatingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
 })
 export class SharedModule {}

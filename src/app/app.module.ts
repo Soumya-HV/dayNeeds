@@ -18,6 +18,7 @@ import { AuthenticationService } from './core/services/authentication.service';
 import { RegisterVendorComponent } from './modules/register-vendor/register-vendor.component';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
+
 // import { GeoLocationComponent } from './modules/geo-location/geo-location.component';
 
 @NgModule({
