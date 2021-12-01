@@ -7,7 +7,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./notification.component.scss'],
 })
 export class NotificationComponent implements OnInit {
-starRate=3
+  starRate = 0;
   constructor(public modalController: ModalController,) { }
   isReadonly: boolean = true;
  
